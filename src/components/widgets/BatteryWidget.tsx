@@ -10,7 +10,7 @@ export default function BatteryWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-orange)">
         <Label
           icon={icons.battery_full}
           color="var(--colors-orange)"

@@ -10,7 +10,7 @@ export default function CaffeinateWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-green)">
         <Label
           icon={enabled ? icons.coffee_on : icons.coffee_off}
           color="var(--colors-green)"

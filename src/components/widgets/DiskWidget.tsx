@@ -10,7 +10,7 @@ export default function DiskWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-red)">
         <Label
           icon={icons.disk}
           color="var(--colors-red)"

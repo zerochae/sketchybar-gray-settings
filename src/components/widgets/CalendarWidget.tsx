@@ -20,7 +20,7 @@ export default function CalendarWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-orange)">
         <Label
           icon={icons.calendar}
           color="var(--colors-orange)"

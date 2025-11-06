@@ -10,7 +10,7 @@ export default function KakaotalkWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-yellow)">
         <Label
           icon={<KakaotalkIcon color="var(--colors-yellow)" />}
           color="var(--colors-yellow)"

@@ -13,7 +13,7 @@ export default function ClockWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-yellow)">
         <Label
           icon={icons.clock}
           color="var(--colors-yellow)"

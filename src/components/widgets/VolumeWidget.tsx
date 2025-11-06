@@ -10,7 +10,7 @@ export default function VolumeWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-blue)">
         <Label
           icon={icons.volume_high}
           color="var(--colors-blue)"

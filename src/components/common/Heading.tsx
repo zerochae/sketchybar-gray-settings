@@ -1,6 +1,7 @@
 interface HeadingProps {
   children: React.ReactNode;
   level?: 1 | 2 | 3;
+  color?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -8,10 +9,13 @@ interface HeadingProps {
 export default function Heading({
   children,
   level = 1,
+  color,
   className = "section-title",
   style = { marginBottom: "8px" },
 }: HeadingProps) {
   const getLevelColor = () => {
+    if (color) return color;
+
     switch (level) {
       case 1:
         return "var(--colors-blue)";

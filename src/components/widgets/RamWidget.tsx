@@ -10,7 +10,7 @@ export default function RamWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-magenta)">
         <Label
           icon={icons.memory}
           color="var(--colors-magenta)"

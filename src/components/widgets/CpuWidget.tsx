@@ -10,7 +10,7 @@ export default function CpuWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-blue)">
         <Label
           icon={icons.cpu}
           color="var(--colors-blue)"

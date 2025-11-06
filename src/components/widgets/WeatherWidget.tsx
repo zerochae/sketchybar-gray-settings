@@ -11,7 +11,7 @@ export default function WeatherWidget() {
 
   return (
     <div>
-      <Heading level={2}>
+      <Heading level={2} color="var(--colors-cyan)">
         <Label
           icon={icons.weather}
           color="var(--colors-cyan)"
