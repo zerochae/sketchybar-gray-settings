@@ -2,6 +2,7 @@ import { useState } from "react";
 import { exit } from "@tauri-apps/plugin-process";
 import CategoryContent, { type Category } from "@/components/CategoryContent";
 import Sidebar from "@/components/Sidebar";
+import Banner from "@/components/common/Banner";
 import { useTheme } from "@/hooks/useTheme";
 
 function App() {
@@ -56,25 +57,7 @@ function App() {
             paddingRight: "16px",
           }}
         >
-          <div
-            style={{
-              marginBottom: "24px",
-              padding: "16px",
-              background: "var(--colors-bg2)",
-              border: "1px solid var(--colors-border)",
-              borderRadius: "4px",
-              fontFamily: "monospace",
-              fontSize: "10px",
-              lineHeight: "1.2",
-              color: "var(--colors-blue)",
-              whiteSpace: "pre",
-              overflow: "hidden",
-            }}
-          >
-            {`┌─┐┬─┐┌─┐┬ ┬   ┌─┐┬┌─┌─┐┌┬┐┌─┐┬ ┬┬ ┬   ┌┐ ┌─┐┬─┐
-│ ┬├┬┘├─┤└┬┘───└─┐├┴┐├┤  │ │  ├─┤└┬┘───├┴┐├─┤├┬┘
-└─┘┴└─┴ ┴ ┴    └─┘┴ ┴└─┘ ┴ └─┘┴ ┴ ┴    └─┘┴ ┴┴└─`}
-          </div>
+          <Banner />
           <CategoryContent
             category={activeCategory}
             selectedTheme={selectedTheme}
