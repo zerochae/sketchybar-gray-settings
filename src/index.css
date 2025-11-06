@@ -127,6 +127,8 @@ body {
 .key-hint {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 28px;
   padding: 2px 6px;
   background: var(--colors-bg);
   color: var(--colors-comment);

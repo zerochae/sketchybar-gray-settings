@@ -1,5 +1,7 @@
 import Box from "@/components/common/Box";
 import Heading from "@/components/common/Heading";
+import Button from "@/components/common/Button";
+import KeyHint from "@/components/common/KeyHint";
 
 export default function AdvancedSettings() {
   return (
@@ -7,13 +9,10 @@ export default function AdvancedSettings() {
       <div>
         <Heading>Open Config File</Heading>
         <Box padding="0">
-          <button
-            className="option-item"
-            style={{ color: "var(--colors-blue)" }}
-          >
+          <Button variant="option" style={{ color: "var(--colors-blue)" }}>
             <span>Open in Editor</span>
-            <span className="key-hint">⌘O</span>
-          </button>
+            <KeyHint>⌘O</KeyHint>
+          </Button>
           <div
             style={{
               marginTop: "12px",
@@ -32,13 +31,10 @@ export default function AdvancedSettings() {
       <div>
         <Heading>Reload Sketchybar</Heading>
         <Box padding="0">
-          <button
-            className="option-item"
-            style={{ color: "var(--colors-green)" }}
-          >
+          <Button variant="option" style={{ color: "var(--colors-green)" }}>
             <span>Reload Now</span>
-            <span className="key-hint">⌘R</span>
-          </button>
+            <KeyHint>⌘R</KeyHint>
+          </Button>
           <div
             style={{
               marginTop: "12px",
@@ -57,13 +53,10 @@ export default function AdvancedSettings() {
       <div>
         <Heading>Reset to Defaults</Heading>
         <Box padding="0">
-          <button
-            className="option-item"
-            style={{ color: "var(--colors-red)" }}
-          >
+          <Button variant="option" style={{ color: "var(--colors-red)" }}>
             <span>Reset All Settings</span>
-            <span className="key-hint">⌘⌫</span>
-          </button>
+            <KeyHint>⌘⌫</KeyHint>
+          </Button>
           <div
             style={{
               marginTop: "12px",

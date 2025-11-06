@@ -9,7 +9,7 @@ export default function VolumeWidget() {
 
   return (
     <div>
-      <Label icon={icons.volume_medium} color="var(--colors-blue)">Volume</Label>
+      <Label icon={icons.volume_high} color="var(--colors-blue)">Volume</Label>
       <Box>
         <Checkbox
           checked={enabled}

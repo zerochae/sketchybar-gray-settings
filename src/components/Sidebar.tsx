@@ -1,5 +1,8 @@
 import type { Category } from "@/components/CategoryContent";
 import Heading from "@/components/common/Heading";
+import Button from "@/components/common/Button";
+import KeyHint from "@/components/common/KeyHint";
+import Label from "@/components/common/Label";
 import icons from "@/assets/icon.json";
 
 interface SidebarProps {
@@ -56,16 +59,20 @@ export default function Sidebar({
           }}
         >
           {categories.map((category, index) => (
-            <button
+            <Button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`option-item ${activeCategory === category ? "active" : ""}`}
+              variant="option"
+              active={activeCategory === category}
             >
-              <span>
-                {icons[category]} {category}
-              </span>
-              <span className="key-hint">{index + 1}</span>
-            </button>
+              <Label
+                icon={icons[category]}
+                style={{ marginBottom: 0, fontSize: "inherit", fontWeight: 400 }}
+              >
+                {category}
+              </Label>
+              <KeyHint>{index + 1}</KeyHint>
+            </Button>
           ))}
         </div>
       </div>
@@ -80,42 +87,12 @@ export default function Sidebar({
           borderTop: "1px solid var(--colors-border)",
         }}
       >
-        <button
-          onClick={onSave}
-          style={{
-            padding: "8px 12px",
-            background: "var(--colors-green)",
-            color: "var(--colors-bg)",
-            border: "none",
-            borderRadius: "4px",
-            fontSize: "12px",
-            fontWeight: 600,
-            cursor: "pointer",
-            transition: "opacity 0.2s",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-        >
+        <Button onClick={onSave} variant="success">
           {icons.save} Save
-        </button>
-        <button
-          onClick={onClose}
-          style={{
-            padding: "8px 12px",
-            background: "var(--colors-red)",
-            color: "var(--colors-bg)",
-            border: "none",
-            borderRadius: "4px",
-            fontSize: "12px",
-            fontWeight: 600,
-            cursor: "pointer",
-            transition: "opacity 0.2s",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-        >
+        </Button>
+        <Button onClick={onClose} variant="danger">
           {icons.exit} Exit
-        </button>
+        </Button>
       </div>
 
       <div
@@ -136,32 +113,21 @@ export default function Sidebar({
         >
           Shortcuts
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "4px",
-          }}
+        <Label
+          icon={<KeyHint>↑↓</KeyHint>}
+          style={{ marginBottom: "4px", fontSize: "11px", fontWeight: 400 }}
         >
-          <span className="key-hint">↑↓</span>
-          <span>Navigate</span>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "4px",
-          }}
+          Navigate
+        </Label>
+        <Label
+          icon={<KeyHint>⏎</KeyHint>}
+          style={{ marginBottom: "4px", fontSize: "11px", fontWeight: 400 }}
         >
-          <span className="key-hint">⏎</span>
-          <span>Select</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span className="key-hint">Esc</span>
-          <span>Close</span>
-        </div>
+          Select
+        </Label>
+        <Label icon={<KeyHint>󱊷</KeyHint>} style={{ fontSize: "11px", fontWeight: 400 }}>
+          Close
+        </Label>
       </div>
     </aside>
   );

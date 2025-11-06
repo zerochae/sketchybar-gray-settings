@@ -10,7 +10,7 @@ export default function WeatherWidget() {
 
   return (
     <div>
-      <Label icon={icons.weather_default} color="var(--colors-cyan)">Weather</Label>
+      <Label icon={icons.weather} color="var(--colors-cyan)">Weather</Label>
       <Box>
         <div style={{ marginBottom: enabled ? "12px" : "0" }}>
           <Checkbox

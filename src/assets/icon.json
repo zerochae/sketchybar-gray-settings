@@ -1,41 +1,16 @@
 {
-  "block-1": "▁",
-  "block-2": "▂",
-  "block-3": "▃",
-  "block-4": "▄",
-  "block-5": "▅",
-  "block-6": "▆",
-  "block-7": "▇",
-  "block-8": "█",
-
-  "battery_empty": "",
-  "battery_low": "",
-  "battery_medium": "",
   "battery_full": "",
-
   "clock": "",
   "calendar": "",
-
-  "network_download": "",
-  "network_upload": "",
-
   "disk": "",
   "loading": "",
-
-  "volume_low": "",
-  "volume_medium": "",
   "volume_high": "",
-  "volume_mute": "󰝟",
-
   "cpu": "",
   "memory": "",
-
   "coffee_on": "󰅶",
   "coffee_off": "󰶞",
-
   "config": "",
-
-  "weather_default": "",
+  "weather": "",
   "save": "",
   "exit": "󰩈",
   "Appearance": "",
