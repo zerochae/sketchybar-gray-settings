@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
+import Box from "@/components/common/Box";
 import icons from "@/assets/icon.json";
 
 export default function CalendarWidget() {
@@ -19,7 +20,7 @@ export default function CalendarWidget() {
   return (
     <div>
       <Label icon={icons.calendar} color="var(--colors-orange)">Calendar</Label>
-      <div className="box-container" style={{ padding: "12px" }}>
+      <Box>
         <div style={{ marginBottom: enabled ? "12px" : "0" }}>
           <Checkbox
             checked={enabled}
@@ -52,7 +53,7 @@ export default function CalendarWidget() {
             </div>
           </div>
         )}
-      </div>
+      </Box>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
+import Box from "@/components/common/Box";
 import icons from "@/assets/icon.json";
 
 export default function WeatherWidget() {
@@ -10,7 +11,7 @@ export default function WeatherWidget() {
   return (
     <div>
       <Label icon={icons.weather_default} color="var(--colors-cyan)">Weather</Label>
-      <div className="box-container" style={{ padding: "12px" }}>
+      <Box>
         <div style={{ marginBottom: enabled ? "12px" : "0" }}>
           <Checkbox
             checked={enabled}
@@ -41,7 +42,7 @@ export default function WeatherWidget() {
             />
           </div>
         )}
-      </div>
+      </Box>
     </div>
   );
 }
