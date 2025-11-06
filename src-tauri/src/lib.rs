@@ -78,6 +78,7 @@ fn write_config_theme(theme: String) -> Result<(), String> {
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_process::init())
         .invoke_handler(tauri::generate_handler![greet, read_config_theme, write_config_theme])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

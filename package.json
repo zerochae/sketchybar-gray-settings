@@ -1,5 +1,5 @@
 {
-  "name": "settings",
+  "name": "sketchybar-gray-settings",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
+    "@tauri-apps/plugin-process": "^2.3.1",
     "@webtui/css": "^0.1.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
