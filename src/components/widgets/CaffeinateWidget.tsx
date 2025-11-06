@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
-import WidgetTitle from "@/components/common/WidgetTitle";
+import Label from "@/components/common/Label";
 import icons from "@/assets/icon.json";
 
 export default function CaffeinateWidget() {
@@ -8,11 +8,12 @@ export default function CaffeinateWidget() {
 
   return (
     <div>
-      <WidgetTitle
+      <Label
         icon={enabled ? icons.coffee_on : icons.coffee_off}
-        label="Caffeinate"
-        color={"var(--colors-green)"}
-      />
+        color="var(--colors-green)"
+      >
+        Caffeinate
+      </Label>
       <div className="box-container" style={{ padding: "12px" }}>
         <Checkbox
           checked={enabled}

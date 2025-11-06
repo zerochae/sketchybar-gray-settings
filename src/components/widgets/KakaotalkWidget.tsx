@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
-import WidgetTitle from "@/components/common/WidgetTitle";
+import Label from "@/components/common/Label";
 import KakaotalkIcon from "@/components/icons/KakaotalkIcon";
 
 export default function KakaotalkWidget() {
@@ -8,11 +8,12 @@ export default function KakaotalkWidget() {
 
   return (
     <div>
-      <WidgetTitle
+      <Label
         icon={<KakaotalkIcon color="var(--colors-yellow)" />}
-        label="KakaoTalk"
         color="var(--colors-yellow)"
-      />
+      >
+        KakaoTalk
+      </Label>
       <div className="box-container" style={{ padding: "12px" }}>
         <Checkbox
           checked={enabled}

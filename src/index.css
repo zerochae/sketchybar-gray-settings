@@ -47,6 +47,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: var(--font-mono), Consolas, monospace;
 }
 
 html,

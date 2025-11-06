@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
-import WidgetTitle from "@/components/common/WidgetTitle";
+import Label from "@/components/common/Label";
 import icons from "@/assets/icon.json";
 
 export default function VolumeWidget() {
@@ -8,7 +8,7 @@ export default function VolumeWidget() {
 
   return (
     <div>
-      <WidgetTitle icon={icons.volume_medium} label="Volume" color="var(--colors-blue)" />
+      <Label icon={icons.volume_medium} color="var(--colors-blue)">Volume</Label>
       <div className="box-container" style={{ padding: "12px" }}>
         <Checkbox
           checked={enabled}

@@ -1,4 +1,5 @@
 import type { Category } from "@/components/CategoryContent";
+import icons from "@/assets/icon.json";
 
 interface SidebarProps {
   categories: Category[];
@@ -15,12 +16,6 @@ export default function Sidebar({
   onSave,
   onClose,
 }: SidebarProps) {
-  const icons: Record<Category, string> = {
-    Appearance: "",
-    Widgets: "󰜬",
-    Advanced: "󰏙",
-  };
-
   return (
     <aside
       className="container"
@@ -103,7 +98,7 @@ export default function Sidebar({
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         >
-          󰆓 Save
+          {icons.save} Save
         </button>
         <button
           onClick={onClose}
@@ -121,7 +116,7 @@ export default function Sidebar({
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         >
-          󰅖 Exit
+          {icons.exit} Exit
         </button>
       </div>
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
-import WidgetTitle from "@/components/common/WidgetTitle";
+import Label from "@/components/common/Label";
 import icons from "@/assets/icon.json";
 
 export default function ClockWidget() {
@@ -11,7 +11,7 @@ export default function ClockWidget() {
 
   return (
     <div>
-      <WidgetTitle icon={icons.clock} label="Clock" color="var(--colors-yellow)" />
+      <Label icon={icons.clock} color="var(--colors-yellow)">Clock</Label>
       <div className="box-container" style={{ padding: "12px" }}>
         <div style={{ marginBottom: enabled ? "12px" : "0" }}>
           <Checkbox

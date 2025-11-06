@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
-import WidgetTitle from "@/components/common/WidgetTitle";
+import Label from "@/components/common/Label";
 import icons from "@/assets/icon.json";
 
 export default function CpuWidget() {
@@ -8,7 +8,7 @@ export default function CpuWidget() {
 
   return (
     <div>
-      <WidgetTitle icon={icons.cpu} label="CPU" color="var(--colors-blue)" />
+      <Label icon={icons.cpu} color="var(--colors-blue)">CPU</Label>
       <div className="box-container" style={{ padding: "12px" }}>
         <Checkbox
           checked={enabled}
