@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { exit } from "@tauri-apps/plugin-process";
 import CategoryContent, { type Category } from "@/components/CategoryContent";
 import Sidebar from "@/components/Sidebar";
 import { useTheme } from "@/hooks/useTheme";
@@ -8,6 +9,14 @@ function App() {
   const { selectedTheme, setSelectedTheme } = useTheme();
 
   const categories: Category[] = ["Appearance", "Widgets", "Advanced"];
+
+  const handleSave = () => {
+    console.log("Settings saved");
+  };
+
+  const handleClose = () => {
+    exit(0);
+  };
 
   return (
     <div
@@ -35,6 +44,8 @@ function App() {
           categories={categories}
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
+          onSave={handleSave}
+          onClose={handleClose}
         />
 
         <main

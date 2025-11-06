@@ -4,12 +4,16 @@ interface SidebarProps {
   categories: Category[];
   activeCategory: Category;
   setActiveCategory: (category: Category) => void;
+  onSave: () => void;
+  onClose: () => void;
 }
 
 export default function Sidebar({
   categories,
   activeCategory,
   setActiveCategory,
+  onSave,
+  onClose,
 }: SidebarProps) {
   const icons: Record<Category, string> = {
     Appearance: "",
@@ -71,6 +75,54 @@ export default function Sidebar({
             </button>
           ))}
         </div>
+      </div>
+
+      <div
+        style={{
+          flexShrink: 0,
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          paddingTop: "12px",
+          borderTop: "1px solid var(--colors-border)",
+        }}
+      >
+        <button
+          onClick={onSave}
+          style={{
+            padding: "8px 12px",
+            background: "var(--colors-green)",
+            color: "var(--colors-bg)",
+            border: "none",
+            borderRadius: "4px",
+            fontSize: "12px",
+            fontWeight: 600,
+            cursor: "pointer",
+            transition: "opacity 0.2s",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
+          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+        >
+          󰆓 Save
+        </button>
+        <button
+          onClick={onClose}
+          style={{
+            padding: "8px 12px",
+            background: "var(--colors-red)",
+            color: "var(--colors-bg)",
+            border: "none",
+            borderRadius: "4px",
+            fontSize: "12px",
+            fontWeight: 600,
+            cursor: "pointer",
+            transition: "opacity 0.2s",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
+          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+        >
+          󰅖 Exit
+        </button>
       </div>
 
       <div
