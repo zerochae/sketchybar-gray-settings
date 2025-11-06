@@ -1,0 +1,127 @@
+@layer base, utils, components;
+
+@import "@webtui/css/base.css";
+
+/* Utils */
+@import "@webtui/css/utils/box.css";
+
+/* Components */
+@import "@webtui/css/components/button.css";
+@import "@webtui/css/components/checkbox.css";
+@import "@webtui/css/components/radio.css";
+@import "@webtui/css/components/typography.css";
+@import "@webtui/css/components/view.css";
+@import "@webtui/css/components/separator.css";
+
+@font-face {
+  font-family: "sketchybar-app-font";
+  src: url("./assets/fonts/sketchybar-app-font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-mono: "SpaceMono Nerd Font Mono", "sketchybar-app-font", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--colors-bg);
+  color: var(--colors-text);
+  font-size: 13px;
+  line-height: 1.5;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.titlebar {
+  border-bottom: 1px solid var(--colors-border);
+  background: var(--colors-bg);
+  flex-shrink: 0;
+}
+
+.container {
+  border: 1px solid var(--colors-border);
+  border-radius: 4px;
+  background: var(--colors-bg2);
+  overflow: hidden;
+}
+
+.section-title {
+  color: var(--colors-blue);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.section-title img {
+  filter: brightness(0) saturate(100%) invert(50%) sepia(98%) saturate(2476%) hue-rotate(180deg) brightness(95%) contrast(101%);
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-left: 2px solid transparent;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: var(--colors-text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.option-item:hover {
+  background: var(--colors-bg3);
+  border-left-color: var(--colors-border);
+}
+
+.option-item.active {
+  background: var(--colors-bg3);
+  border-left-color: var(--colors-blue);
+}
+
+.key-hint {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  background: var(--colors-bg);
+  color: var(--colors-comment);
+  font-size: 11px;
+  border: 1px solid var(--colors-border);
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.box-container {
+  background: var(--colors-bg2);
+  border: 1px solid var(--colors-border);
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--colors-border);
+  margin: 12px 0;
+}

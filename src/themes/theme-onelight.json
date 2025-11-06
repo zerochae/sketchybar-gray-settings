@@ -1,0 +1,5 @@
+{
+  "name": "onelight",
+  "id": "panda-theme-onelight",
+  "css": " [data-panda-theme=onelight] {\n    --colors-bg: #fafafa;\n    --colors-bg2: #f0f0f0;\n    --colors-bg3: #e5e5e5;\n    --colors-bg4: #d7d7d8;\n    --colors-tab-bg: #e5e5e5;\n    --colors-mode-fg: #fafafa;\n    --colors-border: #d7d7d8;\n    --colors-float-border: #4078f2;\n    --colors-text: #383a42;\n    --colors-comment: #a0a1a7;\n    --colors-red: #d84a3d;\n    --colors-yellow: #c18401;\n    --colors-blue: #4078f2;\n    --colors-green: #50a14f;\n    --colors-magenta: #a626a4;\n    --colors-cyan: #0070a8;\n    --colors-orange: #d75f00;\n    --colors-peach: #e45649;\n    --colors-lime: #6db76c;\n    --colors-sky: #52a6fc;\n    --colors-aqua: #0184bc;\n    --colors-coral: #e05a52;\n    --colors-emerald: #5ab45a;\n    --colors-lavender: #b142b6;\n    --colors-mint: #0086bc;\n    --colors-sapphire: #3a7fef;\n    --colors-forest: #47a04a;\n    --colors-navy: #2e6edb;\n    --colors-plum: #9626a4;\n    --colors-gray: #9d9fa3;\n    --colors-black: #202227;\n    --colors-tangerine: #dd8500;\n    --colors-react: #61dafb;\n    --colors-st: #e7e7e7;\n    --colors-st_sep: #c8c8c9\n}"
+}

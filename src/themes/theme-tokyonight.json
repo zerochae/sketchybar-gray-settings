@@ -1,0 +1,5 @@
+{
+  "name": "tokyonight",
+  "id": "panda-theme-tokyonight",
+  "css": " [data-panda-theme=tokyonight] {\n    --colors-bg: #1a1b26;\n    --colors-bg2: #16161e;\n    --colors-bg3: #24283b;\n    --colors-bg4: #292e42;\n    --colors-tab-bg: #24283b;\n    --colors-mode-fg: #1a1b26;\n    --colors-border: #292e42;\n    --colors-float-border: #2ac3de;\n    --colors-text: #a9b1d6;\n    --colors-comment: #565f89;\n    --colors-red: #f7768e;\n    --colors-yellow: #e0af68;\n    --colors-blue: #7aa2f7;\n    --colors-green: #9ece6a;\n    --colors-magenta: #bb9af7;\n    --colors-cyan: #7dcfff;\n    --colors-orange: #ff9e64;\n    --colors-peach: #ff9e64;\n    --colors-lime: #b9f27c;\n    --colors-sky: #89ddff;\n    --colors-aqua: #2ac3de;\n    --colors-coral: #f7768e;\n    --colors-emerald: #73daca;\n    --colors-lavender: #bb9af7;\n    --colors-mint: #b4f9f8;\n    --colors-sapphire: #2ac3de;\n    --colors-forest: #9ece6a;\n    --colors-navy: #7aa2f7;\n    --colors-plum: #9d7cd8;\n    --colors-gray: #787c99;\n    --colors-black: #16161e;\n    --colors-tangerine: #ff9e64;\n    --colors-react: #2ac3de;\n    --colors-st: #1f2335;\n    --colors-st_sep: #3b4261\n}"
+}

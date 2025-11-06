@@ -1,0 +1,5 @@
+{
+  "name": "onedark",
+  "id": "panda-theme-onedark",
+  "css": " [data-panda-theme=onedark] {\n    --colors-bg: #1a1a26;\n    --colors-bg2: #1F1F2B;\n    --colors-bg3: #24242f;\n    --colors-bg4: #292934;\n    --colors-tab-bg: #2a2a38;\n    --colors-mode-fg: #1e222a;\n    --colors-border: #282c34;\n    --colors-float-border: #a0add0;\n    --colors-text: #abb2bf;\n    --colors-comment: #565c64;\n    --colors-red: #E06C75;\n    --colors-yellow: #e5c07b;\n    --colors-blue: #61afef;\n    --colors-green: #98c379;\n    --colors-magenta: #c678dd;\n    --colors-cyan: #56b6c2;\n    --colors-orange: #d19a66;\n    --colors-peach: #e1717a;\n    --colors-lime: #b3d39c;\n    --colors-sky: #8fc6f4;\n    --colors-aqua: #7bc6d0;\n    --colors-coral: #d8868d;\n    --colors-emerald: #a3c38c;\n    --colors-lavender: #c791d7;\n    --colors-mint: #6bb6c0;\n    --colors-sapphire: #7fb6e4;\n    --colors-forest: #88b369;\n    --colors-navy: #519fdf;\n    --colors-plum: #b568cd;\n    --colors-gray: #9ba2af;\n    --colors-black: #282c34;\n    --colors-tangerine: #ff9e64;\n    --colors-react: #44B0CC;\n    --colors-st: #2d3139;\n    --colors-st_sep: #474b54\n}"
+}
