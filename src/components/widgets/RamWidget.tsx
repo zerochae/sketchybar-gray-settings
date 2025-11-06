@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
+import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import icons from "@/assets/icon.json";
 
@@ -9,7 +10,15 @@ export default function RamWidget() {
 
   return (
     <div>
-      <Label icon={icons.memory} color="var(--colors-magenta)">RAM</Label>
+      <Heading level={2}>
+        <Label
+          icon={icons.memory}
+          color="var(--colors-magenta)"
+          iconColor="var(--colors-magenta)"
+        >
+          RAM
+        </Label>
+      </Heading>
       <Box>
         <Checkbox
           checked={enabled}

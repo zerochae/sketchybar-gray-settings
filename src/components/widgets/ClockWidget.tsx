@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
+import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import icons from "@/assets/icon.json";
 
@@ -12,7 +13,15 @@ export default function ClockWidget() {
 
   return (
     <div>
-      <Label icon={icons.clock} color="var(--colors-yellow)">Clock</Label>
+      <Heading level={2}>
+        <Label
+          icon={icons.clock}
+          color="var(--colors-yellow)"
+          iconColor="var(--colors-yellow)"
+        >
+          Clock
+        </Label>
+      </Heading>
       <Box>
         <div style={{ marginBottom: enabled ? "12px" : "0" }}>
           <Checkbox

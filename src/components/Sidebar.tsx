@@ -3,6 +3,7 @@ import Heading from "@/components/common/Heading";
 import Button from "@/components/common/Button";
 import KeyHint from "@/components/common/KeyHint";
 import Label from "@/components/common/Label";
+import Shortcuts from "@/components/common/Shortcuts";
 import icons from "@/assets/icon.json";
 
 interface SidebarProps {
@@ -65,12 +66,15 @@ export default function Sidebar({
               variant="option"
               active={activeCategory === category}
             >
-              <Label
-                icon={icons[category]}
-                style={{ marginBottom: 0, fontSize: "inherit", fontWeight: 400 }}
-              >
-                {category}
-              </Label>
+              <Heading level={2} style={{ marginBottom: 0 }}>
+                <Label
+                  icon={icons[category]}
+                  color="var(--colors-cyan)"
+                  style={{ fontSize: "inherit", fontWeight: 400 }}
+                >
+                  {category}
+                </Label>
+              </Heading>
               <KeyHint>{index + 1}</KeyHint>
             </Button>
           ))}
@@ -95,40 +99,7 @@ export default function Sidebar({
         </Button>
       </div>
 
-      <div
-        style={{
-          flexShrink: 0,
-          fontSize: "11px",
-          color: "var(--colors-comment)",
-          paddingTop: "12px",
-          borderTop: "1px solid var(--colors-border)",
-        }}
-      >
-        <div
-          style={{
-            marginBottom: "6px",
-            color: "var(--colors-blue)",
-            fontWeight: 600,
-          }}
-        >
-          Shortcuts
-        </div>
-        <Label
-          icon={<KeyHint>↑↓</KeyHint>}
-          style={{ marginBottom: "4px", fontSize: "11px", fontWeight: 400 }}
-        >
-          Navigate
-        </Label>
-        <Label
-          icon={<KeyHint>⏎</KeyHint>}
-          style={{ marginBottom: "4px", fontSize: "11px", fontWeight: 400 }}
-        >
-          Select
-        </Label>
-        <Label icon={<KeyHint>󱊷</KeyHint>} style={{ fontSize: "11px", fontWeight: 400 }}>
-          Close
-        </Label>
-      </div>
+      <Shortcuts />
     </aside>
   );
 }

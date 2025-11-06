@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
+import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import icons from "@/assets/icon.json";
 
@@ -9,7 +10,15 @@ export default function BatteryWidget() {
 
   return (
     <div>
-      <Label icon={icons.battery_full} color="var(--colors-orange)">Battery</Label>
+      <Heading level={2}>
+        <Label
+          icon={icons.battery_full}
+          color="var(--colors-orange)"
+          iconColor="var(--colors-orange)"
+        >
+          Battery
+        </Label>
+      </Heading>
       <Box>
         <Checkbox
           checked={enabled}

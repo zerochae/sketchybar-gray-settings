@@ -15,71 +15,28 @@ export default function Button({
   className,
   style,
 }: ButtonProps) {
-  const getVariantStyles = (): React.CSSProperties => {
+  const getVariantColor = (): string | undefined => {
     switch (variant) {
       case "primary":
-        return {
-          padding: "8px 12px",
-          background: "var(--colors-blue)",
-          color: "var(--colors-bg)",
-          border: "none",
-          borderRadius: "4px",
-          fontSize: "12px",
-          fontWeight: 600,
-          cursor: "pointer",
-          transition: "opacity 0.2s",
-        };
+        return "var(--colors-blue)";
       case "success":
-        return {
-          padding: "8px 12px",
-          background: "var(--colors-green)",
-          color: "var(--colors-bg)",
-          border: "none",
-          borderRadius: "4px",
-          fontSize: "12px",
-          fontWeight: 600,
-          cursor: "pointer",
-          transition: "opacity 0.2s",
-        };
+        return "var(--colors-green)";
       case "danger":
-        return {
-          padding: "8px 12px",
-          background: "var(--colors-red)",
-          color: "var(--colors-bg)",
-          border: "none",
-          borderRadius: "4px",
-          fontSize: "12px",
-          fontWeight: 600,
-          cursor: "pointer",
-          transition: "opacity 0.2s",
-        };
+        return "var(--colors-red)";
       case "option":
       default:
-        return {};
+        return undefined;
     }
   };
 
-  const variantStyles = getVariantStyles();
-  const baseClassName =
-    variant === "option"
-      ? `option-item ${active ? "active" : ""} ${className || ""}`.trim()
-      : className || "";
+  const variantColor = getVariantColor();
+  const baseClassName = `option-item ${active ? "active" : ""} ${className || ""}`.trim();
 
   return (
     <button
       onClick={onClick}
       className={baseClassName}
-      style={{ ...variantStyles, ...style }}
-      onMouseEnter={(e) => {
-        if (variant !== "option") {
-          e.currentTarget.style.opacity = "0.8";
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (variant !== "option") {
-          e.currentTarget.style.opacity = "1";
-        }
-      }}
+      style={{ color: variantColor, ...style }}
     >
       {children}
     </button>

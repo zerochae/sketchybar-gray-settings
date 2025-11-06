@@ -17,8 +17,9 @@ export default function AppearanceSettings({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <Heading style={{ marginBottom: "16px" }}>Appearance</Heading>
       <div>
-        <Heading>Theme</Heading>
+        <Heading level={2}>Theme</Heading>
         <Box
           padding="8px 12px"
           style={{ display: "flex", flexDirection: "column", gap: "4px" }}
@@ -35,7 +36,7 @@ export default function AppearanceSettings({
       </div>
 
       <div>
-        <Heading>Bar Style</Heading>
+        <Heading level={2}>Bar Style</Heading>
         <Box
           padding="8px 12px"
           style={{ display: "flex", flexDirection: "column", gap: "4px" }}

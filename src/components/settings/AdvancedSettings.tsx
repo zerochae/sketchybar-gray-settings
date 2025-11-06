@@ -6,8 +6,9 @@ import KeyHint from "@/components/common/KeyHint";
 export default function AdvancedSettings() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <Heading style={{ marginBottom: "16px" }}>Advanced</Heading>
       <div>
-        <Heading>Open Config File</Heading>
+        <Heading level={2}>Open Config File</Heading>
         <Box padding="0">
           <Button variant="option" style={{ color: "var(--colors-blue)" }}>
             <span>Open in Editor</span>
@@ -29,7 +30,7 @@ export default function AdvancedSettings() {
       </div>
 
       <div>
-        <Heading>Reload Sketchybar</Heading>
+        <Heading level={2}>Reload Sketchybar</Heading>
         <Box padding="0">
           <Button variant="option" style={{ color: "var(--colors-green)" }}>
             <span>Reload Now</span>
@@ -51,7 +52,7 @@ export default function AdvancedSettings() {
       </div>
 
       <div>
-        <Heading>Reset to Defaults</Heading>
+        <Heading level={2}>Reset to Defaults</Heading>
         <Box padding="0">
           <Button variant="option" style={{ color: "var(--colors-red)" }}>
             <span>Reset All Settings</span>

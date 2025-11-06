@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
+import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import icons from "@/assets/icon.json";
 
@@ -9,7 +10,15 @@ export default function DiskWidget() {
 
   return (
     <div>
-      <Label icon={icons.disk} color="var(--colors-red)">Disk</Label>
+      <Heading level={2}>
+        <Label
+          icon={icons.disk}
+          color="var(--colors-red)"
+          iconColor="var(--colors-red)"
+        >
+          Disk
+        </Label>
+      </Heading>
       <Box>
         <Checkbox
           checked={enabled}

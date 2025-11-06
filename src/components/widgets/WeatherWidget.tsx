@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
+import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import icons from "@/assets/icon.json";
 
@@ -10,7 +11,15 @@ export default function WeatherWidget() {
 
   return (
     <div>
-      <Label icon={icons.weather} color="var(--colors-cyan)">Weather</Label>
+      <Heading level={2}>
+        <Label
+          icon={icons.weather}
+          color="var(--colors-cyan)"
+          iconColor="var(--colors-cyan)"
+        >
+          Weather
+        </Label>
+      </Heading>
       <Box>
         <div style={{ marginBottom: enabled ? "12px" : "0" }}>
           <Checkbox
