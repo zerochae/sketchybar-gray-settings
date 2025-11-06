@@ -1,11 +1,12 @@
+import Box from "@/components/common/Box";
+import Heading from "@/components/common/Heading";
+
 export default function AdvancedSettings() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
       <div>
-        <div className="section-title" style={{ marginBottom: "8px" }}>
-          Open Config File
-        </div>
-        <div className="box-container">
+        <Heading>Open Config File</Heading>
+        <Box padding="0">
           <button
             className="option-item"
             style={{ color: "var(--colors-blue)" }}
@@ -25,14 +26,12 @@ export default function AdvancedSettings() {
           >
             Opens user.sketchybarrc in your default editor.
           </div>
-        </div>
+        </Box>
       </div>
 
       <div>
-        <div className="section-title" style={{ marginBottom: "8px" }}>
-          Reload Sketchybar
-        </div>
-        <div className="box-container">
+        <Heading>Reload Sketchybar</Heading>
+        <Box padding="0">
           <button
             className="option-item"
             style={{ color: "var(--colors-green)" }}
@@ -52,14 +51,12 @@ export default function AdvancedSettings() {
           >
             Reloads sketchybar configuration and restarts all plugins.
           </div>
-        </div>
+        </Box>
       </div>
 
       <div>
-        <div className="section-title" style={{ marginBottom: "8px" }}>
-          Reset to Defaults
-        </div>
-        <div className="box-container">
+        <Heading>Reset to Defaults</Heading>
+        <Box padding="0">
           <button
             className="option-item"
             style={{ color: "var(--colors-red)" }}
@@ -80,7 +77,7 @@ export default function AdvancedSettings() {
             ⚠️ This will reset all settings to default values. This action
             cannot be undone.
           </div>
-        </div>
+        </Box>
       </div>
     </div>
   );

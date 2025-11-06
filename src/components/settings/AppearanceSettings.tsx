@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { themeNames } from "@/themes";
 import Checkbox from "@/components/common/Checkbox";
+import Box from "@/components/common/Box";
+import Heading from "@/components/common/Heading";
 
 interface AppearanceSettingsProps {
   selectedTheme: string;
@@ -16,12 +18,10 @@ export default function AppearanceSettings({
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
       <div>
-        <div className="section-title" style={{ marginBottom: "8px" }}>
-          Theme
-        </div>
-        <div
-          className="box-container"
-          style={{ display: "flex", flexDirection: "column", gap: "4px", padding: "8px 12px" }}
+        <Heading>Theme</Heading>
+        <Box
+          padding="8px 12px"
+          style={{ display: "flex", flexDirection: "column", gap: "4px" }}
         >
           {themeNames.map((theme) => (
             <Checkbox
@@ -31,16 +31,14 @@ export default function AppearanceSettings({
               label={theme}
             />
           ))}
-        </div>
+        </Box>
       </div>
 
       <div>
-        <div className="section-title" style={{ marginBottom: "8px" }}>
-          Bar Style
-        </div>
-        <div
-          className="box-container"
-          style={{ display: "flex", flexDirection: "column", gap: "4px", padding: "8px 12px" }}
+        <Heading>Bar Style</Heading>
+        <Box
+          padding="8px 12px"
+          style={{ display: "flex", flexDirection: "column", gap: "4px" }}
         >
           {["compact", "block"].map((style) => (
             <Checkbox
@@ -50,7 +48,7 @@ export default function AppearanceSettings({
               label={style}
             />
           ))}
-        </div>
+        </Box>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import type { Category } from "@/components/CategoryContent";
+import Heading from "@/components/common/Heading";
 import icons from "@/assets/icon.json";
 
 interface SidebarProps {
@@ -42,12 +43,9 @@ export default function Sidebar({
           minHeight: 0,
         }}
       >
-        <div
-          className="section-title"
-          style={{ marginBottom: "8px", flexShrink: 0 }}
-        >
+        <Heading style={{ marginBottom: "8px", flexShrink: 0 }}>
           Categories
-        </div>
+        </Heading>
 
         <div
           style={{
