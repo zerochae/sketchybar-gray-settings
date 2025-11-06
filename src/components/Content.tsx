@@ -4,17 +4,17 @@ import AdvancedSettings from "@/components/settings/AdvancedSettings";
 
 export type Category = "Appearance" | "Widgets" | "Advanced";
 
-interface CategoryContentProps {
+interface ContentProps {
   category: Category;
   selectedTheme: string;
   setSelectedTheme: (theme: string) => void;
 }
 
-export default function CategoryContent({
+export default function Content({
   category,
   selectedTheme,
   setSelectedTheme,
-}: CategoryContentProps) {
+}: ContentProps) {
   switch (category) {
     case "Appearance":
       return (

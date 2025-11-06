@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { exit } from "@tauri-apps/plugin-process";
-import CategoryContent, { type Category } from "@/components/CategoryContent";
+import Content, { type Category } from "@/components/Content";
+import Layout from "@/components/Layout";
 import Sidebar from "@/components/Sidebar";
 import Banner from "@/components/common/Banner";
 import { useTheme } from "@/hooks/useTheme";
@@ -20,27 +21,8 @@ function App() {
   };
 
   return (
-    <div
-      className="flex flex-col h-full"
-      style={{
-        background: "var(--colors-bg)",
-        color: "var(--colors-text)",
-        padding: "16px",
-        overscrollBehavior: "none",
-        overscrollBehaviorY: "none",
-        WebkitOverflowScrolling: "auto",
-        touchAction: "none",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flex: 1,
-          overflow: "hidden",
-          flexDirection: "row",
-          height: "calc(100vh - 32px)",
-        }}
-      >
+    <Layout
+      sidebar={
         <Sidebar
           categories={categories}
           activeCategory={activeCategory}
@@ -48,24 +30,15 @@ function App() {
           onSave={handleSave}
           onClose={handleClose}
         />
-
-        <main
-          style={{
-            flex: 1,
-            overflowY: "auto",
-            paddingLeft: "16px",
-            paddingRight: "16px",
-          }}
-        >
-          <Banner />
-          <CategoryContent
-            category={activeCategory}
-            selectedTheme={selectedTheme}
-            setSelectedTheme={setSelectedTheme}
-          />
-        </main>
-      </div>
-    </div>
+      }
+    >
+      <Banner />
+      <Content
+        category={activeCategory}
+        selectedTheme={selectedTheme}
+        setSelectedTheme={setSelectedTheme}
+      />
+    </Layout>
   );
 }
 

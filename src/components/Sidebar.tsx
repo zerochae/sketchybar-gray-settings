@@ -1,4 +1,4 @@
-import type { Category } from "@/components/CategoryContent";
+import type { Category } from "@/components/Content";
 import Heading from "@/components/common/Heading";
 import Button from "@/components/common/Button";
 import KeyHint from "@/components/common/KeyHint";
@@ -68,7 +68,7 @@ export default function Sidebar({
             >
               <Heading level={2} style={{ marginBottom: 0 }}>
                 <Label
-                  icon={icons[category]}
+                  icon={icons[category as keyof typeof icons]}
                   color="var(--colors-cyan)"
                   style={{ fontSize: "inherit", fontWeight: 400 }}
                 >
