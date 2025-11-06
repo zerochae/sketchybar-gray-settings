@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+dist-ssr
+*.local
+
+# Tauri build outputs
+src-tauri/target
+src-tauri/WixTools
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# Env files
+*.env
+*.env.local
+*.env.*.local
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
