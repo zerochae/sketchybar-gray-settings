@@ -41,6 +41,45 @@
           "name": "sh",
           "cmd": "/bin/sh",
           "args": ["-c", "sketchybar --reload"]
+        },
+        {
+          "name": "which",
+          "cmd": "/usr/bin/which",
+          "args": true
+        },
+        {
+          "name": "code",
+          "cmd": "/usr/local/bin/code",
+          "args": true,
+          "sidecar": false
+        },
+        {
+          "name": "cursor",
+          "cmd": "/usr/local/bin/cursor",
+          "args": true,
+          "sidecar": false
+        },
+        {
+          "name": "zed",
+          "cmd": "/usr/local/bin/zed",
+          "args": true,
+          "sidecar": false
+        },
+        {
+          "name": "subl",
+          "cmd": "/usr/local/bin/subl",
+          "args": true,
+          "sidecar": false
+        },
+        {
+          "name": "osascript",
+          "cmd": "/usr/bin/osascript",
+          "args": true
+        },
+        {
+          "name": "open",
+          "cmd": "/usr/bin/open",
+          "args": true
         }
       ]
     }
