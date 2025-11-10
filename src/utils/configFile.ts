@@ -35,6 +35,7 @@ const ENV_VAR_MAP: Record<string, string> = {
   "advanced.updateFreqDefault": "SBAR_ITEM_UPDATE_FREQ_DEFAULT",
   "advanced.updateFreqFast": "SBAR_ITEM_UPDATE_FREQ_FAST",
   "advanced.updateFreqSlow": "SBAR_ITEM_UPDATE_FREQ_SLOW",
+  "advanced.configVisible": "SBAR_CONFIG_VISIBLE",
   "widgetsOrder": "SBAR_WIDGETS_RIGHT_ENABLED",
 };
 

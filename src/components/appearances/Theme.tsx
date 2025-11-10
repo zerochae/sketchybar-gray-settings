@@ -13,19 +13,10 @@ const ansiColors = [
   "magenta",
   "cyan",
   "orange",
-  // "peach",
-  // "lime",
-  // "sky",
-  // "aqua",
-  // "coral",
-  // "emerald",
-  // "lavender",
-  // "mint",
-  // "sapphire",
-  // "forest",
-  // "navy",
-  // "plum",
-  // "tangerine",
+  "peach",
+  "lime",
+  "sky",
+  "aqua",
 ] as const;
 
 const getThemeColors = (themeName: string): Record<string, string> => {

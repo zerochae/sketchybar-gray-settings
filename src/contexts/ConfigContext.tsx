@@ -68,6 +68,7 @@ const defaultConfig: Config = {
     updateFreqDefault: 10,
     updateFreqFast: 2,
     updateFreqSlow: 30,
+    configVisible: true,
   },
   widgetsOrder: [
     "clock",

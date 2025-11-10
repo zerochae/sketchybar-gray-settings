@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Heading from "@/components/common/Heading";
+import ConfigVisible from "@/components/advances/ConfigVisible";
 import OpenConfigFile from "@/components/advances/OpenConfigFile";
 import ReloadSketchybar from "@/components/advances/ReloadSketchybar";
 import ResetToDefaults from "@/components/advances/ResetToDefaults";
@@ -16,6 +17,7 @@ const containerVariants = {
 
 export default function AdvancedSettings() {
   const items = [
+    <ConfigVisible key="config-visible" />,
     <OpenConfigFile key="open-config" />,
     <ReloadSketchybar key="reload" />,
     <ResetToDefaults key="reset" />,

@@ -54,6 +54,7 @@ export interface AdvancedConfig {
   updateFreqDefault: number;
   updateFreqFast: number;
   updateFreqSlow: number;
+  configVisible: boolean;
 }
 
 export interface Config {
