@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Heading from "@/components/common/Heading";
 import WidgetsOrder from "@/components/appearances/WidgetsOrder";
+import WidgetsEnable from "@/components/appearances/WidgetsEnable";
 import Theme from "@/components/appearances/Theme";
 import BarStyle from "@/components/appearances/BarStyle";
 
@@ -18,6 +19,7 @@ export default function AppearanceSettings() {
   const items = [
     <Theme key="theme" />,
     <WidgetsOrder key="widgets-order" />,
+    <WidgetsEnable key="widgets-enable" />,
     <BarStyle key="bar-style" />,
   ];
 

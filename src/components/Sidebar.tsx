@@ -15,13 +15,11 @@ export default function Sidebar() {
   const { saveConfig } = useConfig();
   const { showModal } = useModal();
   const { activeCategory, setActiveCategory } = useCategory();
-  const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
 
   const categories: Category[] = ["Appearance", "Widgets", "Advanced"];
 
   const handleSave = async () => {
-    setIsSaving(true);
     setSaveSuccess(false);
     try {
       await saveConfig();
@@ -34,8 +32,6 @@ export default function Sidebar() {
       );
     } catch (error) {
       showModal("Error", "Failed to save settings!", "error");
-    } finally {
-      setIsSaving(false);
     }
   };
 

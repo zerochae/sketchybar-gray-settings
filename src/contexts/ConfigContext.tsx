@@ -117,7 +117,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           mergedWidgets[key] = {
             ...prev.widgets[key],
             ...loadedConfig.widgets?.[key],
-          };
+          } as any;
         });
 
         return {
