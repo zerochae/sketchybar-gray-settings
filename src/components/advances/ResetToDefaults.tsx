@@ -18,12 +18,16 @@ export default function ResetToDefaults() {
         try {
           resetConfig();
           await saveConfig();
-          showModal("Success", "All settings have been reset to defaults!", "success");
+          showModal(
+            "Success",
+            "All settings have been reset to defaults!",
+            "success",
+          );
         } catch (error) {
           showModal("Error", "Failed to reset settings!", "error");
         }
       },
-      "warning"
+      "warning",
     );
   };
 
@@ -49,8 +53,8 @@ export default function ResetToDefaults() {
             color: "var(--colors-comment)",
           }}
         >
-          {icons.warning} This will reset all settings to default values. This action
-          cannot be undone.
+          {icons.warning} This will reset all settings to default values. This
+          action cannot be undone.
         </div>
       </Box>
     </div>
