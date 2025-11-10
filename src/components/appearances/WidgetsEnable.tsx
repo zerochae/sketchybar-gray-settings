@@ -4,66 +4,12 @@ import Heading from "@/components/common/Heading";
 import Label from "@/components/common/Label";
 import Checkbox from "@/components/common/Checkbox";
 import { useConfig } from "@/contexts/ConfigContext";
-import icons from "@/assets/icon.json";
-import KakaotalkIcon from "@/components/icons/KakaotalkIcon";
-
-type WidgetName =
-  | "clock"
-  | "calendar"
-  | "weather"
-  | "caffeinate"
-  | "volume"
-  | "battery"
-  | "disk"
-  | "ram"
-  | "cpu"
-  | "kakaotalk";
-
-const getWidgetIcon = (
-  widget: string,
-  color: string,
-): string | React.ReactNode => {
-  const iconMap: Record<string, string | React.ReactNode> = {
-    clock: icons.clock,
-    weather: icons.weather,
-    caffeinate: icons.coffee_on,
-    volume: icons.volume_high,
-    battery: icons.battery_full,
-    disk: icons.disk,
-    ram: icons.memory,
-    cpu: icons.cpu,
-    calendar: icons.calendar,
-    kakaotalk: <KakaotalkIcon color={color} size={16} />,
-  };
-
-  return iconMap[widget];
-};
-
-const widgetColors: Record<string, string> = {
-  clock: "var(--colors-yellow)",
-  calendar: "var(--colors-tangerine)",
-  weather: "var(--colors-cyan)",
-  caffeinate: "var(--colors-green)",
-  volume: "var(--colors-blue)",
-  battery: "var(--colors-orange)",
-  disk: "var(--colors-red)",
-  ram: "var(--colors-magenta)",
-  cpu: "var(--colors-blue)",
-  kakaotalk: "var(--colors-yellow)",
-};
-
-const allWidgets: WidgetName[] = [
-  "clock",
-  "calendar",
-  "weather",
-  "caffeinate",
-  "volume",
-  "battery",
-  "disk",
-  "ram",
-  "cpu",
-  "kakaotalk",
-];
+import {
+  type WidgetName,
+  ALL_WIDGETS,
+  WIDGET_COLORS,
+  getWidgetIcon,
+} from "@/constants/widgets";
 
 export default function WidgetsEnable() {
   const { config, updateWidget, updateWidgetsOrder } = useConfig();
@@ -93,7 +39,7 @@ export default function WidgetsEnable() {
       <Heading level={2}>Enable Widgets</Heading>
       <Box>
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-          {allWidgets.map((widget) => (
+          {ALL_WIDGETS.map((widget) => (
             <div
               key={widget}
               style={{
@@ -111,11 +57,11 @@ export default function WidgetsEnable() {
                 label=""
               />
               <Label
-                icon={getWidgetIcon(widget, widgetColors[widget])}
+                icon={getWidgetIcon(widget, WIDGET_COLORS[widget])}
                 size="12px"
                 className=""
-                color={widgetColors[widget]}
-                iconColor={widgetColors[widget]}
+                color={WIDGET_COLORS[widget]}
+                iconColor={WIDGET_COLORS[widget]}
                 style={{ listStyle: "none" }}
               >
                 <span style={{ textTransform: "capitalize" }}>{widget}</span>

@@ -4,56 +4,11 @@ import Box from "@/components/common/Box";
 import Heading from "@/components/common/Heading";
 import Label from "@/components/common/Label";
 import { useConfig } from "@/contexts/ConfigContext";
-import icons from "@/assets/icon.json";
-import KakaotalkIcon from "@/components/icons/KakaotalkIcon";
-
-type WidgetName =
-  | "clock"
-  | "calendar"
-  | "weather"
-  | "caffeinate"
-  | "volume"
-  | "battery"
-  | "disk"
-  | "ram"
-  | "cpu"
-  | "kakaotalk";
-
-const getWidgetIcon = (
-  widget: string,
-  color: string,
-): string | React.ReactNode => {
-  const iconMap: Record<string, string> = {
-    clock: icons.clock,
-    weather: icons.weather,
-    caffeinate: icons.coffee_on,
-    volume: icons.volume_high,
-    battery: icons.battery_full,
-    disk: icons.disk,
-    ram: icons.memory,
-    cpu: icons.cpu,
-    calendar: icons.calendar,
-  };
-
-  if (widget === "kakaotalk") {
-    return <KakaotalkIcon color={color} size={16} />;
-  }
-
-  return iconMap[widget];
-};
-
-const widgetColors: Record<string, string> = {
-  clock: "var(--colors-yellow)",
-  calendar: "var(--colors-tangerine)",
-  weather: "var(--colors-cyan)",
-  caffeinate: "var(--colors-green)",
-  volume: "var(--colors-blue)",
-  battery: "var(--colors-orange)",
-  disk: "var(--colors-red)",
-  ram: "var(--colors-magenta)",
-  cpu: "var(--colors-blue)",
-  kakaotalk: "var(--colors-yellow)",
-};
+import {
+  type WidgetName,
+  WIDGET_COLORS,
+  getWidgetIcon,
+} from "@/constants/widgets";
 
 export default function WidgetsOrder() {
   const { config, updateWidgetsOrder } = useConfig();
@@ -137,10 +92,10 @@ export default function WidgetsOrder() {
               >
                 <span style={{ color: "var(--colors-comment)" }}>⋮⋮</span>
                 <Label
-                  icon={getWidgetIcon(widget, widgetColors[widget])}
+                  icon={getWidgetIcon(widget as WidgetName, WIDGET_COLORS[widget as WidgetName])}
                   size="12px"
-                  color={widgetColors[widget]}
-                  iconColor={widgetColors[widget]}
+                  color={WIDGET_COLORS[widget as WidgetName]}
+                  iconColor={WIDGET_COLORS[widget as WidgetName]}
                   style={{ listStyle: "none" }}
                 >
                   <span style={{ textTransform: "capitalize" }}>{widget}</span>
@@ -154,14 +109,12 @@ export default function WidgetsOrder() {
                   disabled={index === 0}
                   style={{
                     background: "none",
-                    border: "1px solid var(--colors-border)",
                     color:
                       index === 0
                         ? "var(--colors-comment)"
                         : "var(--colors-text)",
                     cursor: index === 0 ? "default" : "pointer",
                     padding: "2px 6px",
-                    borderRadius: "3px",
                   }}
                 >
                   ↑
@@ -171,7 +124,6 @@ export default function WidgetsOrder() {
                   disabled={index === enabledWidgets.length - 1}
                   style={{
                     background: "none",
-                    border: "1px solid var(--colors-border)",
                     color:
                       index === enabledWidgets.length - 1
                         ? "var(--colors-comment)"
@@ -181,7 +133,6 @@ export default function WidgetsOrder() {
                         ? "default"
                         : "pointer",
                     padding: "2px 6px",
-                    borderRadius: "3px",
                   }}
                 >
                   ↓

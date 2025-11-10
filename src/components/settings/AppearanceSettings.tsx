@@ -18,8 +18,8 @@ const containerVariants = {
 export default function AppearanceSettings() {
   const items = [
     <Theme key="theme" />,
-    <WidgetsOrder key="widgets-order" />,
     <WidgetsEnable key="widgets-enable" />,
+    <WidgetsOrder key="widgets-order" />,
     <BarStyle key="bar-style" />,
   ];
 

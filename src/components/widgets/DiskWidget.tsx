@@ -1,17 +1,17 @@
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
-import icons from "@/assets/icon.json";
+import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 
 export default function DiskWidget() {
   return (
     <div>
-      <Heading level={2} color="var(--colors-red)">
+      <Heading level={2} color={WIDGET_COLORS.disk}>
         <Label
-          icon={icons.disk}
-          color="var(--colors-red)"
-          iconColor="var(--colors-red)"
+          icon={WIDGET_ICONS.disk}
+          color={WIDGET_COLORS.disk}
+          iconColor={WIDGET_COLORS.disk}
         >
-          Disk
+          {WIDGET_LABELS.disk}
         </Label>
       </Heading>
     </div>

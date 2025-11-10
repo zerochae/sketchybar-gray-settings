@@ -1,17 +1,17 @@
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
-import icons from "@/assets/icon.json";
+import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 
 export default function RamWidget() {
   return (
     <div>
-      <Heading level={2} color="var(--colors-magenta)">
+      <Heading level={2} color={WIDGET_COLORS.ram}>
         <Label
-          icon={icons.memory}
-          color="var(--colors-magenta)"
-          iconColor="var(--colors-magenta)"
+          icon={WIDGET_ICONS.ram}
+          color={WIDGET_COLORS.ram}
+          iconColor={WIDGET_COLORS.ram}
         >
-          RAM
+          {WIDGET_LABELS.ram}
         </Label>
       </Heading>
     </div>

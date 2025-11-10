@@ -1,17 +1,17 @@
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
-import icons from "@/assets/icon.json";
+import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 
 export default function BatteryWidget() {
   return (
     <div>
-      <Heading level={2} color="var(--colors-orange)">
+      <Heading level={2} color={WIDGET_COLORS.battery}>
         <Label
-          icon={icons.battery_full}
-          color="var(--colors-orange)"
-          iconColor="var(--colors-orange)"
+          icon={WIDGET_ICONS.battery}
+          color={WIDGET_COLORS.battery}
+          iconColor={WIDGET_COLORS.battery}
         >
-          Battery
+          {WIDGET_LABELS.battery}
         </Label>
       </Heading>
     </div>

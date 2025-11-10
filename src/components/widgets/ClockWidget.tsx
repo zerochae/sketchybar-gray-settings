@@ -4,7 +4,7 @@ import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import Input from "@/components/common/Input";
-import icons from "@/assets/icon.json";
+import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 
 export default function ClockWidget() {
   const [format, setFormat] = useState("HH:mm");
@@ -20,13 +20,13 @@ export default function ClockWidget() {
 
   return (
     <div>
-      <Heading level={2} color="var(--colors-yellow)">
+      <Heading level={2} color={WIDGET_COLORS.clock}>
         <Label
-          icon={icons.clock}
-          color="var(--colors-yellow)"
-          iconColor="var(--colors-yellow)"
+          icon={WIDGET_ICONS.clock}
+          color={WIDGET_COLORS.clock}
+          iconColor={WIDGET_COLORS.clock}
         >
-          Clock
+          {WIDGET_LABELS.clock}
         </Label>
       </Heading>
       <Box>

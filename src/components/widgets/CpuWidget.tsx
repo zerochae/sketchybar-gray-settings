@@ -1,17 +1,17 @@
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
-import icons from "@/assets/icon.json";
+import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 
 export default function CpuWidget() {
   return (
     <div>
-      <Heading level={2} color="var(--colors-blue)">
+      <Heading level={2} color={WIDGET_COLORS.cpu}>
         <Label
-          icon={icons.cpu}
-          color="var(--colors-blue)"
-          iconColor="var(--colors-blue)"
+          icon={WIDGET_ICONS.cpu}
+          color={WIDGET_COLORS.cpu}
+          iconColor={WIDGET_COLORS.cpu}
         >
-          CPU
+          {WIDGET_LABELS.cpu}
         </Label>
       </Heading>
     </div>

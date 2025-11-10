@@ -4,7 +4,7 @@ import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import Input from "@/components/common/Input";
-import icons from "@/assets/icon.json";
+import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 
 export default function CalendarWidget() {
   const [format, setFormat] = useState("YYYY-MM-DD");
@@ -22,13 +22,13 @@ export default function CalendarWidget() {
 
   return (
     <div>
-      <Heading level={2} color="var(--colors-orange)">
+      <Heading level={2} color={WIDGET_COLORS.calendar}>
         <Label
-          icon={icons.calendar}
-          color="var(--colors-orange)"
-          iconColor="var(--colors-orange)"
+          icon={WIDGET_ICONS.calendar}
+          color={WIDGET_COLORS.calendar}
+          iconColor={WIDGET_COLORS.calendar}
         >
-          Calendar
+          {WIDGET_LABELS.calendar}
         </Label>
       </Heading>
       <Box>

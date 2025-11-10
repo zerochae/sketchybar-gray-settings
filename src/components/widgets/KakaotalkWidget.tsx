@@ -1,16 +1,16 @@
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
-import KakaotalkIcon from "@/components/icons/KakaotalkIcon";
+import { WIDGET_COLORS, WIDGET_LABELS, getWidgetIcon } from "@/constants/widgets";
 
 export default function KakaotalkWidget() {
   return (
     <div>
-      <Heading level={2} color="var(--colors-yellow)">
+      <Heading level={2} color={WIDGET_COLORS.kakaotalk}>
         <Label
-          icon={<KakaotalkIcon color="var(--colors-yellow)" />}
-          color="var(--colors-yellow)"
+          icon={getWidgetIcon("kakaotalk", WIDGET_COLORS.kakaotalk)}
+          color={WIDGET_COLORS.kakaotalk}
         >
-          KakaoTalk
+          {WIDGET_LABELS.kakaotalk}
         </Label>
       </Heading>
     </div>

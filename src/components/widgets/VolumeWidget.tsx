@@ -1,17 +1,17 @@
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
-import icons from "@/assets/icon.json";
+import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 
 export default function VolumeWidget() {
   return (
     <div>
-      <Heading level={2} color="var(--colors-blue)">
+      <Heading level={2} color={WIDGET_COLORS.volume}>
         <Label
-          icon={icons.volume_high}
-          color="var(--colors-blue)"
-          iconColor="var(--colors-blue)"
+          icon={WIDGET_ICONS.volume}
+          color={WIDGET_COLORS.volume}
+          iconColor={WIDGET_COLORS.volume}
         >
-          Volume
+          {WIDGET_LABELS.volume}
         </Label>
       </Heading>
     </div>
