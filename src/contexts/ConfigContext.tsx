@@ -109,14 +109,25 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     readConfig().then((loadedConfig) => {
-      setConfig((prev) => ({
-        ...prev,
-        ...loadedConfig,
-        appearance: { ...prev.appearance, ...loadedConfig.appearance },
-        widgets: { ...prev.widgets, ...loadedConfig.widgets },
-        advanced: { ...prev.advanced, ...loadedConfig.advanced },
-        widgetsOrder: loadedConfig.widgetsOrder || prev.widgetsOrder,
-      }));
+      setConfig((prev) => {
+        const mergedWidgets = { ...prev.widgets };
+
+        Object.keys(loadedConfig.widgets || {}).forEach((widgetKey) => {
+          const key = widgetKey as keyof Config["widgets"];
+          mergedWidgets[key] = {
+            ...prev.widgets[key],
+            ...loadedConfig.widgets?.[key],
+          };
+        });
+
+        return {
+          ...prev,
+          appearance: { ...prev.appearance, ...loadedConfig.appearance },
+          widgets: mergedWidgets,
+          advanced: { ...prev.advanced, ...loadedConfig.advanced },
+          widgetsOrder: loadedConfig.widgetsOrder || prev.widgetsOrder,
+        };
+      });
     });
   }, []);
 

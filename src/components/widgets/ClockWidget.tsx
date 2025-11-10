@@ -7,7 +7,6 @@ import Input from "@/components/common/Input";
 import icons from "@/assets/icon.json";
 
 export default function ClockWidget() {
-  const [enabled, setEnabled] = useState(true);
   const [format, setFormat] = useState("HH:mm");
   const [customFormat, setCustomFormat] = useState("");
 
@@ -31,57 +30,43 @@ export default function ClockWidget() {
         </Label>
       </Heading>
       <Box>
-        <div style={{ marginBottom: enabled ? "12px" : "0" }}>
-          <Heading level={3} style={{ marginBottom: "6px" }}>
-            Enable
-          </Heading>
-          <Checkbox
-            checked={enabled}
-            onChange={() => setEnabled(!enabled)}
-            label="Show Clock"
-          />
-        </div>
-        {enabled && (
-          <div>
-            <Heading level={3} style={{ marginBottom: "6px" }}>
-              Format
-            </Heading>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "4px" }}
-            >
-              {formats.map((fmt) => {
-                if (fmt === "Custom") {
-                  return (
-                    <div
-                      key={fmt}
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <Checkbox
-                        checked={format === fmt}
-                        onChange={() => setFormat(fmt)}
-                        label=""
-                      />
-                      <Input
-                        value={customFormat}
-                        onChange={setCustomFormat}
-                        placeholder="e.g., HH:mm:ss"
-                        style={{ flex: 1, marginLeft: "-4px" }}
-                      />
-                    </div>
-                  );
-                }
-                return (
+        <Heading level={3} style={{ marginBottom: "6px" }}>
+          Format
+        </Heading>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "4px" }}
+        >
+          {formats.map((fmt) => {
+            if (fmt === "Custom") {
+              return (
+                <div
+                  key={fmt}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
                   <Checkbox
-                    key={fmt}
                     checked={format === fmt}
                     onChange={() => setFormat(fmt)}
-                    label={fmt}
+                    label=""
                   />
-                );
-              })}
-            </div>
-          </div>
-        )}
+                  <Input
+                    value={customFormat}
+                    onChange={setCustomFormat}
+                    placeholder="e.g., HH:mm:ss"
+                    style={{ flex: 1, marginLeft: "-4px" }}
+                  />
+                </div>
+              );
+            }
+            return (
+              <Checkbox
+                key={fmt}
+                checked={format === fmt}
+                onChange={() => setFormat(fmt)}
+                label={fmt}
+              />
+            );
+          })}
+        </div>
       </Box>
     </div>
   );
