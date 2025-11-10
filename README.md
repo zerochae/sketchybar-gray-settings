@@ -1,97 +1,78 @@
-<img width="743" height="572" alt="스크린샷 2025-11-10 16 59 50" src="https://github.com/user-attachments/assets/1e235d92-c485-421b-b977-7d894a109270" />
-<img width="743" height="572" alt="스크린샷 2025-11-10 17 00 06" src="https://github.com/user-attachments/assets/a985b9d9-935d-467f-9435-ac78b1757881" />
-<img width="743" height="572" alt="스크린샷 2025-11-10 17 00 09" src="https://github.com/user-attachments/assets/c884e9ea-3d09-4536-a452-889dc067b475" />
-<img width="743" height="572" alt="스크린샷 2025-11-10 17 00 17" src="https://github.com/user-attachments/assets/30cac5d0-1552-41aa-9071-a05537cb05eb" />
-<img width="743" height="572" alt="스크린샷 2025-11-10 17 00 20" src="https://github.com/user-attachments/assets/56d18132-8aa9-4157-9b46-3d5d84b2035e" />
-
+<img width="743" height="572" alt="스크린샷 2025-11-10 16 59 50" src="https://github.com/user-attachments/assets/1e235d92-c485-421b-b977-7d894a109270" />
 
 # Sketchybar Gray Settings
 
-Tauri 기반 Sketchybar 설정 앱
+A GUI settings tool for macOS Sketchybar. Built with Tauri for lightweight and fast performance.
 
-## 개발 환경
+## Key Features
 
-- Tauri 2
-- React 19
-- TypeScript
-- Vite
+### 🎨 Appearance
 
-## 개발
+- **Theme Selection**: Choose from various color themes to change the overall appearance of Sketchybar
+- **Widget Toggle**: Enable or disable individual widgets
+- **Widget Order**: Rearrange widget display order with drag and drop
+- **Bar Style**: Customize Sketchybar's style
+
+### 🔧 Widgets
+
+Detailed configuration for individual widgets:
+
+- **Calendar**: Calendar widget settings
+- **Clock**: Clock widget settings
+- **Weather**: Weather widget location settings (e.g., Seoul, Tokyo)
+- More widgets coming soon
+
+### ⚙️ Advanced
+
+- **Open Config File**: Directly edit `user.sketchybarrc` file
+- **Reload Sketchybar**: Apply changes immediately
+- **Reset to Defaults**: Restore all settings to initial state
+
+### 💾 Real-time Saving
+
+- **Save & Exit**: Save settings and automatically reload Sketchybar
+- **Keyboard Shortcuts**: Number keys (1-3) for category navigation
+- **Visual Feedback**: Animated notifications on successful save
+
+## Installation
 
 ```bash
-# 의존성 설치
+# Install dependencies, build, and auto-install to Sketchybar
 pnpm install
-
-# 개발 서버 실행 (프론트엔드만)
-pnpm dev
-
-# Tauri 개발 모드
-pnpm tauri dev
-```
-
-## 빌드 및 설치
-
-```bash
-# 프로덕션 빌드 및 설치
 pnpm run install
-
-# 개발 모드로 설치 (테스트용)
-pnpm run install:dev
-
-# 또는 단계별로:
-# 1. Tauri 앱 빌드
-pnpm build:tauri
-
-# 2. Sketchybar에 설치
-./scripts/install.sh           # 프로덕션
-./scripts/install.sh --dev     # 개발 모드
 ```
 
-### 개발 모드 vs 프로덕션
-
-- **프로덕션**: `~/.config/sketchybar/bin/settings`에 설치
-- **개발 모드**: `~/.config/sketchybar/bin/dev`에 설치 (우선순위 높음)
-
-개발 중에는 `install:dev`를 사용하여 테스트하고, 릴리즈할 때는 `install`을 사용하세요.
-`open_settings.sh`는 dev가 있으면 dev를 우선 실행합니다.
-
-## 설치 후
-
-설치 스크립트는 다음 작업을 수행합니다:
-
-1. 빌드된 바이너리를 `~/.config/sketchybar/bin/settings`에 복사
-2. `~/.config/sketchybar/plugins/config/open_settings.sh` 업데이트
-3. Sketchybar의 config 아이템이 이 앱을 실행하도록 설정
-
-Sketchybar를 reload하여 변경사항을 적용하세요:
+Reload Sketchybar after installation:
 
 ```bash
 sketchybar --reload
 ```
 
-## 구조
+Now click the config icon in Sketchybar to launch the settings app.
 
-```
-src/
-├── components/
-│   ├── common/          # 공통 컴포넌트 (Button, Heading, Label, etc.)
-│   ├── settings/        # 설정 화면 (Appearance, Widgets, Advanced)
-│   ├── widgets/         # 위젯별 설정 컴포넌트
-│   ├── Content.tsx      # 카테고리별 컨텐츠 라우터
-│   ├── Layout.tsx       # 레이아웃 컴포넌트
-│   └── Sidebar.tsx      # 사이드바
-├── hooks/              # React hooks
-├── themes/             # 테마 정의
-└── App.tsx
+## Development
 
-scripts/
-└── install.sh          # Sketchybar 설치 스크립트
+```bash
+# Run development server (frontend only)
+pnpm dev
+
+# Tauri development mode (full app)
+pnpm tauri dev
+
+# Install as development version (test separately from production)
+pnpm run install:dev
 ```
 
-## Config 파일
+Development mode installs to `~/.config/sketchybar/bin/dev` and takes precedence over production version.
 
-설정은 `~/.config/sketchybar/user.sketchybarrc`에 Bash 환경 변수 형식으로 저장됩니다.
+## Settings Storage
 
-## Recommended IDE Setup
+Settings are saved to `~/.config/sketchybar/user.sketchybarrc` in Bash environment variable format.
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Tech Stack
+
+- **Tauri 2**: Lightweight and secure desktop app framework
+- **React 19**: Latest React features
+- **TypeScript**: Type safety
+- **Framer Motion**: Smooth animations
+- **Vite**: Fast build tool
