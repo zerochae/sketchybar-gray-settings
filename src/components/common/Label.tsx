@@ -6,6 +6,7 @@ interface LabelProps {
   size?: string;
   className?: string;
   style?: React.CSSProperties;
+  reverse?: boolean;
 }
 
 export default function Label({
@@ -16,6 +17,7 @@ export default function Label({
   size = "11px",
   className = "section-title",
   style,
+  reverse = false,
 }: LabelProps) {
   const isStringIcon = typeof icon === "string";
 
@@ -28,6 +30,8 @@ export default function Label({
         gap: "6px",
         color,
         fontSize: size,
+        flexDirection: reverse ? "row-reverse" : "row",
+        justifyContent: reverse ? "space-between" : "flex-start",
         ...style,
       }}
     >

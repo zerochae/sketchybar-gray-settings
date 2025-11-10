@@ -24,17 +24,20 @@ export default function ClockWidget() {
       </Heading>
       <Box>
         <div style={{ marginBottom: enabled ? "12px" : "0" }}>
+          <Heading level={3} style={{ marginBottom: "6px" }}>
+            Enable
+          </Heading>
           <Checkbox
             checked={enabled}
             onChange={() => setEnabled(!enabled)}
-            label="Enable"
+            label="Show Clock"
           />
         </div>
         {enabled && (
-          <div style={{ paddingLeft: "24px" }}>
-            <div style={{ fontSize: "11px", color: "var(--colors-comment)", marginBottom: "6px" }}>
+          <div>
+            <Heading level={3} style={{ marginBottom: "6px" }}>
               Format
-            </div>
+            </Heading>
             <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
               {formats.map((fmt) => (
                 <Checkbox

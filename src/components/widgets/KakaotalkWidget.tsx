@@ -19,10 +19,13 @@ export default function KakaotalkWidget() {
         </Label>
       </Heading>
       <Box>
+        <Heading level={3} style={{ marginBottom: "6px" }}>
+          Enable
+        </Heading>
         <Checkbox
           checked={enabled}
           onChange={() => setEnabled(!enabled)}
-          label="Enable"
+          label="Show KakaoTalk"
         />
       </Box>
     </div>

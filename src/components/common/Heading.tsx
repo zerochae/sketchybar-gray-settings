@@ -18,13 +18,13 @@ export default function Heading({
 
     switch (level) {
       case 1:
-        return "var(--colors-blue)";
+        return "var(--colors-sapphire)";
       case 2:
-        return "var(--colors-cyan)";
+        return "var(--colors-mint)";
       case 3:
-        return "var(--colors-green)";
+        return "var(--colors-emerald)";
       default:
-        return "var(--colors-blue)";
+        return "var(--colors-sapphire)";
     }
   };
 

@@ -4,7 +4,6 @@ import Heading from "@/components/common/Heading";
 import Button from "@/components/common/Button";
 import KeyHint from "@/components/common/KeyHint";
 import Label from "@/components/common/Label";
-import Shortcuts from "@/components/common/Shortcuts";
 import icons from "@/assets/icon.json";
 import { useConfig } from "@/contexts/ConfigContext";
 import { useModal } from "@/contexts/ModalContext";
@@ -23,7 +22,7 @@ export default function Sidebar() {
       showModal(
         "Success",
         "Settings saved and sketchybar reloaded!",
-        "success"
+        "success",
       );
     } catch (error) {
       showModal("Error", "Failed to save settings!", "error");
@@ -64,7 +63,7 @@ export default function Sidebar() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "2px",
+            gap: "12px",
             flexShrink: 0,
           }}
         >
@@ -96,7 +95,7 @@ export default function Sidebar() {
           display: "flex",
           flexDirection: "column",
           gap: "8px",
-          paddingTop: "12px",
+          padding: "12px 0",
           borderTop: "1px solid var(--colors-border)",
         }}
       >
@@ -108,7 +107,6 @@ export default function Sidebar() {
         </Button>
       </div>
 
-      <Shortcuts />
     </aside>
   );
 }

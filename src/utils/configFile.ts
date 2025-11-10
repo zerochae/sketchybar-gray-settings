@@ -105,8 +105,23 @@ function parseConfigFile(content: string): Partial<Config> {
   return config;
 }
 
+const COLOR_MAP: Record<string, string> = {
+  "cyan": "$COLOR_CYAN",
+  "blue": "$COLOR_BLUE",
+  "green": "$COLOR_GREEN",
+  "yellow": "$COLOR_YELLOW",
+  "orange": "$COLOR_ORANGE",
+  "red": "$COLOR_RED",
+  "magenta": "$COLOR_MAGENTA",
+  "tangerine": "$COLOR_TANGERINE",
+  "white": "$COLOR_WHITE",
+  "black": "$COLOR_BLACK",
+};
+
 export async function writeConfig(config: Config): Promise<void> {
-  const lines: string[] = [];
+  console.log("writeConfig called with config:", config);
+
+  const lines: string[] = ["#!/usr/bin/env bash", ""];
 
   for (const [configPath, envVar] of Object.entries(ENV_VAR_MAP)) {
     const value = getNestedValue(config, configPath);
@@ -114,13 +129,34 @@ export async function writeConfig(config: Config): Promise<void> {
     if (value === undefined) continue;
 
     if (typeof value === "string") {
-      lines.push(`export ${envVar}="${value}"`);
+      // Check if this is a color field
+      if (configPath.includes(".color")) {
+        const colorVar = COLOR_MAP[value.toLowerCase()];
+        if (colorVar) {
+          lines.push(`export ${envVar}=${colorVar}`);
+        } else {
+          lines.push(`export ${envVar}="${value}"`);
+        }
+      } else {
+        lines.push(`export ${envVar}="${value}"`);
+      }
     } else {
       lines.push(`export ${envVar}=${value}`);
     }
   }
 
   const content = lines.join("\n") + "\n";
+  console.log("Generated content:", content);
+
   const path = await getConfigPath();
-  await writeTextFile(path, content);
+  console.log("Config path:", path);
+
+  try {
+    await writeTextFile(path, content);
+    console.log("writeTextFile completed successfully");
+  } catch (error) {
+    console.error("writeTextFile failed:", error);
+    console.error("Error details:", JSON.stringify(error, null, 2));
+    throw error;
+  }
 }

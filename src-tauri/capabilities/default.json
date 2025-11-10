@@ -8,16 +8,39 @@
     "opener:default",
     "process:default",
     "dialog:default",
-    "fs:allow-read-text-file",
-    "fs:allow-write-text-file",
     "core:path:default",
+    {
+      "identifier": "fs:allow-read-text-file",
+      "allow": [
+        {
+          "path": "$HOME/.config/sketchybar/user.sketchybarrc"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:allow-write-text-file",
+      "allow": [
+        {
+          "path": "$HOME/.config/sketchybar/user.sketchybarrc"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:allow-exists",
+      "allow": [
+        {
+          "path": "$HOME/.config/sketchybar/user.sketchybarrc"
+        }
+      ]
+    },
     "shell:allow-execute",
     {
       "identifier": "shell:allow-execute",
       "allow": [
         {
-          "name": "sketchybar",
-          "args": ["--reload"]
+          "name": "sh",
+          "cmd": "/bin/sh",
+          "args": ["-c", "sketchybar --reload"]
         }
       ]
     }

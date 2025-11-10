@@ -1,21 +1,14 @@
-import { useState, useEffect } from "react";
-import { invoke } from "@tauri-apps/api/core";
+import { useEffect } from "react";
 import { themes } from "@/themes";
+import { useConfig } from "@/contexts/ConfigContext";
 
 export function useTheme() {
-  const [selectedTheme, setSelectedTheme] = useState<string>("onedark");
+  const { config, updateAppearance } = useConfig();
+  const selectedTheme = config.appearance.theme;
 
-  useEffect(() => {
-    invoke<string>("read_config_theme")
-      .then((theme) => {
-        if (themes[theme]) {
-          setSelectedTheme(theme);
-        }
-      })
-      .catch((error) => {
-        console.error("Failed to read theme from config:", error);
-      });
-  }, []);
+  const setSelectedTheme = (theme: string) => {
+    updateAppearance("theme", theme);
+  };
 
   useEffect(() => {
     const theme = themes[selectedTheme];
@@ -33,10 +26,6 @@ export function useTheme() {
         `[data-panda-theme=${selectedTheme}]`,
         ":root",
       );
-
-      invoke("write_config_theme", { theme: selectedTheme }).catch((error) => {
-        console.error("Failed to write theme to config:", error);
-      });
     }
   }, [selectedTheme]);
 

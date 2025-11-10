@@ -10,7 +10,10 @@ export default function KeyHint({
   style,
 }: KeyHintProps) {
   return (
-    <span className={className} style={style}>
+    <span
+      className={className}
+      style={{ height: "16px", margin: "8px", ...style }}
+    >
       {children}
     </span>
   );

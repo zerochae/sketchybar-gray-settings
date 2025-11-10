@@ -20,10 +20,13 @@ export default function RamWidget() {
         </Label>
       </Heading>
       <Box>
+        <Heading level={3} style={{ marginBottom: "6px" }}>
+          Enable
+        </Heading>
         <Checkbox
           checked={enabled}
           onChange={() => setEnabled(!enabled)}
-          label="Enable"
+          label="Show RAM"
         />
       </Box>
     </div>
