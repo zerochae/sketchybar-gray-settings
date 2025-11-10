@@ -29,7 +29,9 @@ export default function WidgetsEnable() {
       setLocalOrder(newOrder);
       updateWidgetsOrder(newOrder);
     } else {
-      const newOrder = localOrder.includes(widget) ? localOrder : [...localOrder, widget];
+      const newOrder = localOrder.includes(widget)
+        ? localOrder
+        : [...localOrder, widget];
       setLocalOrder(newOrder);
       updateWidgetsOrder(newOrder);
     }
@@ -63,7 +65,7 @@ export default function WidgetsEnable() {
                 className=""
                 color={WIDGET_COLORS[widget]}
                 iconColor={WIDGET_COLORS[widget]}
-                style={{ listStyle: "none" }}
+                style={{ listStyle: "none", textTransform: "uppercase" }}
               >
                 {WIDGET_LABELS[widget]}
               </Label>

@@ -1,8 +1,48 @@
-import { themeNames } from "@/themes";
+import { themeNames, themes } from "@/themes";
 import { useTheme } from "@/hooks/useTheme";
 import Checkbox from "@/components/common/Checkbox";
 import Box from "@/components/common/Box";
 import Heading from "@/components/common/Heading";
+import icons from "@/assets/icon.json";
+
+const ansiColors = [
+  "red",
+  "yellow",
+  "blue",
+  "green",
+  "magenta",
+  "cyan",
+  "orange",
+  "peach",
+  "lime",
+  "sky",
+  "aqua",
+  "coral",
+  "emerald",
+  "lavender",
+  "mint",
+  "sapphire",
+  "forest",
+  "navy",
+  "plum",
+  "tangerine",
+] as const;
+
+const getThemeColors = (themeName: string): Record<string, string> => {
+  const theme = themes[themeName];
+  if (!theme) return {};
+
+  const colors: Record<string, string> = {};
+  const cssVarRegex = /--colors-(\w+):\s*([^;]+);/g;
+  let match;
+
+  while ((match = cssVarRegex.exec(theme.css)) !== null) {
+    const [, colorName, colorValue] = match;
+    colors[colorName] = colorValue.trim();
+  }
+
+  return colors;
+};
 
 export default function Theme() {
   const { selectedTheme, setSelectedTheme } = useTheme();
@@ -14,14 +54,46 @@ export default function Theme() {
         padding="8px 12px"
         style={{ display: "flex", flexDirection: "column", gap: "4px" }}
       >
-        {themeNames.map((theme) => (
-          <Checkbox
-            key={theme}
-            checked={selectedTheme === theme}
-            onChange={() => setSelectedTheme(theme)}
-            label={theme}
-          />
-        ))}
+        {themeNames.map((theme) => {
+          const colors = getThemeColors(theme);
+          return (
+            <div
+              key={theme}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <Checkbox
+                checked={selectedTheme === theme}
+                onChange={() => setSelectedTheme(theme)}
+                label={theme}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  gap: "2px",
+                  marginLeft: "auto",
+                }}
+              >
+                {ansiColors.map((colorKey) => (
+                  <span
+                    key={colorKey}
+                    style={{
+                      fontSize: "1.2rem",
+                      lineHeight: "1",
+                      borderRadius: "2px",
+                      color: colors[colorKey] || "transparent",
+                    }}
+                  >
+                    {icons.box}
+                  </span>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </Box>
     </div>
   );
