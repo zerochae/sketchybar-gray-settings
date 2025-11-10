@@ -32,10 +32,10 @@ const ENV_VAR_MAP: Record<string, string> = {
   "widgets.cpu.showPercent": "SBAR_CPU_SHOW_PERCENT",
   "widgets.ram.showGraph": "SBAR_RAM_SHOW_GRAPH",
   "widgets.ram.showPercent": "SBAR_RAM_SHOW_PERCENT",
+  "widgets.config.color": "SBAR_COLOR_CONFIG",
   "advanced.updateFreqDefault": "SBAR_ITEM_UPDATE_FREQ_DEFAULT",
   "advanced.updateFreqFast": "SBAR_ITEM_UPDATE_FREQ_FAST",
   "advanced.updateFreqSlow": "SBAR_ITEM_UPDATE_FREQ_SLOW",
-  "advanced.configVisible": "SBAR_CONFIG_VISIBLE",
   "widgetsOrder": "SBAR_WIDGETS_RIGHT_ENABLED",
 };
 

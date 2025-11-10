@@ -12,7 +12,8 @@ export type WidgetName =
   | "disk"
   | "ram"
   | "cpu"
-  | "kakaotalk";
+  | "kakaotalk"
+  | "config";
 
 export const ALL_WIDGETS: WidgetName[] = [
   "clock",
@@ -25,6 +26,7 @@ export const ALL_WIDGETS: WidgetName[] = [
   "ram",
   "cpu",
   "kakaotalk",
+  "config",
 ];
 
 export const WIDGET_COLORS: Record<WidgetName, string> = {
@@ -38,6 +40,7 @@ export const WIDGET_COLORS: Record<WidgetName, string> = {
   ram: "var(--colors-magenta)",
   cpu: "var(--colors-blue)",
   kakaotalk: "var(--colors-yellow)",
+  config: "var(--colors-blue)",
 };
 
 export const WIDGET_ICONS: Record<WidgetName, string | ReactNode> = {
@@ -51,6 +54,7 @@ export const WIDGET_ICONS: Record<WidgetName, string | ReactNode> = {
   ram: icons.memory,
   cpu: icons.cpu,
   kakaotalk: <KakaotalkIcon color={WIDGET_COLORS.kakaotalk} size={16} />,
+  config: icons.config,
 };
 
 export const WIDGET_LABELS: Record<WidgetName, string> = {
@@ -64,4 +68,5 @@ export const WIDGET_LABELS: Record<WidgetName, string> = {
   ram: "RAM",
   cpu: "CPU",
   kakaotalk: "KakaoTalk",
+  config: "Config",
 };

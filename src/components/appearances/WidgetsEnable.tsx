@@ -65,7 +65,11 @@ export default function WidgetsEnable() {
                 className=""
                 color={WIDGET_COLORS[widget]}
                 iconColor={WIDGET_COLORS[widget]}
-                style={{ listStyle: "none", textTransform: "uppercase" }}
+                style={{
+                  listStyle: "none",
+                  textTransform: "uppercase",
+                  fontWeight: "bold",
+                }}
               >
                 {WIDGET_LABELS[widget]}
               </Label>

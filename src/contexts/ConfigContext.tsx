@@ -63,12 +63,15 @@ const defaultConfig: Config = {
       color: "yellow",
       enabled: true,
     },
+    config: {
+      color: "blue",
+      enabled: true,
+    },
   },
   advanced: {
     updateFreqDefault: 10,
     updateFreqFast: 2,
     updateFreqSlow: 30,
-    configVisible: true,
   },
   widgetsOrder: [
     "clock",

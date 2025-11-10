@@ -48,13 +48,13 @@ export interface WidgetsConfig {
   ram: RAMConfig;
   cpu: CPUConfig;
   kakaotalk: WidgetConfig;
+  config: WidgetConfig;
 }
 
 export interface AdvancedConfig {
   updateFreqDefault: number;
   updateFreqFast: number;
   updateFreqSlow: number;
-  configVisible: boolean;
 }
 
 export interface Config {
