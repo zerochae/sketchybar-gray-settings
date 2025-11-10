@@ -62,20 +62,19 @@ export default function Theme() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "16px",
+                gap: "8px",
               }}
             >
-              <div style={{ minWidth: "160px" }}>
-                <Checkbox
-                  checked={selectedTheme === theme}
-                  onChange={() => setSelectedTheme(theme)}
-                  label={theme}
-                />
-              </div>
+              <Checkbox
+                checked={selectedTheme === theme}
+                onChange={() => setSelectedTheme(theme)}
+                label={theme}
+              />
               <div
                 style={{
                   display: "flex",
                   gap: "2px",
+                  marginLeft: "auto",
                 }}
               >
                 {ansiColors.map((colorKey) => (
