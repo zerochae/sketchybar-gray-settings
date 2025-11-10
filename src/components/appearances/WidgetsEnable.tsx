@@ -8,7 +8,8 @@ import {
   type WidgetName,
   ALL_WIDGETS,
   WIDGET_COLORS,
-  getWidgetIcon,
+  WIDGET_ICONS,
+  WIDGET_LABELS,
 } from "@/constants/widgets";
 
 export default function WidgetsEnable() {
@@ -57,14 +58,14 @@ export default function WidgetsEnable() {
                 label=""
               />
               <Label
-                icon={getWidgetIcon(widget, WIDGET_COLORS[widget])}
+                icon={WIDGET_ICONS[widget]}
                 size="12px"
                 className=""
                 color={WIDGET_COLORS[widget]}
                 iconColor={WIDGET_COLORS[widget]}
                 style={{ listStyle: "none" }}
               >
-                <span style={{ textTransform: "capitalize" }}>{widget}</span>
+                {WIDGET_LABELS[widget]}
               </Label>
             </div>
           ))}

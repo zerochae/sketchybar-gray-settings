@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { exit } from "@tauri-apps/plugin-process";
-import type { Category } from "@/components/Content";
 import Heading from "@/components/common/Heading";
 import Button from "@/components/common/Button";
 import KeyHint from "@/components/common/KeyHint";
@@ -10,14 +9,13 @@ import icons from "@/assets/icon.json";
 import { useConfig } from "@/contexts/ConfigContext";
 import { useModal } from "@/contexts/ModalContext";
 import { useCategory } from "@/contexts/CategoryContext";
+import { CATEGORIES } from "@/constants/categories";
 
 export default function Sidebar() {
   const { saveConfig } = useConfig();
   const { showModal } = useModal();
   const { activeCategory, setActiveCategory } = useCategory();
   const [saveSuccess, setSaveSuccess] = useState(false);
-
-  const categories: Category[] = ["Appearance", "Widgets", "Advanced"];
 
   const handleSave = async () => {
     setSaveSuccess(false);
@@ -73,7 +71,7 @@ export default function Sidebar() {
             flexShrink: 0,
           }}
         >
-          {categories.map((category, index) => (
+          {CATEGORIES.map((category, index) => (
             <Button
               key={category}
               onClick={() => setActiveCategory(category)}

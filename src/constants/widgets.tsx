@@ -1,5 +1,6 @@
 import icons from "@/assets/icon.json";
 import KakaotalkIcon from "@/components/icons/KakaotalkIcon";
+import { ReactNode } from "react";
 
 export type WidgetName =
   | "clock"
@@ -39,7 +40,7 @@ export const WIDGET_COLORS: Record<WidgetName, string> = {
   kakaotalk: "var(--colors-yellow)",
 };
 
-export const WIDGET_ICONS: Record<WidgetName, string> = {
+export const WIDGET_ICONS: Record<WidgetName, string | ReactNode> = {
   clock: icons.clock,
   calendar: icons.calendar,
   weather: icons.weather,
@@ -49,7 +50,7 @@ export const WIDGET_ICONS: Record<WidgetName, string> = {
   disk: icons.disk,
   ram: icons.memory,
   cpu: icons.cpu,
-  kakaotalk: icons.clock,
+  kakaotalk: <KakaotalkIcon color={WIDGET_COLORS.kakaotalk} size={16} />,
 };
 
 export const WIDGET_LABELS: Record<WidgetName, string> = {
@@ -63,14 +64,4 @@ export const WIDGET_LABELS: Record<WidgetName, string> = {
   ram: "RAM",
   cpu: "CPU",
   kakaotalk: "KakaoTalk",
-};
-
-export const getWidgetIcon = (
-  widget: WidgetName,
-  color: string,
-): string | React.ReactNode => {
-  if (widget === "kakaotalk") {
-    return <KakaotalkIcon color={color} size={16} />;
-  }
-  return WIDGET_ICONS[widget];
 };

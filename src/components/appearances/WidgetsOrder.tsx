@@ -7,7 +7,8 @@ import { useConfig } from "@/contexts/ConfigContext";
 import {
   type WidgetName,
   WIDGET_COLORS,
-  getWidgetIcon,
+  WIDGET_ICONS,
+  WIDGET_LABELS,
 } from "@/constants/widgets";
 
 export default function WidgetsOrder() {
@@ -92,13 +93,13 @@ export default function WidgetsOrder() {
               >
                 <span style={{ color: "var(--colors-comment)" }}>⋮⋮</span>
                 <Label
-                  icon={getWidgetIcon(widget as WidgetName, WIDGET_COLORS[widget as WidgetName])}
+                  icon={WIDGET_ICONS[widget as WidgetName]}
                   size="12px"
                   color={WIDGET_COLORS[widget as WidgetName]}
                   iconColor={WIDGET_COLORS[widget as WidgetName]}
                   style={{ listStyle: "none" }}
                 >
-                  <span style={{ textTransform: "capitalize" }}>{widget}</span>
+                  {WIDGET_LABELS[widget as WidgetName]}
                 </Label>
               </div>
               <div
