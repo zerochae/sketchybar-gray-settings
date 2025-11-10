@@ -33,14 +33,6 @@
         }
       ]
     },
-    {
-      "identifier": "fs:allow-remove",
-      "allow": [
-        {
-          "path": "$HOME/.config/sketchybar/user.sketchybarrc"
-        }
-      ]
-    },
     "shell:allow-execute",
     {
       "identifier": "shell:allow-execute",

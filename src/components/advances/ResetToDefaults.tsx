@@ -1,6 +1,7 @@
-import { remove } from "@tauri-apps/plugin-fs";
+import { writeTextFile } from "@tauri-apps/plugin-fs";
 import { homeDir, resolve } from "@tauri-apps/api/path";
-import { exit, relaunch } from "@tauri-apps/plugin-process";
+import { relaunch } from "@tauri-apps/plugin-process";
+import { Command } from "@tauri-apps/plugin-shell";
 import Box from "@/components/common/Box";
 import Heading from "@/components/common/Heading";
 import Button from "@/components/common/Button";
@@ -14,7 +15,7 @@ export default function ResetToDefaults() {
   const handleReset = () => {
     showConfirm(
       "Reset to Defaults",
-      "Are you sure you want to reset all settings to defaults? This will delete the config file and restart the app.",
+      "Are you sure you want to reset all settings to defaults? This will clear the config file and restart the app.",
       async () => {
         try {
           const home = await homeDir();
@@ -23,11 +24,13 @@ export default function ResetToDefaults() {
             ".config/sketchybar/user.sketchybarrc",
           );
 
-          await remove(configPath);
+          await writeTextFile(configPath, "#!/usr/bin/env bash\n\n");
+
+          await Command.create("sh", ["-c", "sketchybar --reload"]).execute();
 
           showModal(
             "Success",
-            "Config file deleted. App will restart with default settings.",
+            "Config file cleared. App will restart with default settings.",
             "success",
           );
 
