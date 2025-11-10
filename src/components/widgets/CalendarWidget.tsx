@@ -3,13 +3,16 @@ import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
+import Input from "@/components/common/Input";
 import icons from "@/assets/icon.json";
 
 export default function CalendarWidget() {
   const [enabled, setEnabled] = useState(true);
   const [format, setFormat] = useState("YYYY-MM-DD");
+  const [customFormat, setCustomFormat] = useState("");
 
   const formats = [
+    "Custom",
     "YYYY-MM-DD",
     "YYYY-MM-DD (ddd)",
     "ddd, YYYY-MM-DD",
@@ -48,14 +51,36 @@ export default function CalendarWidget() {
             <div
               style={{ display: "flex", flexDirection: "column", gap: "4px" }}
             >
-              {formats.map((fmt) => (
-                <Checkbox
-                  key={fmt}
-                  checked={format === fmt}
-                  onChange={() => setFormat(fmt)}
-                  label={fmt}
-                />
-              ))}
+              {formats.map((fmt) => {
+                if (fmt === "Custom") {
+                  return (
+                    <div
+                      key={fmt}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <Checkbox
+                        checked={format === fmt}
+                        onChange={() => setFormat(fmt)}
+                        label=""
+                      />
+                      <Input
+                        value={customFormat}
+                        onChange={setCustomFormat}
+                        placeholder="e.g., YYYY-MM-DD HH:mm"
+                        style={{ flex: 1, marginLeft: "-4px" }}
+                      />
+                    </div>
+                  );
+                }
+                return (
+                  <Checkbox
+                    key={fmt}
+                    checked={format === fmt}
+                    onChange={() => setFormat(fmt)}
+                    label={fmt}
+                  />
+                );
+              })}
             </div>
           </div>
         )}

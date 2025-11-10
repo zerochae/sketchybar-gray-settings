@@ -167,3 +167,27 @@ body {
 *::-webkit-scrollbar-thumb:hover {
   background: var(--colors-blue);
 }
+
+input[type="text"] {
+  width: 100%;
+  padding: 2px 6px;
+  background: var(--colors-bg);
+  color: var(--colors-text);
+  border: 1px solid var(--colors-border);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+input[type="text"]:focus {
+  border-color: var(--colors-blue);
+  background: var(--colors-bg2);
+}
+
+input[type="text"]::placeholder {
+  color: var(--colors-comment);
+  opacity: 0.6;
+}

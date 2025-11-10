@@ -3,6 +3,7 @@ import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
+import Input from "@/components/common/Input";
 import icons from "@/assets/icon.json";
 
 export default function WeatherWidget() {
@@ -36,21 +37,9 @@ export default function WeatherWidget() {
             <Heading level={3} style={{ marginBottom: "6px" }}>
               Location
             </Heading>
-            <input
-              type="text"
+            <Input
               value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "6px 8px",
-                background: "var(--colors-bg3)",
-                border: "1px solid var(--colors-border)",
-                borderRadius: "2px",
-                color: "var(--colors-text)",
-                fontFamily: "var(--font-mono)",
-                fontSize: "13px",
-                outline: "none",
-              }}
+              onChange={setLocation}
             />
           </div>
         )}
