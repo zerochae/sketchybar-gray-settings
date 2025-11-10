@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import Input from "@/components/common/Input";
 import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
+import { useConfig } from "@/contexts/ConfigContext";
 
 export default function ClockWidget() {
+  const { config, updateWidget } = useConfig();
   const [format, setFormat] = useState("HH:mm");
   const [customFormat, setCustomFormat] = useState("");
 
@@ -17,6 +19,30 @@ export default function ClockWidget() {
     "YYYY-MM-DD HH:mm:ss",
     "HH:mm:ss",
   ];
+
+  useEffect(() => {
+    const configFormat = config.widgets.clock.format;
+    if (configFormat) {
+      if (formats.includes(configFormat)) {
+        setFormat(configFormat);
+      } else {
+        setFormat("Custom");
+        setCustomFormat(configFormat);
+      }
+    }
+  }, [config.widgets.clock.format]);
+
+  const handleFormatChange = (newFormat: string) => {
+    setFormat(newFormat);
+    if (newFormat !== "Custom") {
+      updateWidget("clock", "format", newFormat);
+    }
+  };
+
+  const handleCustomFormatChange = (value: string) => {
+    setCustomFormat(value);
+    updateWidget("clock", "format", value);
+  };
 
   return (
     <div>
@@ -50,7 +76,7 @@ export default function ClockWidget() {
                   />
                   <Input
                     value={customFormat}
-                    onChange={setCustomFormat}
+                    onChange={handleCustomFormatChange}
                     placeholder="e.g., HH:mm:ss"
                     style={{ flex: 1, marginLeft: "-4px" }}
                   />
@@ -61,7 +87,7 @@ export default function ClockWidget() {
               <Checkbox
                 key={fmt}
                 checked={format === fmt}
-                onChange={() => setFormat(fmt)}
+                onChange={() => handleFormatChange(fmt)}
                 label={fmt}
               />
             );

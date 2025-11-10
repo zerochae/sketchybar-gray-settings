@@ -1,12 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import Input from "@/components/common/Input";
 import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
+import { useConfig } from "@/contexts/ConfigContext";
 
 export default function WeatherWidget() {
+  const { config, updateWidget } = useConfig();
   const [location, setLocation] = useState("Seoul");
+
+  useEffect(() => {
+    const configLocation = config.widgets.weather.location;
+    if (configLocation) {
+      setLocation(configLocation);
+    }
+  }, [config.widgets.weather.location]);
+
+  const handleLocationChange = (value: string) => {
+    setLocation(value);
+    updateWidget("weather", "location", value);
+  };
 
   return (
     <div>
@@ -25,7 +39,7 @@ export default function WeatherWidget() {
         </Heading>
         <Input
           value={location}
-          onChange={setLocation}
+          onChange={handleLocationChange}
         />
       </Box>
     </div>

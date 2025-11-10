@@ -26,13 +26,13 @@ export default function WidgetsSettings() {
     <CalendarWidget key="calendar" />,
     <ClockWidget key="clock" />,
     <WeatherWidget key="weather" />,
-    <VolumeWidget key="volume" />,
-    <BatteryWidget key="battery" />,
-    <CpuWidget key="cpu" />,
-    <RamWidget key="ram" />,
-    <DiskWidget key="disk" />,
-    <CaffeinateWidget key="caffeinate" />,
-    <KakaotalkWidget key="kakaotalk" />,
+    // <VolumeWidget key="volume" />,
+    // <BatteryWidget key="battery" />,
+    // <CpuWidget key="cpu" />,
+    // <RamWidget key="ram" />,
+    // <DiskWidget key="disk" />,
+    // <CaffeinateWidget key="caffeinate" />,
+    // <KakaotalkWidget key="kakaotalk" />,
   ];
 
   return (

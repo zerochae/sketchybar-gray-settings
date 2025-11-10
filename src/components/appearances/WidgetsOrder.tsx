@@ -73,7 +73,7 @@ export default function WidgetsOrder() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               style={{
                 width: "100%",
-                height: "48px",
+                height: "36px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",

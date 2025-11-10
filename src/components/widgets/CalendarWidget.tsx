@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import Input from "@/components/common/Input";
 import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
+import { useConfig } from "@/contexts/ConfigContext";
 
 export default function CalendarWidget() {
+  const { config, updateWidget } = useConfig();
   const [format, setFormat] = useState("YYYY-MM-DD");
   const [customFormat, setCustomFormat] = useState("");
 
@@ -19,6 +21,30 @@ export default function CalendarWidget() {
     "MM/DD (ddd)",
     "ddd, MM/DD",
   ];
+
+  useEffect(() => {
+    const configFormat = config.widgets.calendar.format;
+    if (configFormat) {
+      if (formats.includes(configFormat)) {
+        setFormat(configFormat);
+      } else {
+        setFormat("Custom");
+        setCustomFormat(configFormat);
+      }
+    }
+  }, [config.widgets.calendar.format]);
+
+  const handleFormatChange = (newFormat: string) => {
+    setFormat(newFormat);
+    if (newFormat !== "Custom") {
+      updateWidget("calendar", "format", newFormat);
+    }
+  };
+
+  const handleCustomFormatChange = (value: string) => {
+    setCustomFormat(value);
+    updateWidget("calendar", "format", value);
+  };
 
   return (
     <div>
@@ -52,7 +78,7 @@ export default function CalendarWidget() {
                   />
                   <Input
                     value={customFormat}
-                    onChange={setCustomFormat}
+                    onChange={handleCustomFormatChange}
                     placeholder="e.g., YYYY-MM-DD HH:mm"
                     style={{ flex: 1, marginLeft: "-4px" }}
                   />
@@ -63,7 +89,7 @@ export default function CalendarWidget() {
               <Checkbox
                 key={fmt}
                 checked={format === fmt}
-                onChange={() => setFormat(fmt)}
+                onChange={() => handleFormatChange(fmt)}
                 label={fmt}
               />
             );
