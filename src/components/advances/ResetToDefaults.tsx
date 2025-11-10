@@ -1,30 +1,42 @@
+import { remove } from "@tauri-apps/plugin-fs";
+import { homeDir, resolve } from "@tauri-apps/api/path";
+import { exit, relaunch } from "@tauri-apps/plugin-process";
 import Box from "@/components/common/Box";
 import Heading from "@/components/common/Heading";
 import Button from "@/components/common/Button";
 import KeyHint from "@/components/common/KeyHint";
 import icons from "@/assets/icon.json";
-import { useConfig } from "@/contexts/ConfigContext";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function ResetToDefaults() {
-  const { resetConfig, saveConfig } = useConfig();
   const { showConfirm, showModal } = useModal();
 
   const handleReset = () => {
     showConfirm(
       "Reset to Defaults",
-      "Are you sure you want to reset all settings to defaults? This action cannot be undone.",
+      "Are you sure you want to reset all settings to defaults? This will delete the config file and restart the app.",
       async () => {
         try {
-          resetConfig();
-          await saveConfig();
+          const home = await homeDir();
+          const configPath = await resolve(
+            home,
+            ".config/sketchybar/user.sketchybarrc",
+          );
+
+          await remove(configPath);
+
           showModal(
             "Success",
-            "All settings have been reset to defaults!",
+            "Config file deleted. App will restart with default settings.",
             "success",
           );
+
+          setTimeout(() => {
+            relaunch();
+          }, 1500);
         } catch (error) {
-          showModal("Error", "Failed to reset settings!", "error");
+          const errorMessage = error instanceof Error ? error.message : "Failed to reset settings!";
+          showModal("Error", errorMessage, "error");
         }
       },
       "warning",
