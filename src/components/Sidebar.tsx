@@ -29,7 +29,8 @@ export default function Sidebar() {
         "success",
       );
     } catch (error) {
-      showModal("Error", "Failed to save settings!", "error");
+      const errorMessage = error instanceof Error ? error.message : "Failed to save settings!";
+      showModal("Error", errorMessage, "error");
     }
   };
 

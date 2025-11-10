@@ -25,12 +25,25 @@ const modalVariants = {
 
 export default function Modal() {
   const { modal, closeModal } = useModal();
-  const { isOpen, title, message, type } = modal;
+  const { isOpen, title, message, type, mode, onConfirm } = modal;
+
+  const handleConfirm = () => {
+    if (onConfirm) {
+      onConfirm();
+    }
+    closeModal();
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" || e.key === "Enter") {
+      if (e.key === "Escape") {
         closeModal();
+      } else if (e.key === "Enter") {
+        if (mode === "confirm") {
+          handleConfirm();
+        } else {
+          closeModal();
+        }
       }
     };
 
@@ -41,7 +54,7 @@ export default function Modal() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, closeModal]);
+  }, [isOpen, closeModal, mode, onConfirm]);
 
   const typeColors = {
     info: "var(--colors-blue)",
@@ -130,15 +143,35 @@ export default function Modal() {
               style={{
                 display: "flex",
                 justifyContent: "flex-end",
+                gap: "8px",
               }}
             >
-              <Button
-                onClick={closeModal}
-                variant="primary"
-                style={{ width: "80px", justifyContent: "center" }}
-              >
-                OK
-              </Button>
+              {mode === "confirm" ? (
+                <>
+                  <Button
+                    onClick={closeModal}
+                    variant="secondary"
+                    style={{ width: "80px", justifyContent: "center" }}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    onClick={handleConfirm}
+                    variant="danger"
+                    style={{ width: "80px", justifyContent: "center" }}
+                  >
+                    Confirm
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  onClick={closeModal}
+                  variant="primary"
+                  style={{ width: "80px", justifyContent: "center" }}
+                >
+                  OK
+                </Button>
+              )}
             </div>
           </motion.div>
         </motion.div>

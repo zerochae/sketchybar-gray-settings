@@ -7,16 +7,24 @@ import { useConfig } from "@/contexts/ConfigContext";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function ResetToDefaults() {
-  const { resetConfig } = useConfig();
-  const { showModal } = useModal();
+  const { resetConfig, saveConfig } = useConfig();
+  const { showConfirm, showModal } = useModal();
 
   const handleReset = () => {
-    showModal(
-      "Warning",
+    showConfirm(
+      "Reset to Defaults",
       "Are you sure you want to reset all settings to defaults? This action cannot be undone.",
+      async () => {
+        try {
+          resetConfig();
+          await saveConfig();
+          showModal("Success", "All settings have been reset to defaults!", "success");
+        } catch (error) {
+          showModal("Error", "Failed to reset settings!", "error");
+        }
+      },
       "warning"
     );
-    resetConfig();
   };
 
   return (

@@ -1,4 +1,5 @@
-import { open } from "@tauri-apps/plugin-shell";
+import { Command } from "@tauri-apps/plugin-shell";
+import { homeDir, resolve } from "@tauri-apps/api/path";
 import Box from "@/components/common/Box";
 import Heading from "@/components/common/Heading";
 import Button from "@/components/common/Button";
@@ -10,12 +11,52 @@ export default function OpenConfigFile() {
 
   const handleOpenConfig = async () => {
     try {
-      await open("~/.config/sketchybar/user.sketchybarrc");
-      showModal(
-        "Success",
-        "Config file opened in default editor!",
-        "success"
+      const home = await homeDir();
+      const configPath = await resolve(
+        home,
+        ".config/sketchybar/user.sketchybarrc",
       );
+
+      const guiEditors = [
+        { cmd: "code", app: "Visual Studio Code" },
+        { cmd: "cursor", app: "Cursor" },
+        { cmd: "zed", app: "Zed" },
+        { cmd: "subl", app: "Sublime Text" },
+      ];
+
+      for (const { cmd } of guiEditors) {
+        try {
+          await Command.create("which", [cmd]).execute();
+          await Command.create(cmd, [configPath]).spawn();
+          showModal("Success", `Config file opened with ${cmd}!`, "success");
+          return;
+        } catch {
+          continue;
+        }
+      }
+
+      const terminalEditors = ["nvim", "vim"];
+
+      for (const editor of terminalEditors) {
+        try {
+          await Command.create("which", [editor]).execute();
+          await Command.create("osascript", [
+            "-e",
+            `tell application "Terminal" to do script "${editor} '${configPath}'"`,
+          ]).execute();
+          showModal(
+            "Success",
+            `Config file opened with ${editor} in Terminal!`,
+            "success",
+          );
+          return;
+        } catch {
+          continue;
+        }
+      }
+
+      await Command.create("open", [configPath]).execute();
+      showModal("Success", "Config file opened in default editor!", "success");
     } catch (error) {
       showModal("Error", "Failed to open config file!", "error");
     }

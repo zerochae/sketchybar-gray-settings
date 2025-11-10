@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: "option" | "primary" | "danger" | "success";
+  variant?: "option" | "primary" | "secondary" | "danger" | "success";
   active?: boolean;
   className?: string;
   style?: React.CSSProperties;
@@ -21,6 +21,8 @@ export default function Button({
     switch (variant) {
       case "primary":
         return "var(--colors-blue)";
+      case "secondary":
+        return "var(--colors-comment)";
       case "success":
         return "var(--colors-green)";
       case "danger":

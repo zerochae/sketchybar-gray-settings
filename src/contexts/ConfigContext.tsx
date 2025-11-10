@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from "react";
 import type { Config } from "@/types/config";
 import { readConfig, writeConfig } from "@/utils/configFile";
+import { validateConfig } from "@/utils/validation";
 import { Command } from "@tauri-apps/plugin-shell";
 
 const defaultConfig: Config = {
@@ -114,27 +115,31 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   const [config, setConfig] = useState<Config>(defaultConfig);
 
   useEffect(() => {
-    readConfig().then((loadedConfig) => {
-      setConfig((prev) => {
-        const mergedWidgets = { ...prev.widgets };
+    readConfig()
+      .then((loadedConfig) => {
+        setConfig((prev) => {
+          const mergedWidgets = { ...prev.widgets };
 
-        Object.keys(loadedConfig.widgets || {}).forEach((widgetKey) => {
-          const key = widgetKey as keyof Config["widgets"];
-          mergedWidgets[key] = {
-            ...prev.widgets[key],
-            ...loadedConfig.widgets?.[key],
-          } as any;
+          Object.keys(loadedConfig.widgets || {}).forEach((widgetKey) => {
+            const key = widgetKey as keyof Config["widgets"];
+            mergedWidgets[key] = {
+              ...prev.widgets[key],
+              ...loadedConfig.widgets?.[key],
+            } as any;
+          });
+
+          return {
+            ...prev,
+            appearance: { ...prev.appearance, ...loadedConfig.appearance },
+            widgets: mergedWidgets,
+            advanced: { ...prev.advanced, ...loadedConfig.advanced },
+            widgetsOrder: loadedConfig.widgetsOrder || prev.widgetsOrder,
+          };
         });
-
-        return {
-          ...prev,
-          appearance: { ...prev.appearance, ...loadedConfig.appearance },
-          widgets: mergedWidgets,
-          advanced: { ...prev.advanced, ...loadedConfig.advanced },
-          widgetsOrder: loadedConfig.widgetsOrder || prev.widgetsOrder,
-        };
+      })
+      .catch((error) => {
+        console.error("Failed to load config, using defaults:", error);
       });
-    });
   }, []);
 
   const updateAppearance = useCallback(
@@ -197,6 +202,12 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const saveConfig = useCallback(async () => {
+    const errors = validateConfig(config);
+    if (errors.length > 0) {
+      const errorMessage = errors.map(e => `${e.field}: ${e.message}`).join("\n");
+      throw new Error(`Validation failed:\n${errorMessage}`);
+    }
+
     try {
       await writeConfig(config);
 

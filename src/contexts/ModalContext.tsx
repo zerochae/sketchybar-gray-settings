@@ -11,6 +11,9 @@ interface ModalState {
   title: string;
   message: string;
   type: "info" | "success" | "warning" | "error";
+  mode: "alert" | "confirm";
+  onConfirm?: () => void;
+  onCancel?: () => void;
 }
 
 interface ModalContextType {
@@ -18,6 +21,12 @@ interface ModalContextType {
   showModal: (
     title: string,
     message: string,
+    type?: ModalState["type"],
+  ) => void;
+  showConfirm: (
+    title: string,
+    message: string,
+    onConfirm: () => void,
     type?: ModalState["type"],
   ) => void;
   closeModal: () => void;
@@ -31,11 +40,31 @@ export function ModalProvider({ children }: { children: ReactNode }) {
     title: "",
     message: "",
     type: "info",
+    mode: "alert",
   });
 
   const showModal = useCallback(
     (title: string, message: string, type: ModalState["type"] = "info") => {
-      setModal({ isOpen: true, title, message, type });
+      setModal({ isOpen: true, title, message, type, mode: "alert" });
+    },
+    [],
+  );
+
+  const showConfirm = useCallback(
+    (
+      title: string,
+      message: string,
+      onConfirm: () => void,
+      type: ModalState["type"] = "warning",
+    ) => {
+      setModal({
+        isOpen: true,
+        title,
+        message,
+        type,
+        mode: "confirm",
+        onConfirm,
+      });
     },
     [],
   );
@@ -45,7 +74,9 @@ export function ModalProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <ModalContext.Provider value={{ modal, showModal, closeModal }}>
+    <ModalContext.Provider
+      value={{ modal, showModal, showConfirm, closeModal }}
+    >
       {children}
     </ModalContext.Provider>
   );
