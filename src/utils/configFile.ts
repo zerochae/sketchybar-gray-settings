@@ -1,6 +1,7 @@
 import { readTextFile, writeTextFile } from "@tauri-apps/plugin-fs";
 import { homeDir, resolve } from "@tauri-apps/api/path";
 import type { Config } from "@/types/config";
+import { ALL_WIDGETS } from "@/constants/widgets";
 
 const CONFIG_PATH = ".config/sketchybar/user.sketchybarrc";
 
@@ -80,6 +81,8 @@ function parseConfigFile(content: string): Partial<Config> {
     advanced: {},
   };
 
+  let enabledWidgets: string[] = [];
+
   const lines = content.split("\n");
   for (const line of lines) {
     const trimmed = line.trim();
@@ -97,6 +100,7 @@ function parseConfigFile(content: string): Partial<Config> {
 
     if (configPath === "widgetsOrder") {
       value = rawValue.split(/\s+/).filter(Boolean);
+      enabledWidgets = value;
     } else if (rawValue === "true" || rawValue === "false") {
       value = rawValue === "true";
     } else if (!isNaN(Number(rawValue)) && rawValue !== "") {
@@ -104,6 +108,13 @@ function parseConfigFile(content: string): Partial<Config> {
     }
 
     setNestedValue(config, configPath, value);
+  }
+
+  for (const widget of ALL_WIDGETS) {
+    if (!config.widgets[widget]) {
+      config.widgets[widget] = {};
+    }
+    config.widgets[widget].enabled = enabledWidgets.includes(widget);
   }
 
   return config;
@@ -133,7 +144,8 @@ export async function writeConfig(config: Config): Promise<void> {
     if (value === undefined) continue;
 
     if (configPath === "widgetsOrder" && Array.isArray(value)) {
-      lines.push(`export ${envVar}="${value.join(" ")}"`);
+      const enabledWidgets = value.filter((widget) => config.widgets[widget as keyof typeof config.widgets]?.enabled);
+      lines.push(`export ${envVar}="${enabledWidgets.join(" ")}"`);
     } else if (typeof value === "string") {
       if (configPath.includes(".color")) {
         const colorVar = COLOR_MAP[value.toLowerCase()];

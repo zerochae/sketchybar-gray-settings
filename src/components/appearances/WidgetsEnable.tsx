@@ -35,12 +35,16 @@ export default function WidgetsEnable() {
     }
   };
 
+  const disabledWidgets = ALL_WIDGETS.filter(
+    (widget) => !config.widgets[widget].enabled
+  );
+
   return (
     <div>
-      <Heading level={2}>Enable Widgets</Heading>
+      <Heading level={2}>Available Widgets</Heading>
       <Box>
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-          {ALL_WIDGETS.map((widget) => (
+          {disabledWidgets.map((widget) => (
             <div
               key={widget}
               style={{
