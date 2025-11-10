@@ -4,7 +4,11 @@ import Label from "@/components/common/Label";
 import Heading from "@/components/common/Heading";
 import Box from "@/components/common/Box";
 import Input from "@/components/common/Input";
-import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
+import {
+  WIDGET_COLORS,
+  WIDGET_ICONS,
+  WIDGET_LABELS,
+} from "@/constants/widgets";
 import { useConfig } from "@/contexts/ConfigContext";
 
 export default function ClockWidget() {
@@ -59,9 +63,7 @@ export default function ClockWidget() {
         <Heading level={3} style={{ marginBottom: "6px" }}>
           Format
         </Heading>
-        <div
-          style={{ display: "flex", flexDirection: "column", gap: "4px" }}
-        >
+        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
           {formats.map((fmt) => {
             if (fmt === "Custom") {
               return (

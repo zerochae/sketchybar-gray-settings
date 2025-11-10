@@ -41,7 +41,7 @@ export default function Checkbox({ checked, onChange, label }: CheckboxProps) {
       >
         {checked ? "[x]" : "[ ]"}
       </motion.span>
-      <span style={{ textTransform: "capitalize" }}>{label}</span>
+      <span>{label}</span>
     </motion.label>
   );
 }
