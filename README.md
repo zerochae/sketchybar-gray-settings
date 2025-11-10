@@ -1,3 +1,10 @@
+<img width="743" height="572" alt="스크린샷 2025-11-10 16 59 50" src="https://github.com/user-attachments/assets/1e235d92-c485-421b-b977-7d894a109270" />
+<img width="743" height="572" alt="스크린샷 2025-11-10 17 00 06" src="https://github.com/user-attachments/assets/a985b9d9-935d-467f-9435-ac78b1757881" />
+<img width="743" height="572" alt="스크린샷 2025-11-10 17 00 09" src="https://github.com/user-attachments/assets/c884e9ea-3d09-4536-a452-889dc067b475" />
+<img width="743" height="572" alt="스크린샷 2025-11-10 17 00 17" src="https://github.com/user-attachments/assets/30cac5d0-1552-41aa-9071-a05537cb05eb" />
+<img width="743" height="572" alt="스크린샷 2025-11-10 17 00 20" src="https://github.com/user-attachments/assets/56d18132-8aa9-4157-9b46-3d5d84b2035e" />
+
+
 # Sketchybar Gray Settings
 
 Tauri 기반 Sketchybar 설정 앱
