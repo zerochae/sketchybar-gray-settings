@@ -1,18 +1,12 @@
 import { useState } from "react";
 import { themeNames } from "@/themes";
+import { useTheme } from "@/hooks/useTheme";
 import Checkbox from "@/components/common/Checkbox";
 import Box from "@/components/common/Box";
 import Heading from "@/components/common/Heading";
 
-interface AppearanceSettingsProps {
-  selectedTheme: string;
-  setSelectedTheme: (theme: string) => void;
-}
-
-export default function AppearanceSettings({
-  selectedTheme,
-  setSelectedTheme,
-}: AppearanceSettingsProps) {
+export default function AppearanceSettings() {
+  const { selectedTheme, setSelectedTheme } = useTheme();
   const [selectedBarStyle, setSelectedBarStyle] = useState<string>("compact");
 
   return (

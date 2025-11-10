@@ -15,5 +15,9 @@
   "exit": "󰩈",
   "Appearance": "",
   "Widgets": "󰜬",
-  "Advanced": "󰏙"
+  "Advanced": "󰏙",
+  "info": "󰋼",
+  "error": "",
+  "success": "",
+  "warning": ""
 }

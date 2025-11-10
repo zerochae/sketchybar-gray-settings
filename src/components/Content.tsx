@@ -1,28 +1,16 @@
 import AppearanceSettings from "@/components/settings/AppearanceSettings";
 import WidgetsSettings from "@/components/settings/WidgetsSettings";
 import AdvancedSettings from "@/components/settings/AdvancedSettings";
+import { useCategory } from "@/contexts/CategoryContext";
 
 export type Category = "Appearance" | "Widgets" | "Advanced";
 
-interface ContentProps {
-  category: Category;
-  selectedTheme: string;
-  setSelectedTheme: (theme: string) => void;
-}
+export default function Content() {
+  const { activeCategory } = useCategory();
 
-export default function Content({
-  category,
-  selectedTheme,
-  setSelectedTheme,
-}: ContentProps) {
-  switch (category) {
+  switch (activeCategory) {
     case "Appearance":
-      return (
-        <AppearanceSettings
-          selectedTheme={selectedTheme}
-          setSelectedTheme={setSelectedTheme}
-        />
-      );
+      return <AppearanceSettings />;
     case "Widgets":
       return <WidgetsSettings />;
     case "Advanced":

@@ -1,3 +1,4 @@
+import { exit } from "@tauri-apps/plugin-process";
 import type { Category } from "@/components/Content";
 import Heading from "@/components/common/Heading";
 import Button from "@/components/common/Button";
@@ -5,22 +6,33 @@ import KeyHint from "@/components/common/KeyHint";
 import Label from "@/components/common/Label";
 import Shortcuts from "@/components/common/Shortcuts";
 import icons from "@/assets/icon.json";
+import { useConfig } from "@/contexts/ConfigContext";
+import { useModal } from "@/contexts/ModalContext";
+import { useCategory } from "@/contexts/CategoryContext";
 
-interface SidebarProps {
-  categories: Category[];
-  activeCategory: Category;
-  setActiveCategory: (category: Category) => void;
-  onSave: () => void;
-  onClose: () => void;
-}
+export default function Sidebar() {
+  const { saveConfig } = useConfig();
+  const { showModal } = useModal();
+  const { activeCategory, setActiveCategory } = useCategory();
 
-export default function Sidebar({
-  categories,
-  activeCategory,
-  setActiveCategory,
-  onSave,
-  onClose,
-}: SidebarProps) {
+  const categories: Category[] = ["Appearance", "Widgets", "Advanced"];
+
+  const handleSave = async () => {
+    try {
+      await saveConfig();
+      showModal(
+        "Success",
+        "Settings saved and sketchybar reloaded!",
+        "success"
+      );
+    } catch (error) {
+      showModal("Error", "Failed to save settings!", "error");
+    }
+  };
+
+  const handleClose = () => {
+    exit(0);
+  };
   return (
     <aside
       className="container"
@@ -30,10 +42,7 @@ export default function Sidebar({
         padding: "16px",
         display: "flex",
         flexDirection: "column",
-        borderRadius: "0",
-        borderTop: "none",
-        borderLeft: "none",
-        borderBottom: "none",
+        borderRadius: "4px",
         flexShrink: 0,
         overflow: "hidden",
         maxHeight: "100%",
@@ -91,10 +100,10 @@ export default function Sidebar({
           borderTop: "1px solid var(--colors-border)",
         }}
       >
-        <Button onClick={onSave} variant="success">
+        <Button onClick={handleSave} variant="success">
           {icons.save} Save
         </Button>
-        <Button onClick={onClose} variant="danger">
+        <Button onClick={handleClose} variant="danger">
           {icons.exit} Exit
         </Button>
       </div>

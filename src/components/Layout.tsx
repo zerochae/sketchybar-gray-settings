@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
+import Sidebar from "@/components/Sidebar";
 
 interface LayoutProps {
-  sidebar: ReactNode;
   children: ReactNode;
 }
 
-export default function Layout({ sidebar, children }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <div
       className="flex flex-col h-full"
@@ -28,14 +28,13 @@ export default function Layout({ sidebar, children }: LayoutProps) {
           height: "calc(100vh - 32px)",
         }}
       >
-        {sidebar}
-
+        <Sidebar />
         <main
           style={{
             flex: 1,
             overflowY: "auto",
-            paddingLeft: "16px",
-            paddingRight: "16px",
+            paddingLeft: "20px",
+            paddingRight: "4px",
           }}
         >
           {children}
