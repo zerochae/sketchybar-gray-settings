@@ -46,6 +46,8 @@
 * {
   box-sizing: border-box;
   font-family: var(--font-mono), Consolas, monospace;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 html,
@@ -186,6 +188,8 @@ input[type="text"] {
   line-height: 1.5;
   outline: none;
   transition: all 0.15s ease;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 input[type="text"]:focus {

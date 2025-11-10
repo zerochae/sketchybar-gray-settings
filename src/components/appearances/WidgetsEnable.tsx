@@ -21,6 +21,8 @@ export default function WidgetsEnable() {
   }, [config.widgetsOrder]);
 
   const handleToggleWidget = (widget: WidgetName) => {
+    if (widget === "config") return;
+
     const isEnabled = config.widgets[widget].enabled;
     updateWidget(widget, "enabled", !isEnabled);
 
@@ -58,6 +60,7 @@ export default function WidgetsEnable() {
                 checked={config.widgets[widget].enabled}
                 onChange={() => handleToggleWidget(widget)}
                 label=""
+                disabled={widget === "config"}
               />
               <Label
                 icon={WIDGET_ICONS[widget]}

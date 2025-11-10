@@ -75,6 +75,7 @@ const defaultConfig: Config = {
   },
   widgetsOrder: [
     "clock",
+    "calendar",
     "weather",
     "caffeinate",
     "volume",
@@ -83,6 +84,7 @@ const defaultConfig: Config = {
     "ram",
     "cpu",
     "kakaotalk",
+    "config",
   ],
 };
 
@@ -196,20 +198,15 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
   const saveConfig = useCallback(async () => {
     try {
-      console.log("Saving config...", config);
       await writeConfig(config);
-      console.log("Config written successfully");
 
-      console.log("Executing sketchybar --reload...");
       try {
-        const result = await Command.create("sh", ["-c", "sketchybar --reload"]).execute();
-        console.log("Reload command result:", result);
+        await Command.create("sh", ["-c", "sketchybar --reload"]).execute();
       } catch (reloadError) {
         console.warn("Reload command failed, but config was saved:", reloadError);
       }
     } catch (error) {
       console.error("Failed to save config:", error);
-      console.error("Error details:", JSON.stringify(error, null, 2));
       throw error;
     }
   }, [config]);

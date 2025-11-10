@@ -4,20 +4,22 @@ interface CheckboxProps {
   checked: boolean;
   onChange: () => void;
   label: string;
+  disabled?: boolean;
 }
 
-export default function Checkbox({ checked, onChange, label }: CheckboxProps) {
+export default function Checkbox({ checked, onChange, label, disabled = false }: CheckboxProps) {
   return (
     <motion.label
       style={{
         display: "flex",
         alignItems: "center",
         gap: "8px",
-        cursor: "pointer",
+        cursor: disabled ? "not-allowed" : "pointer",
         userSelect: "none",
+        opacity: disabled ? 0.5 : 1,
       }}
-      onClick={onChange}
-      whileHover={{ x: 2 }}
+      onClick={disabled ? undefined : onChange}
+      whileHover={disabled ? {} : { x: 2 }}
       transition={{
         type: "tween" as const,
         ease: "easeOut",

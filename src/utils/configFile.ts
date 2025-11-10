@@ -135,8 +135,6 @@ const COLOR_MAP: Record<string, string> = {
 };
 
 export async function writeConfig(config: Config): Promise<void> {
-  console.log("writeConfig called with config:", config);
-
   const lines: string[] = ["#!/usr/bin/env bash", ""];
 
   for (const [configPath, envVar] of Object.entries(ENV_VAR_MAP)) {
@@ -145,7 +143,10 @@ export async function writeConfig(config: Config): Promise<void> {
     if (value === undefined) continue;
 
     if (configPath === "widgetsOrder" && Array.isArray(value)) {
-      const enabledWidgets = value.filter((widget) => config.widgets[widget as keyof typeof config.widgets]?.enabled);
+      const enabledWidgets = value.filter((widget) => {
+        const widgetConfig = config.widgets[widget as keyof typeof config.widgets];
+        return widgetConfig?.enabled;
+      });
       lines.push(`export ${envVar}="${enabledWidgets.join(" ")}"`);
     } else if (typeof value === "string") {
       if (configPath.includes(".color")) {
@@ -164,17 +165,12 @@ export async function writeConfig(config: Config): Promise<void> {
   }
 
   const content = lines.join("\n") + "\n";
-  console.log("Generated content:", content);
-
   const path = await getConfigPath();
-  console.log("Config path:", path);
 
   try {
     await writeTextFile(path, content);
-    console.log("writeTextFile completed successfully");
   } catch (error) {
-    console.error("writeTextFile failed:", error);
-    console.error("Error details:", JSON.stringify(error, null, 2));
+    console.error("Failed to write config file:", error);
     throw error;
   }
 }

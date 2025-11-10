@@ -45,7 +45,7 @@ cp "$BINARY_PATH" "$TARGET_PATH"
 chmod +x "$TARGET_PATH"
 
 # Update open_settings.sh
-PLUGIN_PATH="$SBAR_CONFIG_DIR/plugins/config/open_settings.sh"
+PLUGIN_PATH="$SBAR_CONFIG_DIR/events/open_settings.sh"
 echo -e "${BLUE}Updating $PLUGIN_PATH${NC}"
 
 cat > "$PLUGIN_PATH" << 'EOF'
