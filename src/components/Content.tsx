@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import AppearanceSettings from "@/components/settings/AppearanceSettings";
 import WidgetsSettings from "@/components/settings/WidgetsSettings";
 import AdvancedSettings from "@/components/settings/AdvancedSettings";
@@ -5,17 +6,55 @@ import { useCategory } from "@/contexts/CategoryContext";
 
 export type Category = "Appearance" | "Widgets" | "Advanced";
 
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    x: -20,
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+  },
+  exit: {
+    opacity: 0,
+    x: 20,
+  },
+};
+
 export default function Content() {
   const { activeCategory } = useCategory();
 
-  switch (activeCategory) {
-    case "Appearance":
-      return <AppearanceSettings />;
-    case "Widgets":
-      return <WidgetsSettings />;
-    case "Advanced":
-      return <AdvancedSettings />;
-    default:
-      return null;
-  }
+  const renderContent = () => {
+    switch (activeCategory) {
+      case "Appearance":
+        return <AppearanceSettings />;
+      case "Widgets":
+        return <WidgetsSettings />;
+      case "Advanced":
+        return <AdvancedSettings />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div style={{ overflow: "hidden" }}>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeCategory}
+          variants={pageVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={{
+            type: "tween",
+            ease: "easeInOut",
+            duration: 0.2,
+          }}
+        >
+          {renderContent()}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
 }

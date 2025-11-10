@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
@@ -33,12 +35,19 @@ export default function Button({
   const baseClassName = `option-item ${active ? "active" : ""} ${className || ""}`.trim();
 
   return (
-    <button
+    <motion.button
       onClick={onClick}
       className={baseClassName}
-      style={{ color: variantColor, ...style }}
+      style={{ color: variantColor, outline: "none", ...style }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{
+        type: "tween" as const,
+        ease: "easeOut",
+        duration: 0.1,
+      }}
     >
       {children}
-    </button>
+    </motion.button>
   );
 }

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import CalendarWidget from "@/components/widgets/CalendarWidget";
 import ClockWidget from "@/components/widgets/ClockWidget";
 import WeatherWidget from "@/components/widgets/WeatherWidget";
@@ -10,20 +11,57 @@ import CaffeinateWidget from "@/components/widgets/CaffeinateWidget";
 import KakaotalkWidget from "@/components/widgets/KakaotalkWidget";
 import Heading from "@/components/common/Heading";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
 export default function WidgetsSettings() {
+  const widgets = [
+    <CalendarWidget key="calendar" />,
+    <ClockWidget key="clock" />,
+    <WeatherWidget key="weather" />,
+    <VolumeWidget key="volume" />,
+    <BatteryWidget key="battery" />,
+    <CpuWidget key="cpu" />,
+    <RamWidget key="ram" />,
+    <DiskWidget key="disk" />,
+    <CaffeinateWidget key="caffeinate" />,
+    <KakaotalkWidget key="kakaotalk" />,
+  ];
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+    >
       <Heading style={{ marginBottom: "16px" }}>Widgets</Heading>
-      <CalendarWidget />
-      <ClockWidget />
-      <WeatherWidget />
-      <VolumeWidget />
-      <BatteryWidget />
-      <CpuWidget />
-      <RamWidget />
-      <DiskWidget />
-      <CaffeinateWidget />
-      <KakaotalkWidget />
-    </div>
+      {widgets.map((widget) => (
+        <motion.div
+          key={widget.key}
+          variants={{
+            hidden: { opacity: 0, y: 10 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                type: "tween" as const,
+                ease: "easeOut",
+                duration: 0.2,
+              },
+            },
+          }}
+        >
+          {widget}
+        </motion.div>
+      ))}
+    </motion.div>
   );
 }

@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { exit } from "@tauri-apps/plugin-process";
 import type { Category } from "@/components/Content";
 import Heading from "@/components/common/Heading";
@@ -13,12 +15,18 @@ export default function Sidebar() {
   const { saveConfig } = useConfig();
   const { showModal } = useModal();
   const { activeCategory, setActiveCategory } = useCategory();
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
   const categories: Category[] = ["Appearance", "Widgets", "Advanced"];
 
   const handleSave = async () => {
+    setIsSaving(true);
+    setSaveSuccess(false);
     try {
       await saveConfig();
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 2000);
       showModal(
         "Success",
         "Settings saved and sketchybar reloaded!",
@@ -26,6 +34,8 @@ export default function Sidebar() {
       );
     } catch (error) {
       showModal("Error", "Failed to save settings!", "error");
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -100,7 +110,32 @@ export default function Sidebar() {
         }}
       >
         <Button onClick={handleSave} variant="success">
-          {icons.save} Save
+          <AnimatePresence mode="wait">
+            {saveSuccess ? (
+              <motion.span
+                key="success"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{
+                  type: "spring" as const,
+                  stiffness: 300,
+                  damping: 20,
+                }}
+              >
+                {icons.success} Saved!
+              </motion.span>
+            ) : (
+              <motion.span
+                key="save"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                {icons.save} Save
+              </motion.span>
+            )}
+          </AnimatePresence>
         </Button>
         <Button onClick={handleClose} variant="danger">
           {icons.exit} Exit

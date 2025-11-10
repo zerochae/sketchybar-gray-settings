@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface CheckboxProps {
   checked: boolean;
   onChange: () => void;
@@ -6,7 +8,7 @@ interface CheckboxProps {
 
 export default function Checkbox({ checked, onChange, label }: CheckboxProps) {
   return (
-    <label
+    <motion.label
       style={{
         display: "flex",
         alignItems: "center",
@@ -15,18 +17,31 @@ export default function Checkbox({ checked, onChange, label }: CheckboxProps) {
         userSelect: "none",
       }}
       onClick={onChange}
+      whileHover={{ x: 2 }}
+      transition={{
+        type: "tween" as const,
+        ease: "easeOut",
+        duration: 0.1,
+      }}
     >
-      <span
+      <motion.span
         style={{
           fontFamily: "var(--font-mono)",
           fontSize: "13px",
           color: checked ? "var(--colors-blue)" : "var(--colors-comment)",
           fontWeight: 600,
+          display: "inline-block",
+        }}
+        animate={{
+          scale: checked ? [1, 1.2, 1] : 1,
+        }}
+        transition={{
+          duration: 0.2,
         }}
       >
         {checked ? "[x]" : "[ ]"}
-      </span>
+      </motion.span>
       <span style={{ textTransform: "capitalize" }}>{label}</span>
-    </label>
+    </motion.label>
   );
 }
