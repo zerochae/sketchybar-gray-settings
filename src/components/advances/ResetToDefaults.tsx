@@ -38,7 +38,10 @@ export default function ResetToDefaults() {
             relaunch();
           }, 1500);
         } catch (error) {
-          const errorMessage = error instanceof Error ? error.message : "Failed to reset settings!";
+          const errorMessage =
+            error instanceof Error
+              ? error.message
+              : "Failed to reset settings!";
           showModal("Error", errorMessage, "error");
         }
       },

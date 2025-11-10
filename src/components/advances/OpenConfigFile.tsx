@@ -24,12 +24,15 @@ export default function OpenConfigFile() {
         { cmd: "subl", app: "Sublime Text" },
       ];
 
-      for (const { cmd } of guiEditors) {
+      for (const { cmd, app } of guiEditors) {
         try {
-          await Command.create("which", [cmd]).execute();
-          await Command.create(cmd, [configPath]).spawn();
-          showModal("Success", `Config file opened with ${cmd}!`, "success");
-          return;
+          const whichResult = await Command.create("which", [cmd]).execute();
+          if (whichResult.code === 0 && whichResult.stdout.trim()) {
+            const editorPath = whichResult.stdout.trim();
+            await Command.create(editorPath, [configPath]).spawn();
+            showModal("Success", `Config file opened with ${app}!`, "success");
+            return;
+          }
         } catch {
           continue;
         }
@@ -39,17 +42,19 @@ export default function OpenConfigFile() {
 
       for (const editor of terminalEditors) {
         try {
-          await Command.create("which", [editor]).execute();
-          await Command.create("osascript", [
-            "-e",
-            `tell application "Terminal" to do script "${editor} '${configPath}'"`,
-          ]).execute();
-          showModal(
-            "Success",
-            `Config file opened with ${editor} in Terminal!`,
-            "success",
-          );
-          return;
+          const whichResult = await Command.create("which", [editor]).execute();
+          if (whichResult.code === 0 && whichResult.stdout.trim()) {
+            await Command.create("osascript", [
+              "-e",
+              `tell application "Terminal" to do script "${editor} '${configPath}'"`,
+            ]).execute();
+            showModal(
+              "Success",
+              `Config file opened with ${editor} in Terminal!`,
+              "success",
+            );
+            return;
+          }
         } catch {
           continue;
         }

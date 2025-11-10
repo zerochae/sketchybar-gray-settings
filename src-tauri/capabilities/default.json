@@ -54,8 +54,20 @@
           "sidecar": false
         },
         {
+          "name": "code",
+          "cmd": "/opt/homebrew/bin/code",
+          "args": true,
+          "sidecar": false
+        },
+        {
           "name": "cursor",
           "cmd": "/usr/local/bin/cursor",
+          "args": true,
+          "sidecar": false
+        },
+        {
+          "name": "cursor",
+          "cmd": "/opt/homebrew/bin/cursor",
           "args": true,
           "sidecar": false
         },
@@ -66,8 +78,20 @@
           "sidecar": false
         },
         {
+          "name": "zed",
+          "cmd": "/opt/homebrew/bin/zed",
+          "args": true,
+          "sidecar": false
+        },
+        {
           "name": "subl",
           "cmd": "/usr/local/bin/subl",
+          "args": true,
+          "sidecar": false
+        },
+        {
+          "name": "subl",
+          "cmd": "/opt/homebrew/bin/subl",
           "args": true,
           "sidecar": false
         },
