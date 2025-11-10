@@ -20,6 +20,7 @@
     "@tauri-apps/plugin-process": "^2.3.1",
     "@tauri-apps/plugin-shell": "^2.3.3",
     "@webtui/css": "^0.1.5",
+    "framer-motion": "^12.23.24",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
