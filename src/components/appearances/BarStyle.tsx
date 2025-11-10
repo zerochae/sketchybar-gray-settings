@@ -1,10 +1,15 @@
-import { useState } from "react";
 import Checkbox from "@/components/common/Checkbox";
 import Box from "@/components/common/Box";
 import Heading from "@/components/common/Heading";
+import { useConfig } from "@/contexts/ConfigContext";
 
 export default function BarStyle() {
-  const [selectedBarStyle, setSelectedBarStyle] = useState<string>("compact");
+  const { config, updateAppearance } = useConfig();
+  const selectedBarStyle = config.appearance.barStyle;
+
+  const handleStyleChange = (style: "compact" | "block") => {
+    updateAppearance("barStyle", style);
+  };
 
   return (
     <div>
@@ -13,11 +18,11 @@ export default function BarStyle() {
         padding="8px 12px"
         style={{ display: "flex", flexDirection: "column", gap: "4px" }}
       >
-        {["compact", "block"].map((style) => (
+        {(["compact", "block"] as const).map((style) => (
           <Checkbox
             key={style}
             checked={selectedBarStyle === style}
-            onChange={() => setSelectedBarStyle(style)}
+            onChange={() => handleStyleChange(style)}
             label={style}
           />
         ))}
