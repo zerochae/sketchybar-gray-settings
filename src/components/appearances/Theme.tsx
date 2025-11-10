@@ -13,19 +13,19 @@ const ansiColors = [
   "magenta",
   "cyan",
   "orange",
-  "peach",
-  "lime",
-  "sky",
-  "aqua",
-  "coral",
-  "emerald",
-  "lavender",
-  "mint",
-  "sapphire",
-  "forest",
-  "navy",
-  "plum",
-  "tangerine",
+  // "peach",
+  // "lime",
+  // "sky",
+  // "aqua",
+  // "coral",
+  // "emerald",
+  // "lavender",
+  // "mint",
+  // "sapphire",
+  // "forest",
+  // "navy",
+  // "plum",
+  // "tangerine",
 ] as const;
 
 const getThemeColors = (themeName: string): Record<string, string> => {
@@ -62,19 +62,20 @@ export default function Theme() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "8px",
+                gap: "16px",
               }}
             >
-              <Checkbox
-                checked={selectedTheme === theme}
-                onChange={() => setSelectedTheme(theme)}
-                label={theme}
-              />
+              <div style={{ minWidth: "160px" }}>
+                <Checkbox
+                  checked={selectedTheme === theme}
+                  onChange={() => setSelectedTheme(theme)}
+                  label={theme}
+                />
+              </div>
               <div
                 style={{
                   display: "flex",
                   gap: "2px",
-                  marginLeft: "auto",
                 }}
               >
                 {ansiColors.map((colorKey) => (
