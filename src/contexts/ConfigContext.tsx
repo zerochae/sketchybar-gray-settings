@@ -69,6 +69,17 @@ const defaultConfig: Config = {
     updateFreqFast: 2,
     updateFreqSlow: 30,
   },
+  widgetsOrder: [
+    "clock",
+    "weather",
+    "caffeinate",
+    "volume",
+    "battery",
+    "disk",
+    "ram",
+    "cpu",
+    "kakaotalk",
+  ],
 };
 
 interface ConfigContextType {
@@ -86,6 +97,7 @@ interface ConfigContextType {
     key: K,
     value: Config["advanced"][K]
   ) => void;
+  updateWidgetsOrder: (order: string[]) => void;
   saveConfig: () => Promise<void>;
   resetConfig: () => void;
 }
@@ -103,6 +115,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         appearance: { ...prev.appearance, ...loadedConfig.appearance },
         widgets: { ...prev.widgets, ...loadedConfig.widgets },
         advanced: { ...prev.advanced, ...loadedConfig.advanced },
+        widgetsOrder: loadedConfig.widgetsOrder || prev.widgetsOrder,
       }));
     });
   }, []);
@@ -159,6 +172,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     []
   );
 
+  const updateWidgetsOrder = useCallback((order: string[]) => {
+    setConfig((prev) => ({
+      ...prev,
+      widgetsOrder: order,
+    }));
+  }, []);
+
   const saveConfig = useCallback(async () => {
     try {
       console.log("Saving config...", config);
@@ -190,6 +210,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         updateAppearance,
         updateWidget,
         updateAdvanced,
+        updateWidgetsOrder,
         saveConfig,
         resetConfig,
       }}

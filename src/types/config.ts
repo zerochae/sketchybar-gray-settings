@@ -60,4 +60,5 @@ export interface Config {
   appearance: AppearanceConfig;
   widgets: WidgetsConfig;
   advanced: AdvancedConfig;
+  widgetsOrder: string[];
 }

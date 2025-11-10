@@ -23,7 +23,8 @@
         "center": true,
         "skipTaskbar": true,
         "hiddenTitle": true,
-        "titleBarStyle": "Transparent"
+        "titleBarStyle": "Transparent",
+        "dragDropEnabled": false
       }
     ],
     "security": {

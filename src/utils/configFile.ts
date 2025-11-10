@@ -34,6 +34,7 @@ const ENV_VAR_MAP: Record<string, string> = {
   "advanced.updateFreqDefault": "SBAR_ITEM_UPDATE_FREQ_DEFAULT",
   "advanced.updateFreqFast": "SBAR_ITEM_UPDATE_FREQ_FAST",
   "advanced.updateFreqSlow": "SBAR_ITEM_UPDATE_FREQ_SLOW",
+  "widgetsOrder": "SBAR_WIDGETS_RIGHT_ENABLED",
 };
 
 const REVERSE_ENV_VAR_MAP: Record<string, string> = Object.fromEntries(
@@ -93,7 +94,10 @@ function parseConfigFile(content: string): Partial<Config> {
     if (!configPath) continue;
 
     let value: any = rawValue;
-    if (rawValue === "true" || rawValue === "false") {
+
+    if (configPath === "widgetsOrder") {
+      value = rawValue.split(/\s+/).filter(Boolean);
+    } else if (rawValue === "true" || rawValue === "false") {
       value = rawValue === "true";
     } else if (!isNaN(Number(rawValue)) && rawValue !== "") {
       value = rawValue.includes(".") ? parseFloat(rawValue) : parseInt(rawValue);
@@ -128,8 +132,9 @@ export async function writeConfig(config: Config): Promise<void> {
 
     if (value === undefined) continue;
 
-    if (typeof value === "string") {
-      // Check if this is a color field
+    if (configPath === "widgetsOrder" && Array.isArray(value)) {
+      lines.push(`export ${envVar}="${value.join(" ")}"`);
+    } else if (typeof value === "string") {
       if (configPath.includes(".color")) {
         const colorVar = COLOR_MAP[value.toLowerCase()];
         if (colorVar) {
