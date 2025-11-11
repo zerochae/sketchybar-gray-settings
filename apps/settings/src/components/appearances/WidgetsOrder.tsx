@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Reorder } from "framer-motion";
-import Box from "@/components/common/Box";
-import Heading from "@/components/common/Heading";
-import Label from "@/components/common/Label";
+import { Box, Heading, Label } from "@sketchybar-gray/react";
 import { useConfig } from "@/contexts/ConfigContext";
 import {
   type WidgetName,

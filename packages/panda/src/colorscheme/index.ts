@@ -1,0 +1,10 @@
+export { onedarkColors } from "./onedark";
+export { nordColors } from "./nord";
+export { onelightColors } from "./onelight";
+export { tokyonightColors } from "./tokyonight";
+export { ayulightColors } from "./ayulight";
+export { ayudarkColors } from "./ayudark";
+export { gruvboxlightColors } from "./gruvboxlight";
+export { blossomlightColors } from "./blossomlight";
+export { githublightColors } from "./githublight";
+export { githubdarkColors } from "./githubdark";

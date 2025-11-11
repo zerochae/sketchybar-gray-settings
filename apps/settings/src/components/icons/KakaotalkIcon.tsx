@@ -1,4 +1,4 @@
-import SvgIcon from "@/components/common/SvgIcon";
+import { SvgIcon } from "@sketchybar-gray/react";
 
 interface KakaotalkIconProps {
   color?: string;

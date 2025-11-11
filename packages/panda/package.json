@@ -1,0 +1,19 @@
+{
+  "name": "@sketchybar-gray/panda",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles": "./styled-system/styles.css"
+  },
+  "scripts": {
+    "codegen": "panda codegen"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^1.5.0",
+    "typescript": "~5.8.3"
+  }
+}

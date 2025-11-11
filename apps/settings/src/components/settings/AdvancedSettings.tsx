@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Heading from "@/components/common/Heading";
+import { Heading } from "@sketchybar-gray/react";
 import OpenConfigFile from "@/components/advances/OpenConfigFile";
 import ReloadSketchybar from "@/components/advances/ReloadSketchybar";
 import ResetToDefaults from "@/components/advances/ResetToDefaults";

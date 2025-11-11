@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useModal } from "@/contexts/ModalContext";
 import icons from "@/assets/icon.json";
-import Button from "./Button";
-import Label from "./Label";
+import { Button, Label } from "@sketchybar-gray/react";
 
 const backdropVariants = {
   hidden: { opacity: 0 },

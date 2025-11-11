@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Heading from "@/components/common/Heading";
+import { Heading } from "@sketchybar-gray/react";
 import WidgetsOrder from "@/components/appearances/WidgetsOrder";
 import WidgetsEnable from "@/components/appearances/WidgetsEnable";
 import Theme from "@/components/appearances/Theme";

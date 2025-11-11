@@ -2,10 +2,7 @@ import { writeTextFile } from "@tauri-apps/plugin-fs";
 import { homeDir, resolve } from "@tauri-apps/api/path";
 import { relaunch } from "@tauri-apps/plugin-process";
 import { Command } from "@tauri-apps/plugin-shell";
-import Box from "@/components/common/Box";
-import Heading from "@/components/common/Heading";
-import Button from "@/components/common/Button";
-import KeyHint from "@/components/common/KeyHint";
+import { Box, Heading, Button, KeyHint } from "@sketchybar-gray/react";
 import icons from "@/assets/icon.json";
 import { useModal } from "@/contexts/ModalContext";
 

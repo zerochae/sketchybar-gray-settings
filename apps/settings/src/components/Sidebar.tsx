@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { exit } from "@tauri-apps/plugin-process";
-import Heading from "@/components/common/Heading";
-import Button from "@/components/common/Button";
-import KeyHint from "@/components/common/KeyHint";
-import Label from "@/components/common/Label";
+import { Heading, Button, KeyHint, Label } from "@sketchybar-gray/react";
 import icons from "@/assets/icon.json";
 import { useConfig } from "@/contexts/ConfigContext";
 import { useModal } from "@/contexts/ModalContext";

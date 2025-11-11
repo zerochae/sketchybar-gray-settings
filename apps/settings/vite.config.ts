@@ -18,6 +18,7 @@ export default defineConfig(async () => ({
       "@/components/settings": path.resolve(__dirname, "./src/components/settings"),
       "@/components/icons": path.resolve(__dirname, "./src/components/icons"),
       "@/assets": path.resolve(__dirname, "./src/assets"),
+      "@panda/styles": path.resolve(__dirname, "../../packages/panda/styled-system/styles.css"),
     },
   },
 

@@ -1,6 +1,4 @@
-import Checkbox from "@/components/common/Checkbox";
-import Box from "@/components/common/Box";
-import Heading from "@/components/common/Heading";
+import { Checkbox, Box, Heading } from "@sketchybar-gray/react";
 import { useConfig } from "@/contexts/ConfigContext";
 
 export default function BarStyle() {

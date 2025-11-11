@@ -1,7 +1,4 @@
-import Box from "@/components/common/Box";
-import Heading from "@/components/common/Heading";
-import Label from "@/components/common/Label";
-import Checkbox from "@/components/common/Checkbox";
+import { Box, Heading, Label, Checkbox } from "@sketchybar-gray/react";
 import { useConfig } from "@/contexts/ConfigContext";
 import {
   type WidgetName,

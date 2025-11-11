@@ -5,8 +5,10 @@
   "scripts": {
     "build:all": "pnpm -r build:tauri",
     "install:all": "pnpm build:all && ./scripts/install.sh",
-    "dev:settings": "pnpm --filter settings dev",
-    "tauri:settings": "pnpm --filter settings tauri dev"
-  },
-  "devDependencies": {}
+    "react": "pnpm --filter @sketchybar-gray/react",
+    "settings": "pnpm --filter @sketchybar-gray/settings",
+    "settings:dev": "pnpm --filter @sketchybar-gray/settings dev",
+    "volume": "pnpm --filter @sketchybar-gray/volume",
+    "volume:dev": "pnpm --filter @sketchybar-gray/volume dev"
+  }
 }

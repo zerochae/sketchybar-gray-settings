@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Heading from "@/components/common/Heading";
+import { Heading } from "@sketchybar-gray/react";
 import CalendarWidget from "@/components/widgets/CalendarWidget";
 import ClockWidget from "@/components/widgets/ClockWidget";
 import WeatherWidget from "@/components/widgets/WeatherWidget";

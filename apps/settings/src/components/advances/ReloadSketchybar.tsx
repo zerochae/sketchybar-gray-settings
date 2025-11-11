@@ -1,8 +1,5 @@
 import { Command } from "@tauri-apps/plugin-shell";
-import Box from "@/components/common/Box";
-import Heading from "@/components/common/Heading";
-import Button from "@/components/common/Button";
-import KeyHint from "@/components/common/KeyHint";
+import { Box, Heading, Button, KeyHint } from "@sketchybar-gray/react";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function ReloadSketchybar() {

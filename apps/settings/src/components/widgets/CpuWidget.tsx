@@ -1,5 +1,4 @@
-import Label from "@/components/common/Label";
-import Heading from "@/components/common/Heading";
+import { Label, Heading } from "@sketchybar-gray/react";
 import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 
 export default function CpuWidget() {

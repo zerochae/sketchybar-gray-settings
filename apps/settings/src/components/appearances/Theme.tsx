@@ -1,8 +1,7 @@
-import { themeNames, themes } from "@/themes";
+import { themeNames } from "@sketchybar-gray/panda";
+import * as themes from "@sketchybar-gray/panda";
 import { useTheme } from "@/hooks/useTheme";
-import Checkbox from "@/components/common/Checkbox";
-import Box from "@/components/common/Box";
-import Heading from "@/components/common/Heading";
+import { Checkbox, Box, Heading } from "@sketchybar-gray/react";
 import icons from "@/assets/icon.json";
 
 const ansiColors = [

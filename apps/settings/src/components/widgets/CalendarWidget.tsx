@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-import Checkbox from "@/components/common/Checkbox";
-import Label from "@/components/common/Label";
-import Heading from "@/components/common/Heading";
-import Box from "@/components/common/Box";
-import Input from "@/components/common/Input";
+import { Checkbox, Label, Heading, Box, Input } from "@sketchybar-gray/react";
 import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 import { useConfig } from "@/contexts/ConfigContext";
 

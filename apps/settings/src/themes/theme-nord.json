@@ -1,5 +1,0 @@
-{
-  "name": "nord",
-  "id": "panda-theme-nord",
-  "css": " [data-panda-theme=nord] {\n    --colors-bg: #2E3440;\n    --colors-bg2: #3B4252;\n    --colors-bg3: #434C5E;\n    --colors-bg4: #4C566A;\n    --colors-tab-bg: #4a5568;\n    --colors-mode-fg: #2E3440;\n    --colors-border: #4C566A;\n    --colors-float-border: #4C566A;\n    --colors-text: #E5E9F0;\n    --colors-comment: #4C566A;\n    --colors-red: #88C0D0;\n    --colors-yellow: #EBCB8B;\n    --colors-blue: #81A1C1;\n    --colors-green: #A3BE8C;\n    --colors-magenta: #B48EAD;\n    --colors-cyan: #88C0D0;\n    --colors-orange: #D08770;\n    --colors-peach: #D08770;\n    --colors-lime: #A3BE8C;\n    --colors-sky: #81A1C1;\n    --colors-aqua: #8FBCBB;\n    --colors-coral: #BF616A;\n    --colors-emerald: #A3BE8C;\n    --colors-lavender: #B48EAD;\n    --colors-mint: #8FBCBB;\n    --colors-sapphire: #5E81AC;\n    --colors-forest: #A3BE8C;\n    --colors-navy: #5E81AC;\n    --colors-plum: #B48EAD;\n    --colors-gray: #D8DEE9;\n    --colors-black: #2E3440;\n    --colors-tangerine: #D08770;\n    --colors-react: #88C0D0;\n    --colors-st: #3B4252;\n    --colors-st_sep: #4C566A\n}"
-}

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { themes } from "@/themes";
 import { useConfig } from "@/contexts/ConfigContext";
 
 export function useTheme() {
@@ -11,22 +10,7 @@ export function useTheme() {
   };
 
   useEffect(() => {
-    const theme = themes[selectedTheme];
-    if (theme) {
-      const styleId = "dynamic-theme";
-      let styleEl = document.getElementById(styleId) as HTMLStyleElement;
-
-      if (!styleEl) {
-        styleEl = document.createElement("style");
-        styleEl.id = styleId;
-        document.head.appendChild(styleEl);
-      }
-
-      styleEl.textContent = theme.css.replace(
-        `[data-panda-theme=${selectedTheme}]`,
-        ":root",
-      );
-    }
+    document.documentElement.setAttribute("data-panda-theme", selectedTheme);
   }, [selectedTheme]);
 
   return { selectedTheme, setSelectedTheme };
