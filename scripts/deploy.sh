@@ -48,41 +48,8 @@ chmod +x "$SBAR_BIN_DIR/$BINARY_NAME"
 echo -e "${GREEN}✓ Binary copied to: $SBAR_BIN_DIR/$BINARY_NAME${NC}"
 echo ""
 
-# Step 4: Update plugin script
-echo -e "${BLUE}[3/4] Updating plugin script...${NC}"
-PLUGIN_PATH="$SBAR_CONFIG_DIR/events/open_settings.sh"
-cat > "$PLUGIN_PATH" << 'EOF'
-#!/usr/bin/env bash
-
-BIN_DIR="$HOME/.config/sketchybar/bin"
-DEV_BIN="$BIN_DIR/dev"
-PROD_BIN="$BIN_DIR/settings"
-
-sketchybar --set config popup.drawing=off 2>/dev/null
-
-if [ -x "$DEV_BIN" ]; then
-  SETTINGS_BIN="$DEV_BIN"
-elif [ -x "$PROD_BIN" ]; then
-  SETTINGS_BIN="$PROD_BIN"
-else
-  echo "Settings binary not found in $BIN_DIR"
-  exit 1
-fi
-
-if pgrep -f "$SETTINGS_BIN" > /dev/null; then
-  osascript -e 'tell application "System Events" to set frontmost of first process whose unix id is '$(pgrep -f "$SETTINGS_BIN")' to true' 2>/dev/null
-  exit 0
-fi
-
-"$SETTINGS_BIN" &
-exit 0
-EOF
-chmod +x "$PLUGIN_PATH"
-echo -e "${GREEN}✓ Plugin script updated${NC}"
-echo ""
-
-# Step 5: Check git status
-echo -e "${BLUE}[4/4] Checking git status...${NC}"
+# Step 3: Check git status
+echo -e "${BLUE}[3/3] Checking git status...${NC}"
 cd "$SBAR_CONFIG_DIR"
 if git status > /dev/null 2>&1; then
   echo -e "${YELLOW}Sketchybar repo git status:${NC}"

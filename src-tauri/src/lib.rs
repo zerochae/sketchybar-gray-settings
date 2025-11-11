@@ -2,11 +2,6 @@ use std::fs;
 use std::path::PathBuf;
 
 #[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
-
-#[tauri::command]
 fn read_config_theme() -> String {
     let config_path: PathBuf = [
         std::env::var("HOME").unwrap_or_else(|_| String::from("")),
@@ -82,7 +77,7 @@ pub fn run() {
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_dialog::init())
-        .invoke_handler(tauri::generate_handler![greet, read_config_theme, write_config_theme])
+        .invoke_handler(tauri::generate_handler![read_config_theme, write_config_theme])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
