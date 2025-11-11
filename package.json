@@ -8,7 +8,6 @@
     "build": "tsc && vite build",
     "build:tauri": "tauri build --no-bundle",
     "install": "pnpm build:tauri && ./scripts/install.sh",
-    "install:dev": "pnpm build:tauri && ./scripts/install.sh --dev",
     "preview": "vite preview",
     "tauri": "tauri"
   },

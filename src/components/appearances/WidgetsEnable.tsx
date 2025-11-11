@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Box from "@/components/common/Box";
 import Heading from "@/components/common/Heading";
 import Label from "@/components/common/Label";
@@ -14,25 +13,18 @@ import {
 
 export default function WidgetsEnable() {
   const { config, updateWidget, updateWidgetsOrder } = useConfig();
-  const [localOrder, setLocalOrder] = useState<string[]>(config.widgetsOrder);
-
-  useEffect(() => {
-    setLocalOrder(config.widgetsOrder);
-  }, [config.widgetsOrder]);
 
   const handleToggleWidget = (widget: WidgetName) => {
     const isEnabled = config.widgets[widget].enabled;
     updateWidget(widget, "enabled", !isEnabled);
 
     if (isEnabled) {
-      const newOrder = localOrder.filter((w) => w !== widget);
-      setLocalOrder(newOrder);
+      const newOrder = config.widgetsOrder.filter((w) => w !== widget);
       updateWidgetsOrder(newOrder);
     } else {
-      const newOrder = localOrder.includes(widget)
-        ? localOrder
-        : [...localOrder, widget];
-      setLocalOrder(newOrder);
+      const newOrder = config.widgetsOrder.includes(widget)
+        ? config.widgetsOrder
+        : [...config.widgetsOrder, widget];
       updateWidgetsOrder(newOrder);
     }
   };
