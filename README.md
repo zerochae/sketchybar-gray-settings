@@ -1,8 +1,14 @@
 <img width="743" height="572" alt="스크린샷 2025-11-10 16 59 50" src="https://github.com/user-attachments/assets/1e235d92-c485-421b-b977-7d894a109270" />
 
-# Sketchybar Gray Settings
+# Sketchybar Gray UI
 
-A GUI settings tool for macOS Sketchybar. Built with Tauri for lightweight and fast performance.
+A collection of GUI tools for macOS Sketchybar. Built with Tauri for lightweight and fast performance.
+
+## Apps
+
+- **Settings**: GUI settings tool for Sketchybar configuration
+- **Volume**: Volume control UI (coming soon)
+- **WiFi**: WiFi management UI (coming soon)
 
 ## Key Features
 
@@ -37,9 +43,11 @@ Detailed configuration for individual widgets:
 ## Installation
 
 ```bash
-# Install dependencies, build, and auto-install to Sketchybar
+# Install dependencies and build all apps
 pnpm install
-pnpm run install
+
+# Build and install all apps to Sketchybar
+pnpm run install:all
 ```
 
 Reload Sketchybar after installation:
@@ -53,17 +61,29 @@ Now click the config icon in Sketchybar to launch the settings app.
 ## Development
 
 ```bash
-# Run development server (frontend only)
-pnpm dev
+# Run settings app in development mode (frontend only)
+pnpm run dev:settings
 
-# Tauri development mode (full app)
-pnpm tauri dev
+# Run settings app in Tauri development mode (full app)
+pnpm run tauri:settings
 
-# Install as development version (test separately from production)
-pnpm run install:dev
+# Build specific app
+pnpm --filter settings build:tauri
 ```
 
-Development mode installs to `~/.config/sketchybar/bin/dev` and takes precedence over production version.
+### Monorepo Structure
+
+This is a pnpm workspace monorepo containing multiple Tauri apps:
+
+```
+sketchybar-gray-ui/
+├── apps/
+│   ├── settings/      # Settings GUI app
+│   ├── volume/        # Volume control UI (coming soon)
+│   └── wifi/          # WiFi management UI (coming soon)
+├── scripts/
+└── pnpm-workspace.yaml
+```
 
 ## Settings Storage
 

@@ -21,7 +21,7 @@ echo -e "${BOLD}${BLUE}  Sketchybar Settings Installation${NC}"
 echo -e "${BOLD}${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
 
-BINARY_PATH="$PROJECT_DIR/src-tauri/target/release/$BINARY_NAME"
+BINARY_PATH="$PROJECT_DIR/apps/settings/src-tauri/target/release/$BINARY_NAME"
 
 if [ ! -f "$BINARY_PATH" ]; then
   echo -e "${RED}✗ Binary not found${NC}"
