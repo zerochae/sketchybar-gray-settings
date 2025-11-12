@@ -2,9 +2,8 @@ import { writeTextFile } from "@tauri-apps/plugin-fs";
 import { homeDir, resolve } from "@tauri-apps/api/path";
 import { relaunch } from "@tauri-apps/plugin-process";
 import { Command } from "@tauri-apps/plugin-shell";
-import { Box, Heading, Button, KeyHint, WarningIcon } from "@sketchybar-gray/react";
+import { Box, Heading, Button, KeyHint, WarningIcon, useModal } from "@sketchybar-gray/react";
 import { css } from "@sketchybar-gray/panda/css";
-import { useModal } from "@/contexts/ModalContext";
 
 export default function ResetToDefaults() {
   const { showConfirm, showModal } = useModal();

@@ -12,10 +12,10 @@ import {
   SaveIcon,
   SuccessIcon,
   WidgetsIcon,
+  useModal,
 } from "@sketchybar-gray/react";
 import { css } from "@sketchybar-gray/panda/css";
 import { useConfig } from "@/contexts/ConfigContext";
-import { useModal } from "@/contexts/ModalContext";
 import { useCategory } from "@/contexts/CategoryContext";
 import { CATEGORIES } from "@/constants/categories";
 import { ReactNode } from "react";

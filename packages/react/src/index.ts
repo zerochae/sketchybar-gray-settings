@@ -8,8 +8,9 @@ export { default as Input } from "./components/Input";
 export { default as KeyHint } from "./components/KeyHint";
 export { default as Label } from "./components/Label";
 export { default as Modal } from "./components/Modal";
-export type { ModalProps, ModalType, ModalMode } from "./components/Modal";
 export { default as SvgIcon } from "./components/SvgIcon";
+
+export { ModalProvider, useModal } from "./contexts/ModalContext";
 
 export { default as AdvancedIcon } from "./components/icons/AdvancedIcon";
 export { default as AppearanceIcon } from "./components/icons/AppearanceIcon";

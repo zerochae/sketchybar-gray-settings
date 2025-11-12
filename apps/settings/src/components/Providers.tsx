@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ModalProvider } from "@/contexts/ModalContext";
+import { ModalProvider } from "@sketchybar-gray/react";
 import { ConfigProvider } from "@/contexts/ConfigContext";
 import { CategoryProvider } from "@/contexts/CategoryContext";
 

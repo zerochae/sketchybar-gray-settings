@@ -1,8 +1,7 @@
 import { Command } from "@tauri-apps/plugin-shell";
 import { homeDir, resolve } from "@tauri-apps/api/path";
-import { Box, Heading, Button, KeyHint } from "@sketchybar-gray/react";
+import { Box, Heading, Button, KeyHint, useModal } from "@sketchybar-gray/react";
 import { css } from "@sketchybar-gray/panda/css";
-import { useModal } from "@/contexts/ModalContext";
 
 export default function OpenConfigFile() {
   const { showModal } = useModal();

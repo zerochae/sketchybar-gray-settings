@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { css } from "@sketchybar-gray/panda/css";
+import { useModal } from "../contexts/ModalContext";
 import Button from "./Button";
 import Label from "./Label";
 import InfoIcon from "./icons/InfoIcon";
@@ -26,44 +27,26 @@ const modalVariants = {
   },
 };
 
-export type ModalType = "info" | "success" | "warning" | "error";
-export type ModalMode = "alert" | "confirm";
+export default function Modal() {
+  const { modal, closeModal } = useModal();
+  const { isOpen, title, message, type, mode, onConfirm } = modal;
 
-export interface ModalProps {
-  isOpen: boolean;
-  title: string;
-  message: string;
-  type: ModalType;
-  mode?: ModalMode;
-  onClose: () => void;
-  onConfirm?: () => void;
-}
-
-export default function Modal({
-  isOpen,
-  title,
-  message,
-  type,
-  mode = "alert",
-  onClose,
-  onConfirm,
-}: ModalProps) {
   const handleConfirm = () => {
     if (onConfirm) {
       onConfirm();
     }
-    onClose();
+    closeModal();
   };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        onClose();
+        closeModal();
       } else if (e.key === "Enter") {
         if (mode === "confirm") {
           handleConfirm();
         } else {
-          onClose();
+          closeModal();
         }
       }
     };
@@ -75,7 +58,7 @@ export default function Modal({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, onClose, mode, onConfirm]);
+  }, [isOpen, closeModal, mode, onConfirm]);
 
   const typeColors = {
     info: "blue",
@@ -116,7 +99,7 @@ export default function Modal({
             justifyContent: "center",
             zIndex: 1000,
           })}
-          onClick={onClose}
+          onClick={closeModal}
         >
           <motion.div
             variants={modalVariants}
@@ -169,7 +152,7 @@ export default function Modal({
               {mode === "confirm" ? (
                 <>
                   <Button
-                    onClick={onClose}
+                    onClick={closeModal}
                     variant="secondary"
                     className={css({ width: "80px", justifyContent: "center" })}
                   >
@@ -185,7 +168,7 @@ export default function Modal({
                 </>
               ) : (
                 <Button
-                  onClick={onClose}
+                  onClick={closeModal}
                   variant="primary"
                   className={css({ width: "80px", justifyContent: "center" })}
                 >

@@ -1,7 +1,6 @@
 import Content from "@/components/Content";
 import Layout from "@/components/Layout";
-import { Banner } from "@sketchybar-gray/react";
-import ModalWrapper from "@/components/common/ModalWrapper";
+import { Banner, Modal } from "@sketchybar-gray/react";
 import Providers from "@/components/Providers";
 
 export default function App() {
@@ -11,7 +10,7 @@ export default function App() {
         <Banner />
         <Content />
       </Layout>
-      <ModalWrapper />
+      <Modal />
     </Providers>
   );
 }
