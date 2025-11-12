@@ -1,5 +1,4 @@
-import icons from "@/assets/icon.json";
-import KakaotalkIcon from "@/components/icons/KakaotalkIcon";
+import { ICONS, KakaotalkIcon } from "@sketchybar-gray/react";
 import { ReactNode } from "react";
 
 export type WidgetName =
@@ -44,17 +43,17 @@ export const WIDGET_COLORS: Record<WidgetName, string> = {
 };
 
 export const WIDGET_ICONS: Record<WidgetName, string | ReactNode> = {
-  clock: icons.clock,
-  calendar: icons.calendar,
-  weather: icons.weather,
-  caffeinate: icons.coffee_on,
-  volume: icons.volume_high,
-  battery: icons.battery_full,
-  disk: icons.disk,
-  ram: icons.memory,
-  cpu: icons.cpu,
+  clock: ICONS.clock,
+  calendar: ICONS.calendar,
+  weather: ICONS.weather,
+  caffeinate: ICONS.coffee_on,
+  volume: ICONS.volume_high,
+  battery: ICONS.battery_full,
+  disk: ICONS.disk,
+  ram: ICONS.memory,
+  cpu: ICONS.cpu,
   kakaotalk: <KakaotalkIcon color={WIDGET_COLORS.kakaotalk} size={10} />,
-  config: icons.config,
+  config: ICONS.config,
 };
 
 export const WIDGET_LABELS: Record<WidgetName, string> = {

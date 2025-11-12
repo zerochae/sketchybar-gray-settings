@@ -1,0 +1,26 @@
+export const ICONS = {
+  battery_full: "",
+  clock: "",
+  calendar: "",
+  disk: "",
+  loading: "",
+  volume_high: "",
+  cpu: "",
+  memory: "",
+  coffee_on: "󰅶",
+  coffee_off: "󰶞",
+  config: "",
+  weather: "󰖙",
+  save: "",
+  exit: "󰩈",
+  Appearance: "",
+  Widgets: "󰜬",
+  Advanced: "󰏙",
+  info: "󰋼",
+  error: "",
+  success: "",
+  warning: "",
+  box: "󱓻",
+} as const;
+
+export type IconName = keyof typeof ICONS;

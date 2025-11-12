@@ -4,7 +4,7 @@ import { relaunch } from "@tauri-apps/plugin-process";
 import { Command } from "@tauri-apps/plugin-shell";
 import { Box, Heading, Button, KeyHint } from "@sketchybar-gray/react";
 import { css } from "@sketchybar-gray/panda/css";
-import icons from "@/assets/icon.json";
+import { ICONS } from "@sketchybar-gray/react";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function ResetToDefaults() {
@@ -59,7 +59,7 @@ export default function ResetToDefaults() {
             color: "comment",
           })}
         >
-          {icons.warning} This will reset all settings to default values. This action cannot be
+          {ICONS.warning} This will reset all settings to default values. This action cannot be
           undone.
         </div>
       </Box>

@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { exit } from "@tauri-apps/plugin-process";
-import { Heading, Button, KeyHint, Label } from "@sketchybar-gray/react";
+import { Heading, Button, KeyHint, Label, ICONS } from "@sketchybar-gray/react";
 import { css } from "@sketchybar-gray/panda/css";
-import icons from "@/assets/icon.json";
 import { useConfig } from "@/contexts/ConfigContext";
 import { useModal } from "@/contexts/ModalContext";
 import { useCategory } from "@/contexts/CategoryContext";
@@ -75,7 +74,7 @@ export default function Sidebar() {
               active={activeCategory === category}
             >
               <Heading level={2} marginBottom="0">
-                <Label icon={icons[category as keyof typeof icons]} color="cyan">
+                <Label icon={ICONS[category as keyof typeof ICONS]} color="cyan">
                   {category}
                 </Label>
               </Heading>
@@ -109,7 +108,7 @@ export default function Sidebar() {
                   damping: 20,
                 }}
               >
-                {icons.success} Saved!
+                {ICONS.success} Saved!
               </motion.span>
             ) : (
               <motion.span
@@ -118,13 +117,13 @@ export default function Sidebar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                {icons.save} Save
+                {ICONS.save} Save
               </motion.span>
             )}
           </AnimatePresence>
         </Button>
         <Button onClick={handleClose} variant="danger">
-          {icons.exit} Exit
+          {ICONS.exit} Exit
         </Button>
       </div>
     </aside>

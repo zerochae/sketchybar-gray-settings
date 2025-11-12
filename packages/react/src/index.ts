@@ -7,3 +7,7 @@ export { default as Input } from "./components/Input";
 export { default as KeyHint } from "./components/KeyHint";
 export { default as Label } from "./components/Label";
 export { default as SvgIcon } from "./components/SvgIcon";
+
+export { default as KakaotalkIcon } from "./components/icons/KakaotalkIcon";
+
+export { ICONS, type IconName } from "./constants/icons";
