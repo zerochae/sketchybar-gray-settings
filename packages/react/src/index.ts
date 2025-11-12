@@ -17,6 +17,7 @@ export { default as AppearanceIcon } from "./components/icons/AppearanceIcon";
 export { default as BatteryFullIcon } from "./components/icons/BatteryFullIcon";
 export { default as BoxIcon } from "./components/icons/BoxIcon";
 export { default as CalendarIcon } from "./components/icons/CalendarIcon";
+export { default as CheckIcon } from "./components/icons/CheckIcon";
 export { default as ClockIcon } from "./components/icons/ClockIcon";
 export { default as CoffeeOffIcon } from "./components/icons/CoffeeOffIcon";
 export { default as CoffeeOnIcon } from "./components/icons/CoffeeOnIcon";

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { css } from "@sketchybar-gray/panda/css";
+import CheckIcon from "./icons/CheckIcon";
 
 interface CheckboxProps {
   checked: boolean;
@@ -42,7 +43,13 @@ export default function Checkbox({ checked, onChange, label, disabled = false }:
           duration: 0.2,
         }}
       >
-        {checked ? "[x]" : "[ ]"}
+        {checked ? (
+          <span className={css({ display: "flex", alignItems: "center", gap: "4px" })}>
+            [<CheckIcon />]
+          </span>
+        ) : (
+          "[ ]"
+        )}
       </motion.span>
       <span>{label}</span>
     </motion.label>
