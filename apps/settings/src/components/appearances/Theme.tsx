@@ -1,7 +1,7 @@
 import { themeNames } from "@sketchybar-gray/panda";
 import * as themes from "@sketchybar-gray/panda";
 import { useTheme } from "@/hooks/useTheme";
-import { Checkbox, Box, Heading, ICONS } from "@sketchybar-gray/react";
+import { Checkbox, Box, Heading, BoxIcon } from "@sketchybar-gray/react";
 import { css } from "@sketchybar-gray/panda/css";
 
 const ansiColors = [
@@ -68,7 +68,7 @@ export default function Theme() {
                     })}
                     style={{ color: colors[colorKey] || "transparent" }}
                   >
-                    {ICONS.box}
+                    <BoxIcon />
                   </span>
                 ))}
               </div>

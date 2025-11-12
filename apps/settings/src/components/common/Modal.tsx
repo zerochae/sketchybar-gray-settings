@@ -2,7 +2,14 @@ import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { css } from "@sketchybar-gray/panda/css";
 import { useModal } from "@/contexts/ModalContext";
-import { Button, Label, ICONS } from "@sketchybar-gray/react";
+import {
+  Button,
+  Label,
+  InfoIcon,
+  SuccessIcon,
+  WarningIcon,
+  ErrorIcon,
+} from "@sketchybar-gray/react";
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -63,10 +70,10 @@ export default function Modal() {
   };
 
   const typeIcons = {
-    info: ICONS.info,
-    success: ICONS.success,
-    warning: ICONS.warning,
-    error: ICONS.error,
+    info: <InfoIcon />,
+    success: <SuccessIcon />,
+    warning: <WarningIcon />,
+    error: <ErrorIcon />,
   };
 
   return (

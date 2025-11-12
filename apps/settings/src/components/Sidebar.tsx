@@ -1,12 +1,30 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { exit } from "@tauri-apps/plugin-process";
-import { Heading, Button, KeyHint, Label, ICONS } from "@sketchybar-gray/react";
+import {
+  Heading,
+  Button,
+  KeyHint,
+  Label,
+  AdvancedIcon,
+  AppearanceIcon,
+  ExitIcon,
+  SaveIcon,
+  SuccessIcon,
+  WidgetsIcon,
+} from "@sketchybar-gray/react";
 import { css } from "@sketchybar-gray/panda/css";
 import { useConfig } from "@/contexts/ConfigContext";
 import { useModal } from "@/contexts/ModalContext";
 import { useCategory } from "@/contexts/CategoryContext";
 import { CATEGORIES } from "@/constants/categories";
+import { ReactNode } from "react";
+
+const categoryIcons: Record<string, ReactNode> = {
+  Appearance: <AppearanceIcon />,
+  Widgets: <WidgetsIcon />,
+  Advanced: <AdvancedIcon />,
+};
 
 export default function Sidebar() {
   const { saveConfig } = useConfig();
@@ -74,7 +92,7 @@ export default function Sidebar() {
               active={activeCategory === category}
             >
               <Heading level={2} marginBottom="0">
-                <Label icon={ICONS[category as keyof typeof ICONS]} color="cyan">
+                <Label icon={categoryIcons[category]} color="cyan">
                   {category}
                 </Label>
               </Heading>
@@ -108,7 +126,7 @@ export default function Sidebar() {
                   damping: 20,
                 }}
               >
-                {ICONS.success} Saved!
+                <SuccessIcon /> Saved!
               </motion.span>
             ) : (
               <motion.span
@@ -117,13 +135,13 @@ export default function Sidebar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                {ICONS.save} Save
+                <SaveIcon /> Save
               </motion.span>
             )}
           </AnimatePresence>
         </Button>
         <Button onClick={handleClose} variant="danger">
-          {ICONS.exit} Exit
+          <ExitIcon /> Exit
         </Button>
       </div>
     </aside>

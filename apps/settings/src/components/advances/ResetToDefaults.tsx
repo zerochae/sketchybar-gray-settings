@@ -2,9 +2,8 @@ import { writeTextFile } from "@tauri-apps/plugin-fs";
 import { homeDir, resolve } from "@tauri-apps/api/path";
 import { relaunch } from "@tauri-apps/plugin-process";
 import { Command } from "@tauri-apps/plugin-shell";
-import { Box, Heading, Button, KeyHint } from "@sketchybar-gray/react";
+import { Box, Heading, Button, KeyHint, WarningIcon } from "@sketchybar-gray/react";
 import { css } from "@sketchybar-gray/panda/css";
-import { ICONS } from "@sketchybar-gray/react";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function ResetToDefaults() {
@@ -59,7 +58,7 @@ export default function ResetToDefaults() {
             color: "comment",
           })}
         >
-          {ICONS.warning} This will reset all settings to default values. This action cannot be
+          <WarningIcon /> This will reset all settings to default values. This action cannot be
           undone.
         </div>
       </Box>
