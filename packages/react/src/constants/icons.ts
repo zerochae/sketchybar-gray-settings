@@ -21,6 +21,7 @@ export const ICONS_TEXTS = {
   success: "",
   warning: "",
   box: "󱓻",
+  check: "",
 } as const;
 
 export type IconName = keyof typeof ICONS_TEXTS;
