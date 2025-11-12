@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { css } from "@sketchybar-gray/panda/css";
 import Sidebar from "@/components/Sidebar";
 
 interface LayoutProps {
@@ -8,34 +9,36 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div
-      className="flex flex-col h-full"
-      style={{
-        background: "var(--colors-bg)",
-        color: "var(--colors-text)",
+      className={css({
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        background: "bg",
+        color: "text",
         padding: "16px",
         overscrollBehavior: "none",
         overscrollBehaviorY: "none",
         WebkitOverflowScrolling: "auto",
         touchAction: "none",
-      }}
+      })}
     >
       <div
-        style={{
+        className={css({
           display: "flex",
           flex: 1,
           overflow: "hidden",
           flexDirection: "row",
           height: "calc(100vh - 32px)",
-        }}
+        })}
       >
         <Sidebar />
         <main
-          style={{
+          className={css({
             flex: 1,
             overflowY: "auto",
             paddingLeft: "20px",
             paddingRight: "4px",
-          }}
+          })}
         >
           {children}
         </main>

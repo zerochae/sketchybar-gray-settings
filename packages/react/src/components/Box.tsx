@@ -1,25 +1,12 @@
+import type React from "react";
+import { css, cx } from "@sketchybar-gray/panda/css";
+
 interface BoxProps {
   children: React.ReactNode;
   padding?: string;
   className?: string;
-  style?: React.CSSProperties;
 }
 
-export default function Box({
-  children,
-  padding = "12px",
-  className = "box-container",
-  style,
-}: BoxProps) {
-  return (
-    <div
-      className={className}
-      style={{
-        padding,
-        ...style,
-      }}
-    >
-      {children}
-    </div>
-  );
+export default function Box({ children, padding = "12px", className = "box-container" }: BoxProps) {
+  return <div className={cx(className, css({ padding }))}>{children}</div>;
 }

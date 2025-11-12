@@ -1,19 +1,20 @@
+import { css } from "@sketchybar-gray/panda/css";
+
 export default function Banner() {
   return (
     <div
-      style={{
+      className={css({
         marginBottom: "24px",
         padding: "16px",
-        background: "var(--colors-bg2)",
-        border: "1px solid var(--colors-border)",
+        background: "bg2",
+        border: "1px solid token(colors.border)",
         borderRadius: "4px",
-        fontFamily: "monospace",
         fontSize: "10px",
         lineHeight: "1.2",
-        color: "var(--colors-blue)",
+        color: "blue",
         whiteSpace: "pre",
         overflow: "hidden",
-      }}
+      })}
     >
       {`┌─┐┬─┐┌─┐┬ ┬   ┌─┐┬┌─┌─┐┌┬┐┌─┐┬ ┬┬ ┬   ┌┐ ┌─┐┬─┐
 │ ┬├┬┘├─┤└┬┘───└─┐├┴┐├┤  │ │  ├─┤└┬┘───├┴┐├─┤├┬┘

@@ -1,3 +1,4 @@
+import { css } from "@sketchybar-gray/panda/css";
 import { Checkbox, Box, Heading } from "@sketchybar-gray/react";
 import { useConfig } from "@/contexts/ConfigContext";
 
@@ -14,7 +15,7 @@ export default function BarStyle() {
       <Heading level={2}>Bar Style</Heading>
       <Box
         padding="8px 12px"
-        style={{ display: "flex", flexDirection: "column", gap: "4px" }}
+        className={css({ display: "flex", flexDirection: "column", gap: "4px" })}
       >
         {(["compact", "block"] as const).map((style) => (
           <Checkbox

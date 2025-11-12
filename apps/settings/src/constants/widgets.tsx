@@ -30,17 +30,17 @@ export const ALL_WIDGETS: WidgetName[] = [
 ];
 
 export const WIDGET_COLORS: Record<WidgetName, string> = {
-  clock: "var(--colors-yellow)",
-  calendar: "var(--colors-tangerine)",
-  weather: "var(--colors-cyan)",
-  caffeinate: "var(--colors-green)",
-  volume: "var(--colors-blue)",
-  battery: "var(--colors-orange)",
-  disk: "var(--colors-red)",
-  ram: "var(--colors-magenta)",
-  cpu: "var(--colors-blue)",
-  kakaotalk: "var(--colors-yellow)",
-  config: "var(--colors-blue)",
+  clock: "yellow",
+  calendar: "tangerine",
+  weather: "cyan",
+  caffeinate: "green",
+  volume: "blue",
+  battery: "orange",
+  disk: "red",
+  ram: "magenta",
+  cpu: "blue",
+  kakaotalk: "yellow",
+  config: "blue",
 };
 
 export const WIDGET_ICONS: Record<WidgetName, string | ReactNode> = {
@@ -53,7 +53,7 @@ export const WIDGET_ICONS: Record<WidgetName, string | ReactNode> = {
   disk: icons.disk,
   ram: icons.memory,
   cpu: icons.cpu,
-  kakaotalk: <KakaotalkIcon color={WIDGET_COLORS.kakaotalk} size={16} />,
+  kakaotalk: <KakaotalkIcon color={WIDGET_COLORS.kakaotalk} size={10} />,
   config: icons.config,
 };
 

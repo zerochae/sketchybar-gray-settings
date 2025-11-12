@@ -1,3 +1,6 @@
+import type React from "react";
+import { css } from "@sketchybar-gray/panda/css";
+
 interface SvgIconProps {
   children: React.ReactNode;
   color?: string;
@@ -11,17 +14,19 @@ export default function SvgIcon({
   size = 16,
   viewBox = "0 0 24 24",
 }: SvgIconProps) {
+  const fillColor = color === "currentColor" ? color : `var(--colors-${color})`;
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
-      fill={color}
+      fill={fillColor}
       viewBox={viewBox}
-      style={{
+      className={css({
         display: "inline-block",
         verticalAlign: "middle",
-      }}
+      })}
     >
       {children}
     </svg>

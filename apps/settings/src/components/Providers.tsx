@@ -11,9 +11,7 @@ export default function Providers({ children }: ProvidersProps) {
   return (
     <ModalProvider>
       <CategoryProvider>
-        <ConfigProvider>
-          {children}
-        </ConfigProvider>
+        <ConfigProvider>{children}</ConfigProvider>
       </CategoryProvider>
     </ModalProvider>
   );

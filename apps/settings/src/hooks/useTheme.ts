@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useConfig } from "@/contexts/ConfigContext";
+import { getTheme, injectTheme } from "@sketchybar-gray/panda/themes";
 
 export function useTheme() {
   const { config, updateAppearance } = useConfig();
@@ -10,7 +11,9 @@ export function useTheme() {
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-panda-theme", selectedTheme);
+    getTheme(selectedTheme).then((theme) => {
+      injectTheme(document.documentElement, theme);
+    });
   }, [selectedTheme]);
 
   return { selectedTheme, setSelectedTheme };

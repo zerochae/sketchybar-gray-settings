@@ -7,7 +7,20 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./styles": "./styled-system/styles.css"
+    "./styles": "./styled-system/styles.css",
+    "./styles/fonts.css": "./styles/fonts.css",
+    "./css": {
+      "types": "./styled-system/css/index.d.ts",
+      "import": "./styled-system/css/index.mjs"
+    },
+    "./tokens": {
+      "types": "./styled-system/tokens/index.d.ts",
+      "import": "./styled-system/tokens/index.mjs"
+    },
+    "./themes": {
+      "types": "./styled-system/themes/index.d.ts",
+      "import": "./styled-system/themes/index.mjs"
+    }
   },
   "scripts": {
     "codegen": "panda codegen"

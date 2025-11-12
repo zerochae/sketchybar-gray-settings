@@ -3,6 +3,7 @@ import { homeDir, resolve } from "@tauri-apps/api/path";
 import { relaunch } from "@tauri-apps/plugin-process";
 import { Command } from "@tauri-apps/plugin-shell";
 import { Box, Heading, Button, KeyHint } from "@sketchybar-gray/react";
+import { css } from "@sketchybar-gray/panda/css";
 import icons from "@/assets/icon.json";
 import { useModal } from "@/contexts/ModalContext";
 
@@ -16,10 +17,7 @@ export default function ResetToDefaults() {
       async () => {
         try {
           const home = await homeDir();
-          const configPath = await resolve(
-            home,
-            ".config/sketchybar/user.sketchybarrc",
-          );
+          const configPath = await resolve(home, ".config/sketchybar/user.sketchybarrc");
 
           await writeTextFile(configPath, "#!/usr/bin/env bash\n\n");
 
@@ -28,21 +26,18 @@ export default function ResetToDefaults() {
           showModal(
             "Success",
             "Config file cleared. App will restart with default settings.",
-            "success",
+            "success"
           );
 
           setTimeout(() => {
             relaunch();
           }, 1500);
         } catch (error) {
-          const errorMessage =
-            error instanceof Error
-              ? error.message
-              : "Failed to reset settings!";
+          const errorMessage = error instanceof Error ? error.message : "Failed to reset settings!";
           showModal("Error", errorMessage, "error");
         }
       },
-      "warning",
+      "warning"
     );
   };
 
@@ -50,26 +45,22 @@ export default function ResetToDefaults() {
     <div>
       <Heading level={2}>Reset to Defaults</Heading>
       <Box padding="0">
-        <Button
-          onClick={handleReset}
-          variant="option"
-          style={{ color: "var(--colors-red)" }}
-        >
+        <Button onClick={handleReset} variant="danger">
           <span>Reset All Settings</span>
           <KeyHint>⌘⌫</KeyHint>
         </Button>
         <div
-          style={{
+          className={css({
             marginTop: "12px",
             padding: "12px",
-            background: "var(--colors-bg3)",
+            background: "bg3",
             borderRadius: "4px",
             fontSize: "12px",
-            color: "var(--colors-comment)",
-          }}
+            color: "comment",
+          })}
         >
-          {icons.warning} This will reset all settings to default values. This
-          action cannot be undone.
+          {icons.warning} This will reset all settings to default values. This action cannot be
+          undone.
         </div>
       </Box>
     </div>

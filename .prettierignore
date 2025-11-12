@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+.tauri
+target
+styled-system
+pnpm-lock.yaml
+*.log
+.DS_Store
+.claude

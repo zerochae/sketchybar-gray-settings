@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { css } from "@sketchybar-gray/panda/css";
 import { Heading } from "@sketchybar-gray/react";
 import CalendarWidget from "@/components/widgets/CalendarWidget";
 import ClockWidget from "@/components/widgets/ClockWidget";
@@ -40,9 +41,9 @@ export default function WidgetsSettings() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+      className={css({ display: "flex", flexDirection: "column", gap: "16px" })}
     >
-      <Heading style={{ marginBottom: "16px" }}>Widgets</Heading>
+      <Heading marginBottom="16px">Widgets</Heading>
       {widgets.map((widget) => (
         <motion.div
           key={widget.key}

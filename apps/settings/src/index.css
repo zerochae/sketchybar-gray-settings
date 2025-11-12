@@ -1,51 +1,9 @@
 @layer reset, base, tokens, recipes, utilities;
 
-@import "@webtui/css/base.css";
-@import "@webtui/css/utils/box.css";
-@import "@webtui/css/components/button.css";
-@import "@webtui/css/components/checkbox.css";
-@import "@webtui/css/components/radio.css";
-@import "@webtui/css/components/typography.css";
-@import "@webtui/css/components/view.css";
-@import "@webtui/css/components/separator.css";
-
-@font-face {
-  font-family: "SpaceMono Nerd Font Mono";
-  src: url("./assets/fonts/SpaceMonoNerdFontMono-Regular.ttf")
-    format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "SpaceMono Nerd Font Mono";
-  src: url("./assets/fonts/SpaceMonoNerdFontMono-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "SpaceMono Nerd Font Mono";
-  src: url("./assets/fonts/SpaceMonoNerdFontMono-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "SpaceMono Nerd Font Mono";
-  src: url("./assets/fonts/SpaceMonoNerdFontMono-BoldItalic.ttf")
-    format("truetype");
-  font-weight: 700;
-  font-style: italic;
-}
-
-:root {
-  --font-mono: "SpaceMono Nerd Font Mono", Consolas, monospace;
-}
+@import "@sketchybar-gray/panda/styles/fonts.css";
 
 * {
   box-sizing: border-box;
-  font-family: var(--font-mono), Consolas, monospace;
   user-select: none;
   -webkit-user-select: none;
 }
@@ -59,7 +17,6 @@ body,
 }
 
 body {
-  font-family: var(--font-mono);
   background: var(--colors-bg);
   color: var(--colors-text);
   font-size: 13px;
@@ -92,8 +49,8 @@ body {
 }
 
 .section-title img {
-  filter: brightness(0) saturate(100%) invert(50%) sepia(98%) saturate(2476%)
-    hue-rotate(180deg) brightness(95%) contrast(101%);
+  filter: brightness(0) saturate(100%) invert(50%) sepia(98%) saturate(2476%) hue-rotate(180deg)
+    brightness(95%) contrast(101%);
 }
 
 .option-item {
@@ -109,7 +66,6 @@ body {
   width: 100%;
   text-align: left;
   color: var(--colors-text);
-  font-family: var(--font-mono);
   font-size: 13px;
 }
 
@@ -183,7 +139,6 @@ input[type="text"] {
   color: var(--colors-text);
   border: 1px solid var(--colors-border);
   border-radius: 3px;
-  font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.5;
   outline: none;

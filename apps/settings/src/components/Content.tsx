@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { css } from "@sketchybar-gray/panda/css";
 import AppearanceSettings from "@/components/settings/AppearanceSettings";
 import WidgetsSettings from "@/components/settings/WidgetsSettings";
 import AdvancedSettings from "@/components/settings/AdvancedSettings";
@@ -38,7 +39,7 @@ export default function Content() {
   };
 
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div className={css({ overflow: "hidden" })}>
       <AnimatePresence mode="wait">
         <motion.div
           key={activeCategory}

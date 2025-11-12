@@ -2,22 +2,17 @@ interface InputProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
-  style?: React.CSSProperties;
+  className?: string;
 }
 
-export default function Input({
-  value,
-  onChange,
-  placeholder = "",
-  style,
-}: InputProps) {
+export default function Input({ value, onChange, placeholder = "", className }: InputProps) {
   return (
     <input
       type="text"
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      style={style}
+      className={className}
     />
   );
 }

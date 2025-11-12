@@ -1,9 +1,12 @@
+import type React from "react";
+import { css, cx } from "@sketchybar-gray/panda/css";
+
 interface HeadingProps {
   children: React.ReactNode;
   level?: 1 | 2 | 3;
   color?: string;
   className?: string;
-  style?: React.CSSProperties;
+  marginBottom?: string;
 }
 
 export default function Heading({
@@ -11,37 +14,41 @@ export default function Heading({
   level = 1,
   color,
   className = "section-title",
-  style = { marginBottom: "8px" },
+  marginBottom = "8px",
 }: HeadingProps) {
   const getLevelColor = () => {
     if (color) return color;
 
     switch (level) {
       case 1:
-        return "var(--colors-sapphire)";
+        return "sapphire";
       case 2:
-        return "var(--colors-mint)";
+        return "mint";
       case 3:
-        return "var(--colors-emerald)";
+        return "emerald";
       default:
-        return "var(--colors-sapphire)";
+        return "sapphire";
     }
   };
 
   const hashPrefix = "#".repeat(level);
+  const levelColor = getLevelColor();
 
   return (
     <div
-      className={className}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "6px",
-        color: getLevelColor(),
-        ...style,
-      }}
+      className={cx(
+        className,
+        css({
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "6px",
+          marginBottom,
+          // color: levelColor
+        })
+      )}
+      style={{ color: `var(--colors-${levelColor})` }}
     >
-      <span style={{ opacity: 0.5, lineHeight: 0 }}>{hashPrefix}</span>
+      <span className={css({ opacity: 0.5, lineHeight: 0 })}>{hashPrefix}</span>
       {children}
     </div>
   );

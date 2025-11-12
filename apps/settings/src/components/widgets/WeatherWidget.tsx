@@ -31,13 +31,10 @@ export default function WeatherWidget() {
         </Label>
       </Heading>
       <Box>
-        <Heading level={3} style={{ marginBottom: "6px" }}>
+        <Heading level={3} marginBottom="6px">
           Location
         </Heading>
-        <Input
-          value={location}
-          onChange={handleLocationChange}
-        />
+        <Input value={location} onChange={handleLocationChange} />
       </Box>
     </div>
   );

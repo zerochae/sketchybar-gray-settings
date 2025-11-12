@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
+import { css } from "@sketchybar-gray/panda/css";
 import { Checkbox, Label, Heading, Box, Input } from "@sketchybar-gray/react";
-import {
-  WIDGET_COLORS,
-  WIDGET_ICONS,
-  WIDGET_LABELS,
-} from "@/constants/widgets";
+import { WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 import { useConfig } from "@/contexts/ConfigContext";
 
 export default function ClockWidget() {
@@ -12,13 +9,7 @@ export default function ClockWidget() {
   const [format, setFormat] = useState("HH:mm");
   const [customFormat, setCustomFormat] = useState("");
 
-  const formats = [
-    "Custom",
-    "MM/DD HH:mm",
-    "HH:mm",
-    "YYYY-MM-DD HH:mm:ss",
-    "HH:mm:ss",
-  ];
+  const formats = ["Custom", "MM/DD HH:mm", "HH:mm", "YYYY-MM-DD HH:mm:ss", "HH:mm:ss"];
 
   useEffect(() => {
     const configFormat = config.widgets.clock.format;
@@ -56,27 +47,20 @@ export default function ClockWidget() {
         </Label>
       </Heading>
       <Box>
-        <Heading level={3} style={{ marginBottom: "6px" }}>
+        <Heading level={3} marginBottom="6px">
           Format
         </Heading>
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        <div className={css({ display: "flex", flexDirection: "column", gap: "4px" })}>
           {formats.map((fmt) => {
             if (fmt === "Custom") {
               return (
-                <div
-                  key={fmt}
-                  style={{ display: "flex", alignItems: "center" }}
-                >
-                  <Checkbox
-                    checked={format === fmt}
-                    onChange={() => setFormat(fmt)}
-                    label=""
-                  />
+                <div key={fmt} className={css({ display: "flex", alignItems: "center" })}>
+                  <Checkbox checked={format === fmt} onChange={() => setFormat(fmt)} label="" />
                   <Input
                     value={customFormat}
                     onChange={handleCustomFormatChange}
                     placeholder="e.g., HH:mm:ss"
-                    style={{ flex: 1, marginLeft: "-4px" }}
+                    className={css({ flex: 1, marginLeft: "-4px" })}
                   />
                 </div>
               );

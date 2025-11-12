@@ -1,6 +1,7 @@
 import { Command } from "@tauri-apps/plugin-shell";
 import { homeDir, resolve } from "@tauri-apps/api/path";
 import { Box, Heading, Button, KeyHint } from "@sketchybar-gray/react";
+import { css } from "@sketchybar-gray/panda/css";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function OpenConfigFile() {
@@ -9,10 +10,7 @@ export default function OpenConfigFile() {
   const handleOpenConfig = async () => {
     try {
       const home = await homeDir();
-      const configPath = await resolve(
-        home,
-        ".config/sketchybar/user.sketchybarrc",
-      );
+      const configPath = await resolve(home, ".config/sketchybar/user.sketchybarrc");
 
       const guiEditors = [
         { cmd: "code", app: "Visual Studio Code" },
@@ -45,11 +43,7 @@ export default function OpenConfigFile() {
               "-e",
               `tell application "Terminal" to do script "${editor} '${configPath}'"`,
             ]).execute();
-            showModal(
-              "Success",
-              `Config file opened with ${editor} in Terminal!`,
-              "success",
-            );
+            showModal("Success", `Config file opened with ${editor} in Terminal!`, "success");
             return;
           }
         } catch {
@@ -59,7 +53,7 @@ export default function OpenConfigFile() {
 
       await Command.create("open", [configPath]).execute();
       showModal("Success", "Config file opened in default editor!", "success");
-    } catch (error) {
+    } catch {
       showModal("Error", "Failed to open config file!", "error");
     }
   };
@@ -68,23 +62,19 @@ export default function OpenConfigFile() {
     <div>
       <Heading level={2}>Open Config File</Heading>
       <Box padding="0">
-        <Button
-          onClick={handleOpenConfig}
-          variant="option"
-          style={{ color: "var(--colors-blue)" }}
-        >
+        <Button onClick={handleOpenConfig} variant="primary">
           <span>Open in Editor</span>
           <KeyHint>⌘O</KeyHint>
         </Button>
         <div
-          style={{
+          className={css({
             marginTop: "12px",
             padding: "12px",
-            background: "var(--colors-bg3)",
+            background: "bg3",
             borderRadius: "4px",
             fontSize: "12px",
-            color: "var(--colors-comment)",
-          }}
+            color: "comment",
+          })}
         >
           Opens user.sketchybarrc in your default editor.
         </div>

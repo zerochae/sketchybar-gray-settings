@@ -1,3 +1,4 @@
+import { css } from "@sketchybar-gray/panda/css";
 import { Box, Heading, Label, Checkbox } from "@sketchybar-gray/react";
 import { useConfig } from "@/contexts/ConfigContext";
 import {
@@ -30,18 +31,18 @@ export default function WidgetsEnable() {
     <div>
       <Heading level={2}>Enable Widgets</Heading>
       <Box>
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        <div className={css({ display: "flex", flexDirection: "column", gap: "8px" })}>
           {ALL_WIDGETS.map((widget) => (
             <div
               key={widget}
-              style={{
+              className={css({
                 display: "flex",
                 alignItems: "center",
                 gap: "8px",
                 padding: "4px 8px",
-                background: "var(--colors-bg3)",
+                background: "bg3",
                 borderRadius: "3px",
-              }}
+              })}
             >
               <Checkbox
                 checked={config.widgets[widget].enabled}
@@ -51,14 +52,13 @@ export default function WidgetsEnable() {
               <Label
                 icon={WIDGET_ICONS[widget]}
                 size="12px"
-                className=""
-                color={WIDGET_COLORS[widget]}
-                iconColor={WIDGET_COLORS[widget]}
-                style={{
+                className={css({
                   listStyle: "none",
                   textTransform: "uppercase",
                   fontWeight: "bold",
-                }}
+                })}
+                color={WIDGET_COLORS[widget]}
+                iconColor={WIDGET_COLORS[widget]}
               >
                 {WIDGET_LABELS[widget]}
               </Label>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { css } from "@sketchybar-gray/panda/css";
 
 interface CheckboxProps {
   checked: boolean;
@@ -10,14 +11,14 @@ interface CheckboxProps {
 export default function Checkbox({ checked, onChange, label, disabled = false }: CheckboxProps) {
   return (
     <motion.label
-      style={{
+      className={css({
         display: "flex",
         alignItems: "center",
         gap: "8px",
         cursor: disabled ? "not-allowed" : "pointer",
         userSelect: "none",
         opacity: disabled ? 0.5 : 1,
-      }}
+      })}
       onClick={disabled ? undefined : onChange}
       whileHover={disabled ? {} : { x: 2 }}
       transition={{
@@ -27,13 +28,13 @@ export default function Checkbox({ checked, onChange, label, disabled = false }:
       }}
     >
       <motion.span
-        style={{
-          fontFamily: "var(--font-mono)",
+        className={css({
+          fontFamily: "mono",
           fontSize: "13px",
-          color: checked ? "var(--colors-blue)" : "var(--colors-comment)",
+          color: checked ? "blue" : "comment",
           fontWeight: 600,
           display: "inline-block",
-        }}
+        })}
         animate={{
           scale: checked ? [1, 1.2, 1] : 1,
         }}

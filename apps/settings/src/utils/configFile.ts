@@ -36,7 +36,7 @@ const ENV_VAR_MAP: Record<string, string> = {
   "advanced.updateFreqDefault": "SBAR_ITEM_UPDATE_FREQ_DEFAULT",
   "advanced.updateFreqFast": "SBAR_ITEM_UPDATE_FREQ_FAST",
   "advanced.updateFreqSlow": "SBAR_ITEM_UPDATE_FREQ_SLOW",
-  "widgetsOrder": "SBAR_WIDGETS_RIGHT_ENABLED",
+  widgetsOrder: "SBAR_WIDGETS_RIGHT_ENABLED",
 };
 
 const REVERSE_ENV_VAR_MAP: Record<string, string> = Object.fromEntries(
@@ -122,16 +122,16 @@ function parseConfigFile(content: string): Partial<Config> {
 }
 
 const COLOR_MAP: Record<string, string> = {
-  "cyan": "$COLOR_CYAN",
-  "blue": "$COLOR_BLUE",
-  "green": "$COLOR_GREEN",
-  "yellow": "$COLOR_YELLOW",
-  "orange": "$COLOR_ORANGE",
-  "red": "$COLOR_RED",
-  "magenta": "$COLOR_MAGENTA",
-  "tangerine": "$COLOR_TANGERINE",
-  "white": "$COLOR_WHITE",
-  "black": "$COLOR_BLACK",
+  cyan: "$COLOR_CYAN",
+  blue: "$COLOR_BLUE",
+  green: "$COLOR_GREEN",
+  yellow: "$COLOR_YELLOW",
+  orange: "$COLOR_ORANGE",
+  red: "$COLOR_RED",
+  magenta: "$COLOR_MAGENTA",
+  tangerine: "$COLOR_TANGERINE",
+  white: "$COLOR_WHITE",
+  black: "$COLOR_BLACK",
 };
 
 export async function writeConfig(config: Config): Promise<void> {

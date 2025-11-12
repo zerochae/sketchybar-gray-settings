@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { css } from "@sketchybar-gray/panda/css";
 import { useModal } from "@/contexts/ModalContext";
 import icons from "@/assets/icon.json";
 import { Button, Label } from "@sketchybar-gray/react";
@@ -56,10 +57,10 @@ export default function Modal() {
   }, [isOpen, closeModal, mode, onConfirm]);
 
   const typeColors = {
-    info: "var(--colors-blue)",
-    success: "var(--colors-green)",
-    warning: "var(--colors-yellow)",
-    error: "var(--colors-red)",
+    info: "blue",
+    success: "green",
+    warning: "yellow",
+    error: "red",
   };
 
   const typeIcons = {
@@ -82,7 +83,7 @@ export default function Modal() {
             ease: "easeOut",
             duration: 0.15,
           }}
-          style={{
+          className={css({
             position: "fixed",
             top: 0,
             left: 0,
@@ -93,7 +94,7 @@ export default function Modal() {
             alignItems: "center",
             justifyContent: "center",
             zIndex: 1000,
-          }}
+          })}
           onClick={closeModal}
         >
           <motion.div
@@ -106,58 +107,57 @@ export default function Modal() {
               ease: "easeOut",
               duration: 0.15,
             }}
-            className="container"
-            style={{
+            className={css({
               width: "400px",
               padding: "20px",
-              background: "var(--colors-bg)",
-            }}
+              background: "bg",
+            })}
             onClick={(e) => e.stopPropagation()}
           >
-            <div style={{ marginBottom: "16px" }}>
+            <div className={css({ marginBottom: "16px" })}>
               <Label
                 icon={typeIcons[type]}
                 color={typeColors[type]}
                 iconColor={typeColors[type]}
                 size="16px"
-                style={{ fontWeight: 600 }}
+                className={css({ fontWeight: 600 })}
               >
                 {title}
               </Label>
             </div>
 
             <p
-              style={{
+              className={css({
                 margin: "0 0 20px 0",
-                color: "var(--colors-text)",
+                color: "text",
                 fontSize: "13px",
                 lineHeight: "1.5",
                 whiteSpace: "pre-line",
-              }}
+              })}
             >
               {message}
             </p>
 
             <div
-              style={{
+              className={css({
                 display: "flex",
                 justifyContent: "flex-end",
                 gap: "8px",
-              }}
+              })}
             >
               {mode === "confirm" ? (
                 <>
                   <Button
                     onClick={closeModal}
                     variant="secondary"
-                    style={{ width: "80px", justifyContent: "center" }}
+                    className={css({ width: "80px", justifyContent: "center" })}
                   >
                     Cancel
                   </Button>
                   <Button
                     onClick={handleConfirm}
                     variant="danger"
-                    style={{ width: "80px", justifyContent: "center" }}
+                    className={css({ width: "80px", justifyContent: "center" })}
                   >
                     Confirm
                   </Button>
@@ -166,7 +166,7 @@ export default function Modal() {
                 <Button
                   onClick={closeModal}
                   variant="primary"
-                  style={{ width: "80px", justifyContent: "center" }}
+                  className={css({ width: "80px", justifyContent: "center" })}
                 >
                   OK
                 </Button>

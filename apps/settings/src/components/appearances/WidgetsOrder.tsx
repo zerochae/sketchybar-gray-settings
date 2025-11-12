@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import { Reorder } from "framer-motion";
+import { css } from "@sketchybar-gray/panda/css";
 import { Box, Heading, Label } from "@sketchybar-gray/react";
 import { useConfig } from "@/contexts/ConfigContext";
-import {
-  type WidgetName,
-  WIDGET_COLORS,
-  WIDGET_ICONS,
-  WIDGET_LABELS,
-} from "@/constants/widgets";
+import { type WidgetName, WIDGET_COLORS, WIDGET_ICONS, WIDGET_LABELS } from "@/constants/widgets";
 
 export default function WidgetsOrder() {
   const { config, updateWidgetsOrder } = useConfig();
@@ -22,26 +18,20 @@ export default function WidgetsOrder() {
   }, [localOrder]);
 
   const enabledWidgets = localOrder.filter(
-    (widget) => config.widgets[widget as WidgetName]?.enabled,
+    (widget) => config.widgets[widget as WidgetName]?.enabled
   );
 
   const handleMoveUp = (index: number) => {
     if (index === 0) return;
     const newOrder = [...localOrder];
-    [newOrder[index - 1], newOrder[index]] = [
-      newOrder[index],
-      newOrder[index - 1],
-    ];
+    [newOrder[index - 1], newOrder[index]] = [newOrder[index], newOrder[index - 1]];
     setLocalOrder(newOrder);
   };
 
   const handleMoveDown = (index: number) => {
     if (index === localOrder.length - 1) return;
     const newOrder = [...localOrder];
-    [newOrder[index], newOrder[index + 1]] = [
-      newOrder[index + 1],
-      newOrder[index],
-    ];
+    [newOrder[index], newOrder[index + 1]] = [newOrder[index + 1], newOrder[index]];
     setLocalOrder(newOrder);
   };
 
@@ -54,14 +44,14 @@ export default function WidgetsOrder() {
           axis="y"
           values={enabledWidgets}
           onReorder={setLocalOrder}
-          style={{
+          className={css({
             display: "flex",
             flexDirection: "column",
             gap: "4px",
             padding: 0,
             margin: 0,
             alignItems: "stretch",
-          }}
+          })}
         >
           {enabledWidgets.map((widget, index) => (
             <Reorder.Item
@@ -69,51 +59,52 @@ export default function WidgetsOrder() {
               key={widget}
               value={widget}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              style={{
+              className={css({
                 width: "100%",
                 height: "36px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
                 padding: "4px 8px",
-                background: "var(--colors-bg3)",
+                background: "bg3",
                 borderRadius: "3px",
                 cursor: "grab",
-              }}
+              })}
             >
               <div
-                style={{
+                className={css({
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
                   flex: 1,
-                }}
+                })}
               >
-                <span style={{ color: "var(--colors-comment)" }}>⋮⋮</span>
+                <span className={css({ color: "comment" })}>⋮⋮</span>
                 <Label
                   icon={WIDGET_ICONS[widget as WidgetName]}
                   size="12px"
                   color={WIDGET_COLORS[widget as WidgetName]}
                   iconColor={WIDGET_COLORS[widget as WidgetName]}
-                  style={{ listStyle: "none" }}
+                  className={css({ listStyle: "none" })}
                 >
                   {WIDGET_LABELS[widget as WidgetName]}
                 </Label>
               </div>
               <div
-                style={{ display: "flex", gap: "4px", alignItems: "center" }}
+                className={css({
+                  display: "flex",
+                  gap: "4px",
+                  alignItems: "center",
+                })}
               >
                 <button
                   onClick={() => handleMoveUp(index)}
                   disabled={index === 0}
                   style={{
                     background: "none",
-                    color:
-                      index === 0
-                        ? "var(--colors-comment)"
-                        : "var(--colors-text)",
-                    cursor: index === 0 ? "default" : "pointer",
                     padding: "2px 6px",
+                    color: index === 0 ? "var(--colors-comment)" : "var(--colors-text)",
+                    cursor: index === 0 ? "default" : "pointer",
                   }}
                 >
                   ↑
@@ -123,15 +114,12 @@ export default function WidgetsOrder() {
                   disabled={index === enabledWidgets.length - 1}
                   style={{
                     background: "none",
+                    padding: "2px 6px",
                     color:
                       index === enabledWidgets.length - 1
                         ? "var(--colors-comment)"
                         : "var(--colors-text)",
-                    cursor:
-                      index === enabledWidgets.length - 1
-                        ? "default"
-                        : "pointer",
-                    padding: "2px 6px",
+                    cursor: index === enabledWidgets.length - 1 ? "default" : "pointer",
                   }}
                 >
                   ↓

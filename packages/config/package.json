@@ -1,0 +1,15 @@
+{
+  "name": "@sketchybar-gray/config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./tsconfig.base.json": "./src/tsconfig.base.json",
+    "./tsconfig.react.json": "./src/tsconfig.react.json",
+    "./eslint": "./src/eslint.config.js",
+    "./prettier": "./src/prettier.config.js"
+  },
+  "files": [
+    "src"
+  ]
+}

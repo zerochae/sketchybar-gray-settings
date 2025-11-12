@@ -2,6 +2,7 @@ import { themeNames } from "@sketchybar-gray/panda";
 import * as themes from "@sketchybar-gray/panda";
 import { useTheme } from "@/hooks/useTheme";
 import { Checkbox, Box, Heading } from "@sketchybar-gray/react";
+import { css } from "@sketchybar-gray/panda/css";
 import icons from "@/assets/icon.json";
 
 const ansiColors = [
@@ -19,19 +20,10 @@ const ansiColors = [
 ] as const;
 
 const getThemeColors = (themeName: string): Record<string, string> => {
-  const theme = themes[themeName];
+  const colorKey = `${themeName}Colors` as keyof typeof themes;
+  const theme = themes[colorKey];
   if (!theme) return {};
-
-  const colors: Record<string, string> = {};
-  const cssVarRegex = /--colors-(\w+):\s*([^;]+);/g;
-  let match;
-
-  while ((match = cssVarRegex.exec(theme.css)) !== null) {
-    const [, colorName, colorValue] = match;
-    colors[colorName] = colorValue.trim();
-  }
-
-  return colors;
+  return theme as Record<string, string>;
 };
 
 export default function Theme() {
@@ -42,18 +34,18 @@ export default function Theme() {
       <Heading level={2}>Theme</Heading>
       <Box
         padding="8px 12px"
-        style={{ display: "flex", flexDirection: "column", gap: "4px" }}
+        className={css({ display: "flex", flexDirection: "column", gap: "4px" })}
       >
         {themeNames.map((theme) => {
           const colors = getThemeColors(theme);
           return (
             <div
               key={theme}
-              style={{
+              className={css({
                 display: "flex",
                 alignItems: "center",
                 gap: "8px",
-              }}
+              })}
             >
               <Checkbox
                 checked={selectedTheme === theme}
@@ -61,21 +53,21 @@ export default function Theme() {
                 label={theme}
               />
               <div
-                style={{
+                className={css({
                   display: "flex",
                   gap: "2px",
                   marginLeft: "auto",
-                }}
+                })}
               >
                 {ansiColors.map((colorKey) => (
                   <span
                     key={colorKey}
-                    style={{
+                    className={css({
                       fontSize: "1.2rem",
                       lineHeight: "1",
                       borderRadius: "2px",
-                      color: colors[colorKey] || "transparent",
-                    }}
+                    })}
+                    style={{ color: colors[colorKey] || "transparent" }}
                   >
                     {icons.box}
                   </span>

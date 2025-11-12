@@ -1,3 +1,6 @@
+import type React from "react";
+import { css, cx } from "@sketchybar-gray/panda/css";
+
 interface LabelProps {
   icon?: string | React.ReactNode;
   children: React.ReactNode;
@@ -5,7 +8,6 @@ interface LabelProps {
   iconColor?: string;
   size?: string;
   className?: string;
-  style?: React.CSSProperties;
   reverse?: boolean;
 }
 
@@ -16,41 +18,39 @@ export default function Label({
   iconColor,
   size = "11px",
   className = "section-title",
-  style,
   reverse = false,
 }: LabelProps) {
   const isStringIcon = typeof icon === "string";
 
   return (
     <div
-      className={className}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "6px",
-        color,
-        fontSize: size,
-        flexDirection: reverse ? "row-reverse" : "row",
-        justifyContent: reverse ? "space-between" : "flex-start",
-        ...style,
-      }}
+      className={cx(
+        className,
+        css({
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          fontSize: size,
+          flexDirection: reverse ? "row-reverse" : "row",
+          justifyContent: reverse ? "space-between" : "flex-start",
+        })
+      )}
+      style={color ? { color: `var(--colors-${color})` } : undefined}
     >
       {icon && (
         <>
           {isStringIcon ? (
             <span
-              style={{
+              className={css({
                 fontSize: "16px",
-                color: iconColor,
                 lineHeight: 0,
-              }}
+              })}
+              style={iconColor ? { color: `var(--colors-${iconColor})` } : undefined}
             >
               {icon}
             </span>
           ) : (
-            <span style={{ lineHeight: 0 }}>
-              {icon}
-            </span>
+            <span className={css({ lineHeight: 0 })}>{icon}</span>
           )}
         </>
       )}

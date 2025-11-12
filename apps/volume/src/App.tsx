@@ -25,9 +25,7 @@ function App() {
   };
 
   const handleDragEnd = (finalVolume: number) => {
-    invoke("set_volume", { volume: finalVolume }).catch((err) =>
-      console.error(err)
-    );
+    invoke("set_volume", { volume: finalVolume }).catch((err) => console.error(err));
   };
 
   return (

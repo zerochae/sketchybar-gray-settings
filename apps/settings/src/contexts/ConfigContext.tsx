@@ -125,7 +125,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
             mergedWidgets[key] = {
               ...prev.widgets[key],
               ...loadedConfig.widgets?.[key],
-            } as any;
+            } as Config["widgets"][keyof Config["widgets"]];
           });
 
           return {
@@ -143,10 +143,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const updateAppearance = useCallback(
-    <K extends keyof Config["appearance"]>(
-      key: K,
-      value: Config["appearance"][K]
-    ) => {
+    <K extends keyof Config["appearance"]>(key: K, value: Config["appearance"][K]) => {
       setConfig((prev) => ({
         ...prev,
         appearance: {
@@ -179,10 +176,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   );
 
   const updateAdvanced = useCallback(
-    <K extends keyof Config["advanced"]>(
-      key: K,
-      value: Config["advanced"][K]
-    ) => {
+    <K extends keyof Config["advanced"]>(key: K, value: Config["advanced"][K]) => {
       setConfig((prev) => ({
         ...prev,
         advanced: {
@@ -204,7 +198,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   const saveConfig = useCallback(async () => {
     const errors = validateConfig(config);
     if (errors.length > 0) {
-      const errorMessage = errors.map(e => `${e.field}: ${e.message}`).join("\n");
+      const errorMessage = errors.map((e) => `${e.field}: ${e.message}`).join("\n");
       throw new Error(`Validation failed:\n${errorMessage}`);
     }
 

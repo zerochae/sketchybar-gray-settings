@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { css } from "@sketchybar-gray/panda/css";
 
 interface ControlProps {
   value: number;
@@ -70,28 +71,29 @@ export default function Control({
     const emptySegments = segments - filledSegments;
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px", width: "100%" }}>
+      <div
+        className={css({ display: "flex", flexDirection: "column", gap: "12px", width: "100%" })}
+      >
         <motion.div
-          style={{
+          className={css({
             display: "flex",
             alignItems: "center",
-            fontFamily: "var(--font-mono, monospace)",
             fontSize: "14px",
             cursor: "pointer",
             userSelect: "none",
             width: `${width}px`,
-          }}
+          })}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
           whileTap={{ scale: 0.98 }}
         >
-          <div style={{ color: "var(--colors-blue, #61afef)" }}>├</div>
+          <div className={css({ color: "blue" })}>├</div>
           {Array.from({ length: filledSegments }).map((_, i) => (
             <motion.div
               key={`filled-${i}`}
-              style={{ color: "var(--colors-blue, #61afef)" }}
+              className={css({ color: "blue" })}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.05 }}
             >
@@ -99,29 +101,25 @@ export default function Control({
             </motion.div>
           ))}
           {Array.from({ length: emptySegments }).map((_, i) => (
-            <motion.div
-              key={`empty-${i}`}
-              style={{ color: "var(--colors-comment, #5c6370)", opacity: 0.4 }}
-            >
+            <motion.div key={`empty-${i}`} className={css({ color: "comment", opacity: 0.4 })}>
               ━
             </motion.div>
           ))}
-          <div style={{ color: "var(--colors-blue, #61afef)" }}>┤</div>
+          <div className={css({ color: "blue" })}>┤</div>
         </motion.div>
         <div
-          style={{
-            fontFamily: "var(--font-mono, monospace)",
+          className={css({
             fontSize: "12px",
-            color: "var(--colors-text, #abb2bf)",
+            color: "text",
             fontWeight: 600,
             textAlign: "center",
-          }}
+          })}
         >
           {label && `${label} `}
           <motion.span
             key={value}
-            initial={{ color: "var(--colors-blue, #61afef)" }}
-            animate={{ color: "var(--colors-text, #abb2bf)" }}
+            initial={{ color: "var(--colors-blue)" }}
+            animate={{ color: "var(--colors-text)" }}
             transition={{ duration: 0.15 }}
           >
             {value}%
@@ -136,60 +134,63 @@ export default function Control({
     const emptySegments = segments - filledSegments;
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+      <div
+        className={css({
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "8px",
+        })}
+      >
         <motion.div
-          style={{
+          className={css({
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            fontFamily: "var(--font-mono, monospace)",
             fontSize: "14px",
             lineHeight: "1.2",
             cursor: "pointer",
             userSelect: "none",
             height: `${height}px`,
             justifyContent: "space-between",
-          }}
+          })}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
           whileTap={{ scale: 0.98 }}
         >
-          <div style={{ color: "var(--colors-blue, #61afef)" }}>┌───┐</div>
+          <div className={css({ color: "blue" })}>┌───┐</div>
           {Array.from({ length: emptySegments }).map((_, i) => (
-            <div
-              key={`empty-${i}`}
-              style={{ color: "var(--colors-comment, #5c6370)", opacity: 0.4 }}
-            >
+            <div key={`empty-${i}`} className={css({ color: "comment", opacity: 0.4 })}>
               │░░░│
             </div>
           ))}
           {Array.from({ length: filledSegments }).map((_, i) => (
             <motion.div
               key={`filled-${i}`}
-              style={{ color: "var(--colors-blue, #61afef)" }}
+              className={css({ color: "blue" })}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.05 }}
             >
               │███│
             </motion.div>
           ))}
-          <div style={{ color: "var(--colors-blue, #61afef)" }}>└───┘</div>
+          <div className={css({ color: "blue" })}>└───┘</div>
         </motion.div>
         <div
-          style={{
-            fontFamily: "var(--font-mono, monospace)",
+          className={css({
+            fontFamily: "mono",
             fontSize: "12px",
-            color: "var(--colors-text, #abb2bf)",
+            color: "text",
             fontWeight: 600,
-          }}
+          })}
         >
           {label && `${label} `}
           <motion.span
             key={value}
-            initial={{ color: "var(--colors-blue, #61afef)" }}
-            animate={{ color: "var(--colors-text, #abb2bf)" }}
+            initial={{ color: "var(--colors-blue)" }}
+            animate={{ color: "var(--colors-text)" }}
             transition={{ duration: 0.15 }}
           >
             {value}%

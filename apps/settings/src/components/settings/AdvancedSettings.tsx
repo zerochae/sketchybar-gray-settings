@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { css } from "@sketchybar-gray/panda/css";
 import { Heading } from "@sketchybar-gray/react";
 import OpenConfigFile from "@/components/advances/OpenConfigFile";
 import ReloadSketchybar from "@/components/advances/ReloadSketchybar";
@@ -26,9 +27,9 @@ export default function AdvancedSettings() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+      className={css({ display: "flex", flexDirection: "column", gap: "16px" })}
     >
-      <Heading style={{ marginBottom: "16px" }}>Advanced</Heading>
+      <Heading marginBottom="16px">Advanced</Heading>
       {items.map((item) => (
         <motion.div
           key={item.key}

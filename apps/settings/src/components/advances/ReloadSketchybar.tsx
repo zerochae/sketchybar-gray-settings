@@ -1,5 +1,6 @@
 import { Command } from "@tauri-apps/plugin-shell";
 import { Box, Heading, Button, KeyHint } from "@sketchybar-gray/react";
+import { css } from "@sketchybar-gray/panda/css";
 import { useModal } from "@/contexts/ModalContext";
 
 export default function ReloadSketchybar() {
@@ -8,12 +9,8 @@ export default function ReloadSketchybar() {
   const handleReload = async () => {
     try {
       await Command.create("sh", ["-c", "sketchybar --reload"]).execute();
-      showModal(
-        "Success",
-        "Sketchybar reloaded successfully!",
-        "success"
-      );
-    } catch (error) {
+      showModal("Success", "Sketchybar reloaded successfully!", "success");
+    } catch {
       showModal("Error", "Failed to reload sketchybar!", "error");
     }
   };
@@ -22,23 +19,19 @@ export default function ReloadSketchybar() {
     <div>
       <Heading level={2}>Reload Sketchybar</Heading>
       <Box padding="0">
-        <Button
-          onClick={handleReload}
-          variant="option"
-          style={{ color: "var(--colors-green)" }}
-        >
+        <Button onClick={handleReload} variant="success">
           <span>Reload Now</span>
           <KeyHint>⌘R</KeyHint>
         </Button>
         <div
-          style={{
+          className={css({
             marginTop: "12px",
             padding: "12px",
-            background: "var(--colors-bg3)",
+            background: "bg3",
             borderRadius: "4px",
             fontSize: "12px",
-            color: "var(--colors-comment)",
-          }}
+            color: "comment",
+          })}
         >
           Reloads sketchybar configuration and restarts all plugins.
         </div>

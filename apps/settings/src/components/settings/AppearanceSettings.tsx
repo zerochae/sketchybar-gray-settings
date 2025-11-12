@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { css } from "@sketchybar-gray/panda/css";
 import { Heading } from "@sketchybar-gray/react";
 import WidgetsOrder from "@/components/appearances/WidgetsOrder";
 import WidgetsEnable from "@/components/appearances/WidgetsEnable";
@@ -28,9 +29,9 @@ export default function AppearanceSettings() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+      className={css({ display: "flex", flexDirection: "column", gap: "16px" })}
     >
-      <Heading style={{ marginBottom: "16px" }}>Appearance</Heading>
+      <Heading marginBottom="16px">Appearance</Heading>
       {items.map((item) => (
         <motion.div
           key={item.key}

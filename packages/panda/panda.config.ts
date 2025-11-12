@@ -28,12 +28,10 @@ export default defineConfig({
   syntax: "object-literal",
   jsxFramework: "react",
   jsxFactory: "panda",
-  include: [
-    "../../apps/**/src/**/*.{ts,tsx,js,jsx}",
-    "../react/src/**/*.{ts,tsx,js,jsx}",
-  ],
+  include: ["../../apps/**/src/**/*.{ts,tsx,js,jsx}", "../react/src/**/*.{ts,tsx,js,jsx}"],
   exclude: [],
   cssVarRoot: ":where(:root, :host)",
+  emitPackage: true,
   staticCss: {
     themes: themeNames as unknown as string[],
   },
@@ -42,7 +40,7 @@ export default defineConfig({
     extend: {
       tokens: {
         fonts: {
-          mono: { value: "var(--font-mono, monospace)" },
+          mono: { value: "SpaceMono Nerd Font Mono, var(--font-mono, monospace)" },
         },
         colors: toThemeTokens(onedarkColors),
       },
@@ -103,6 +101,8 @@ export default defineConfig({
   globalCss: {
     "*": {
       boxSizing: "border-box",
+      fontFamily: "mono",
+      fontWeight: "700",
       userSelect: "none",
       WebkitUserSelect: "none",
     },

@@ -29,7 +29,15 @@ export function validateConfig(config: Config): ValidationError[] {
     });
   }
 
-  const validThemes = ["onedark", "tokyonight", "catppuccin", "gruvbox", "nord", "dracula", "monokai"];
+  const validThemes = [
+    "onedark",
+    "tokyonight",
+    "catppuccin",
+    "gruvbox",
+    "nord",
+    "dracula",
+    "monokai",
+  ];
   if (!validThemes.includes(config.appearance.theme)) {
     errors.push({
       field: "appearance.theme",

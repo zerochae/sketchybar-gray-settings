@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { exit } from "@tauri-apps/plugin-process";
 import { Heading, Button, KeyHint, Label } from "@sketchybar-gray/react";
+import { css } from "@sketchybar-gray/panda/css";
 import icons from "@/assets/icon.json";
 import { useConfig } from "@/contexts/ConfigContext";
 import { useModal } from "@/contexts/ModalContext";
@@ -20,11 +21,7 @@ export default function Sidebar() {
       await saveConfig();
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
-      showModal(
-        "Success",
-        "Settings saved and sketchybar reloaded!",
-        "success",
-      );
+      showModal("Success", "Settings saved and sketchybar reloaded!", "success");
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Failed to save settings!";
       showModal("Error", errorMessage, "error");
@@ -36,8 +33,7 @@ export default function Sidebar() {
   };
   return (
     <aside
-      className="container"
-      style={{
+      className={css({
         width: "200px",
         height: "100%",
         padding: "16px",
@@ -47,27 +43,29 @@ export default function Sidebar() {
         flexShrink: 0,
         overflow: "hidden",
         maxHeight: "100%",
-      }}
+        background: "bg2",
+        border: "1px solid token(colors.border)",
+      })}
     >
       <div
-        style={{
+        className={css({
           flex: 1,
           display: "flex",
           flexDirection: "column",
           minHeight: 0,
-        }}
+        })}
       >
-        <Heading style={{ marginBottom: "8px", flexShrink: 0 }}>
+        <Heading marginBottom="8px" className={css({ flexShrink: 0 })}>
           Categories
         </Heading>
 
         <div
-          style={{
+          className={css({
             display: "flex",
             flexDirection: "column",
             gap: "12px",
             flexShrink: 0,
-          }}
+          })}
         >
           {CATEGORIES.map((category, index) => (
             <Button
@@ -76,12 +74,8 @@ export default function Sidebar() {
               variant="option"
               active={activeCategory === category}
             >
-              <Heading level={2} style={{ marginBottom: 0 }}>
-                <Label
-                  icon={icons[category as keyof typeof icons]}
-                  color="var(--colors-cyan)"
-                  style={{ fontSize: "inherit", fontWeight: 400 }}
-                >
+              <Heading level={2} marginBottom="0">
+                <Label icon={icons[category as keyof typeof icons]} color="cyan">
                   {category}
                 </Label>
               </Heading>
@@ -92,14 +86,14 @@ export default function Sidebar() {
       </div>
 
       <div
-        style={{
+        className={css({
           flexShrink: 0,
           display: "flex",
           flexDirection: "column",
           gap: "8px",
           padding: "12px 0",
-          borderTop: "1px solid var(--colors-border)",
-        }}
+          borderTop: "1px solid token(colors.border)",
+        })}
       >
         <Button onClick={handleSave} variant="success">
           <AnimatePresence mode="wait">
@@ -133,7 +127,6 @@ export default function Sidebar() {
           {icons.exit} Exit
         </Button>
       </div>
-
     </aside>
   );
 }
