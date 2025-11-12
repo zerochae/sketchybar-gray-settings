@@ -72,7 +72,12 @@ export default function Control({
 
     return (
       <div
-        className={css({ display: "flex", flexDirection: "column", gap: "12px", width: "100%" })}
+        className={css({
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+          width: "100%",
+        })}
       >
         <motion.div
           className={css({
