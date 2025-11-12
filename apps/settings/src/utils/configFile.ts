@@ -48,20 +48,25 @@ async function getConfigPath(): Promise<string> {
   return await resolve(home, CONFIG_PATH);
 }
 
-function setNestedValue(obj: any, path: string, value: any) {
+function setNestedValue(obj: Record<string, unknown>, path: string, value: unknown): void {
   const keys = path.split(".");
-  let current = obj;
+  let current: Record<string, unknown> = obj;
   for (let i = 0; i < keys.length - 1; i++) {
     if (!current[keys[i]]) {
       current[keys[i]] = {};
     }
-    current = current[keys[i]];
+    current = current[keys[i]] as Record<string, unknown>;
   }
   current[keys[keys.length - 1]] = value;
 }
 
-function getNestedValue(obj: any, path: string): any {
-  return path.split(".").reduce((curr, key) => curr?.[key], obj);
+function getNestedValue(obj: Record<string, unknown> | Config, path: string): unknown {
+  return path.split(".").reduce((curr, key) => {
+    if (curr && typeof curr === "object" && key in curr) {
+      return (curr as Record<string, unknown>)[key];
+    }
+    return undefined;
+  }, obj as unknown);
 }
 
 export async function readConfig(): Promise<Partial<Config>> {
@@ -76,7 +81,7 @@ export async function readConfig(): Promise<Partial<Config>> {
 }
 
 function parseConfigFile(content: string): Partial<Config> {
-  const config: any = {
+  const config: Record<string, unknown> = {
     appearance: {},
     widgets: {},
     advanced: {},
@@ -97,7 +102,7 @@ function parseConfigFile(content: string): Partial<Config> {
 
     if (!configPath) continue;
 
-    let value: any = rawValue;
+    let value: string | number | boolean | string[] = rawValue;
 
     if (configPath === "widgetsOrder") {
       value = rawValue.split(/\s+/).filter(Boolean);
@@ -111,14 +116,15 @@ function parseConfigFile(content: string): Partial<Config> {
     setNestedValue(config, configPath, value);
   }
 
+  const widgets = config.widgets as Record<string, Record<string, unknown>>;
   for (const widget of ALL_WIDGETS) {
-    if (!config.widgets[widget]) {
-      config.widgets[widget] = {};
+    if (!widgets[widget]) {
+      widgets[widget] = {};
     }
-    config.widgets[widget].enabled = enabledWidgets.includes(widget);
+    widgets[widget].enabled = enabledWidgets.includes(widget);
   }
 
-  return config;
+  return config as Partial<Config>;
 }
 
 const COLOR_MAP: Record<string, string> = {
