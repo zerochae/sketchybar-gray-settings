@@ -1,15 +1,12 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { css } from "@sketchybar-gray/panda/css";
-import { useModal } from "@/contexts/ModalContext";
-import {
-  Button,
-  Label,
-  InfoIcon,
-  SuccessIcon,
-  WarningIcon,
-  ErrorIcon,
-} from "@sketchybar-gray/react";
+import Button from "./Button";
+import Label from "./Label";
+import InfoIcon from "./icons/InfoIcon";
+import SuccessIcon from "./icons/SuccessIcon";
+import WarningIcon from "./icons/WarningIcon";
+import ErrorIcon from "./icons/ErrorIcon";
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -29,26 +26,44 @@ const modalVariants = {
   },
 };
 
-export default function Modal() {
-  const { modal, closeModal } = useModal();
-  const { isOpen, title, message, type, mode, onConfirm } = modal;
+export type ModalType = "info" | "success" | "warning" | "error";
+export type ModalMode = "alert" | "confirm";
 
+export interface ModalProps {
+  isOpen: boolean;
+  title: string;
+  message: string;
+  type: ModalType;
+  mode?: ModalMode;
+  onClose: () => void;
+  onConfirm?: () => void;
+}
+
+export default function Modal({
+  isOpen,
+  title,
+  message,
+  type,
+  mode = "alert",
+  onClose,
+  onConfirm,
+}: ModalProps) {
   const handleConfirm = () => {
     if (onConfirm) {
       onConfirm();
     }
-    closeModal();
+    onClose();
   };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        closeModal();
+        onClose();
       } else if (e.key === "Enter") {
         if (mode === "confirm") {
           handleConfirm();
         } else {
-          closeModal();
+          onClose();
         }
       }
     };
@@ -60,7 +75,7 @@ export default function Modal() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, closeModal, mode, onConfirm]);
+  }, [isOpen, onClose, mode, onConfirm]);
 
   const typeColors = {
     info: "blue",
@@ -101,7 +116,7 @@ export default function Modal() {
             justifyContent: "center",
             zIndex: 1000,
           })}
-          onClick={closeModal}
+          onClick={onClose}
         >
           <motion.div
             variants={modalVariants}
@@ -154,7 +169,7 @@ export default function Modal() {
               {mode === "confirm" ? (
                 <>
                   <Button
-                    onClick={closeModal}
+                    onClick={onClose}
                     variant="secondary"
                     className={css({ width: "80px", justifyContent: "center" })}
                   >
@@ -170,7 +185,7 @@ export default function Modal() {
                 </>
               ) : (
                 <Button
-                  onClick={closeModal}
+                  onClick={onClose}
                   variant="primary"
                   className={css({ width: "80px", justifyContent: "center" })}
                 >
