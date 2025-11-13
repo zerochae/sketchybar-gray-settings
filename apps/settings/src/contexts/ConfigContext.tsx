@@ -118,14 +118,16 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     readConfig()
       .then((loadedConfig) => {
         setConfig((prev) => {
-          const mergedWidgets = { ...prev.widgets };
+          const mergedWidgets = Object.assign({}, prev.widgets);
 
           Object.keys(loadedConfig.widgets || {}).forEach((widgetKey) => {
             const key = widgetKey as keyof Config["widgets"];
-            mergedWidgets[key] = {
-              ...prev.widgets[key],
-              ...loadedConfig.widgets?.[key],
-            } as Config["widgets"][keyof Config["widgets"]];
+            Object.assign(mergedWidgets, {
+              [key]: {
+                ...prev.widgets[key],
+                ...loadedConfig.widgets?.[key],
+              },
+            });
           });
 
           return {

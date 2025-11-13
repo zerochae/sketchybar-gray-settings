@@ -141,7 +141,9 @@ export default function Sidebar() {
           </AnimatePresence>
         </Button>
         <Button onClick={handleClose} variant="danger">
-          <ExitIcon /> Exit
+          <span>
+            <ExitIcon /> Exit
+          </span>
         </Button>
       </div>
     </aside>
