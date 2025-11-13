@@ -142,38 +142,38 @@ export default function Modal() {
               {message}
             </p>
 
-            <div
-              className={css({
-                display: "flex",
-                justifyContent: "flex-end",
-                gap: "8px",
-              })}
-            >
+            <div style={{ display: "flex", justifyContent: "flex-end", gap: "8px" }}>
               {mode === "confirm" ? (
                 <>
-                  <Button
-                    onClick={closeModal}
-                    variant="secondary"
-                    className={css({ width: "80px", justifyContent: "center" })}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    onClick={handleConfirm}
-                    variant="danger"
-                    className={css({ width: "80px", justifyContent: "center" })}
-                  >
-                    Confirm
-                  </Button>
+                  <div className={css({ width: "80px", flexShrink: 0 })}>
+                    <Button
+                      onClick={closeModal}
+                      variant="secondary"
+                      style={{ justifyContent: "center" }}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                  <div className={css({ width: "80px", flexShrink: 0 })}>
+                    <Button
+                      onClick={handleConfirm}
+                      variant="danger"
+                      style={{ justifyContent: "center" }}
+                    >
+                      Confirm
+                    </Button>
+                  </div>
                 </>
               ) : (
-                <Button
-                  onClick={closeModal}
-                  variant="primary"
-                  className={css({ width: "80px", justifyContent: "center" })}
-                >
-                  OK
-                </Button>
+                <div className={css({ width: "80px", flexShrink: 0 })}>
+                  <Button
+                    onClick={closeModal}
+                    variant="primary"
+                    style={{ justifyContent: "center" }}
+                  >
+                    OK
+                  </Button>
+                </div>
               )}
             </div>
           </motion.div>

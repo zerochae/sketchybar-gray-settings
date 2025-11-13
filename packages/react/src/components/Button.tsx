@@ -8,6 +8,7 @@ interface ButtonProps {
   variant?: "option" | "primary" | "secondary" | "danger" | "success";
   active?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export default function Button({
@@ -16,6 +17,7 @@ export default function Button({
   variant = "option",
   active = false,
   className,
+  style,
 }: ButtonProps) {
   const getVariantColor = () => {
     switch (variant) {
@@ -40,7 +42,10 @@ export default function Button({
     <motion.button
       onClick={onClick}
       className={cx(baseClassName, css({ outline: "none" }))}
-      style={variantColor ? { color: `var(--colors-${variantColor})` } : undefined}
+      style={{
+        ...(variantColor ? { color: `var(--colors-${variantColor})` } : {}),
+        ...style,
+      }}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       transition={{
